@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoSApp.Entities", "PoSApp.E
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PoSApp.Setup", "PoSApp.Setup\PoSApp.Setup.vdproj", "{926A5892-F343-4F56-9C3A-CD65C92D2223}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{A46CB035-22D6-4DC8-9B8A-08CF26A9DD09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
