@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DXg61A1pM1OK1JLhvIQI/qXZ6qbotdFdLC1NOfh5GvP9b8xYG9Dlz4/rIf3SPf9SlDcRD3uO4yVr6755kcEqjg==",
+  "dgSpecHash": "9VD34rqcrtIinX5BsjEO3pD7Vf1XbhWN7w5bwEsC45knsiwGCx9W80/g/JM0KhpvIGsS04tXvCmSpP5xqWKsyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.UI\\PoSApp.UI.csproj",
+  "projectFilePath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\PoSApp.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ergin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Ergin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

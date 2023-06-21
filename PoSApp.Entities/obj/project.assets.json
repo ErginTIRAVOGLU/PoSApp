@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\PoSApp.Entities.csproj",
+      "projectUniqueName": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\PoSApp.Entities.csproj",
       "projectName": "PoSApp.Entities",
-      "projectPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\PoSApp.Entities.csproj",
+      "projectPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\PoSApp.Entities.csproj",
       "packagesPath": "C:\\Users\\Ergin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\obj\\",
+      "outputPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

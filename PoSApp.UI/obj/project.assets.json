@@ -4895,11 +4895,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.UI\\PoSApp.UI.csproj",
+      "projectUniqueName": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\PoSApp.UI.csproj",
       "projectName": "PoSApp.UI",
-      "projectPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.UI\\PoSApp.UI.csproj",
+      "projectPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\PoSApp.UI.csproj",
       "packagesPath": "C:\\Users\\Ergin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.UI\\obj\\",
+      "outputPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -4920,11 +4920,11 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.BLL\\PoSApp.BLL.csproj": {
-              "projectPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.BLL\\PoSApp.BLL.csproj"
+            "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.BLL\\PoSApp.BLL.csproj": {
+              "projectPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.BLL\\PoSApp.BLL.csproj"
             },
-            "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\PoSApp.Entities.csproj": {
-              "projectPath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\PoSApp.Entities.csproj"
+            "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\PoSApp.Entities.csproj": {
+              "projectPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\PoSApp.Entities.csproj"
             }
           }
         }

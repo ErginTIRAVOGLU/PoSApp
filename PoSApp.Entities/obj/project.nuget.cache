@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IsofDmq+2y8nBzqfmJZSdBQUhaqVuIzduMRvvxnRo1bgEo3dVu98ogknAebNeqaj+0mKgi5gmOLI0zySBs+f7A==",
+  "dgSpecHash": "7sluLBiWP66OtDBQxGKuYpXsMnstdZGPt3tUMWlUMiPvZ02j4jip8Dwa7axLLWr5zr/l2e+Flx5/HF+V08Ihww==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ergin\\Desktop\\Yeni klasör\\yedek\\1\\PoSApp.Entities\\PoSApp.Entities.csproj",
+  "projectFilePath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.Entities\\PoSApp.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
