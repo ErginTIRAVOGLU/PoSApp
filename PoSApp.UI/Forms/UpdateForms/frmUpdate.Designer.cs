@@ -39,7 +39,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(76, 95);
+            label1.Location = new Point(74, 115);
             label1.Name = "label1";
             label1.Size = new Size(87, 15);
             label1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(86, 125);
+            label2.Location = new Point(84, 145);
             label2.Name = "label2";
             label2.Size = new Size(77, 15);
             label2.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             lblSonVersion.AutoSize = true;
             lblSonVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSonVersion.Location = new Point(159, 125);
+            lblSonVersion.Location = new Point(157, 145);
             lblSonVersion.Name = "lblSonVersion";
             lblSonVersion.Size = new Size(16, 15);
             lblSonVersion.TabIndex = 3;
@@ -68,7 +68,7 @@
             // 
             lblYukluVersion.AutoSize = true;
             lblYukluVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblYukluVersion.Location = new Point(159, 95);
+            lblYukluVersion.Location = new Point(157, 115);
             lblYukluVersion.Name = "lblYukluVersion";
             lblYukluVersion.Size = new Size(19, 15);
             lblYukluVersion.TabIndex = 2;
@@ -77,7 +77,7 @@
             // btnUpdate
             // 
             btnUpdate.Enabled = false;
-            btnUpdate.Location = new Point(116, 176);
+            btnUpdate.Location = new Point(124, 197);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 4;
@@ -87,12 +87,13 @@
             // 
             // lblHeader
             // 
-            lblHeader.AutoSize = true;
-            lblHeader.Location = new Point(137, 53);
+            lblHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblHeader.Location = new Point(12, 19);
             lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(16, 15);
+            lblHeader.Size = new Size(304, 63);
             lblHeader.TabIndex = 5;
             lblHeader.Text = "...";
+            lblHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmUpdate
             // 

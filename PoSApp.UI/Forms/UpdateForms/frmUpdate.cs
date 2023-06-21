@@ -21,17 +21,17 @@ namespace PoSApp.UI.Forms.UpdateForms
 
         private void frmUpdate_Load(object sender, EventArgs e)
         {
-            var urlAddress = "";
+            var urlAddress = "https://ergintiravoglu.github.io/PoSApp/version.txt";
             var newVersion = "";
             var currentVersion = "";
             var newVersionText = (new WebClient().DownloadString(urlAddress));
             var currentVersionText = Application.ProductVersion.ToString();
 
-            lblYukluVersion.Text = currentVersion;
-            lblSonVersion.Text = newVersion;
-            newVersion = newVersionText.Replace(",", "");
-            currentVersion = currentVersionText.Replace(",", "");
 
+            newVersion = newVersionText.Replace(".", "");
+            currentVersion = currentVersionText.Replace(".", "");
+            lblYukluVersion.Text = currentVersionText;
+            lblSonVersion.Text = newVersionText;
             if (Convert.ToInt32(newVersion) > Convert.ToInt32(currentVersion))
             {
                 lblHeader.Text = "Yeni versiyon indirmeye hazır.\r\n Güncellemek için \"Güncelleme\" butonuna basın.";
@@ -49,7 +49,7 @@ namespace PoSApp.UI.Forms.UpdateForms
         {
             WebClient web = new WebClient();
             web.DownloadFileCompleted += Web_DownloadFileCompleted;
-            web.DownloadFileAsync(new Uri("server link"), "path");
+            web.DownloadFileAsync(new Uri("https://ergintiravoglu.github.io/PoSApp/version.txt"), "path");
         }
 
         private void Web_DownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
