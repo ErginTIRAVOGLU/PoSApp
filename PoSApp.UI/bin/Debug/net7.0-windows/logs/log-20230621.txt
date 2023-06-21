@@ -7,3 +7,8 @@
 2023-06-21 18:33:01.744 +03:00 [INF] Program başladı
 2023-06-21 18:33:28.850 +03:00 [INF] Program başladı
 2023-06-21 18:34:53.393 +03:00 [INF] Program başladı
+2023-06-21 18:37:32.799 +03:00 [INF] Program başladı
+2023-06-21 18:51:45.477 +03:00 [INF] Program başladı
+2023-06-21 19:04:07.756 +03:00 [INF] Program başladı
+2023-06-21 19:21:16.270 +03:00 [INF] Program başladı
+2023-06-21 20:03:53.243 +03:00 [INF] Program başladı

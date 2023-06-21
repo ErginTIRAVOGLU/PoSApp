@@ -1,8 +1,4 @@
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.UI.dll
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.UI.exe
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\App.config.json
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.UI.deps.json
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.UI.runtimeconfig.json
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\Azure.Core.dll
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\Azure.Identity.dll
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
@@ -101,12 +97,7 @@ C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.AssemblyInfo.cs
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.csproj.CoreCompileInputs.cache
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.csproj.CopyComplete
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.dll
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\refint\PoSApp.UI.dll
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.pdb
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.genruntimeconfig.cache
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.UI.pdb
-C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\ref\PoSApp.UI.dll
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.Forms.PosForms.frmPos.resources
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.Forms.PosForms.frmQuantity.resources
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.Forms.PosForms.frmDiscount.resources
@@ -316,3 +307,13 @@ C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.UI\obj\Debug\net7.0-windows\P
 C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.genruntimeconfig.cache
 C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.UI\obj\Debug\net7.0-windows\ref\PoSApp.UI.dll
 C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.UI.Forms.UpdateForms.frmUpdate.resources
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.exe
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.deps.json
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.runtimeconfig.json
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\PoSApp.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\refint\PoSApp.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\PoSApp.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\obj\Debug\net7.0-windows\ref\PoSApp.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\bin\Debug\net7.0-windows\update.bat

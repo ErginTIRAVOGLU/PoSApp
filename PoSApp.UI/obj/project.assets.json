@@ -4893,10 +4893,10 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\PoSApp.UI.csproj",
-      "projectName": "PoSApp.UI",
+      "projectName": "PoSApp",
       "projectPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\PoSApp.UI.csproj",
       "packagesPath": "C:\\Users\\Ergin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Ergin\\source\\repos\\PoSApp\\PoSApp.UI\\obj\\",

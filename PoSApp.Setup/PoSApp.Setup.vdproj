@@ -75,6 +75,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.7.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 7.0.5 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.7.0.x64"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -205,7 +221,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PoSApp"
         "ProductCode" = "8:{455D6B90-6F09-4B9E-BE9C-8FDA83F19609}"
-        "PackageCode" = "8:{26983625-7F52-42A5-831D-FF213DE97F4E}"
+        "PackageCode" = "8:{20D02A77-80D2-4016-B957-D4CA9C672D63}"
         "UpgradeCode" = "8:{3F196D2B-8E93-4153-944D-9864DA234345}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -768,7 +784,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_05D0C832A5404742B5F8F8BECCAADD4E"
             {
-            "SourcePath" = "8:..\\PoSApp.UI\\obj\\Debug\\net7.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\PoSApp.UI\\obj\\Release\\net7.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7A67AFEDAC65484BA732EF5858C1E9BD"

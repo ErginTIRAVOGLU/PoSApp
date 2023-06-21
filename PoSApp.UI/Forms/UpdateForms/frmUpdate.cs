@@ -21,11 +21,11 @@ namespace PoSApp.UI.Forms.UpdateForms
 
         private void frmUpdate_Load(object sender, EventArgs e)
         {
-            var urlAddress = "https://ergintiravoglu.github.io/PoSApp/version.txt";
+            var urlAddress = "https://ergintiravoglu.github.io/PoSApp/docs/version.txt";
             var newVersion = "";
             var currentVersion = "";
             var newVersionText = (new WebClient().DownloadString(urlAddress));
-            var currentVersionText = Application.ProductVersion.ToString();
+            var currentVersionText = GetType().Assembly.GetName().Version.ToString(); //Application.ProductVersion.ToString();
 
 
             newVersion = newVersionText.Replace(".", "");
@@ -49,7 +49,7 @@ namespace PoSApp.UI.Forms.UpdateForms
         {
             WebClient web = new WebClient();
             web.DownloadFileCompleted += Web_DownloadFileCompleted;
-            web.DownloadFileAsync(new Uri("https://ergintiravoglu.github.io/PoSApp/version.txt"), "path");
+            web.DownloadFileAsync(new Uri("https://ergintiravoglu.github.io/PoSApp/PoSApp.Setup/Release/PoSApp.Setup.msi"), Application.StartupPath + @"\PoSApp.Setup.msi");
         }
 
         private void Web_DownloadFileCompleted(object? sender, AsyncCompletedEventArgs e)
@@ -59,7 +59,7 @@ namespace PoSApp.UI.Forms.UpdateForms
 
         private void initScript()
         {
-            string appPath = Application.StartupPath + @"\bat";
+            string appPath = Application.StartupPath + @"\update.bat";
 
             Process p = new Process();
             p.StartInfo.FileName = appPath;
