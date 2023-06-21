@@ -1,0 +1,38 @@
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\App.config.json
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.deps.json
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.DAL.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.DAL.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.AssemblyReference.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.AssemblyInfoInputs.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.AssemblyInfo.cs
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.CopyComplete
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\refint\PoSApp.BLL.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\obj\Debug\net7.0\ref\PoSApp.BLL.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.BLL\bin\Debug\net7.0\appsettings.json
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\App.config.json
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\appsettings.json
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.deps.json
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.BLL.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.DAL.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.DAL.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\bin\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.AssemblyReference.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.AssemblyInfoInputs.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.AssemblyInfo.cs
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.csproj.CopyComplete
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\refint\PoSApp.BLL.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\PoSApp.BLL.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.BLL\obj\Debug\net7.0\ref\PoSApp.BLL.dll

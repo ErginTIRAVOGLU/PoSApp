@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\Ergin\source\repos\PoSApp\PoSApp.UI\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\PosForms\frmRecipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateForms\frmUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BrandForms\frmBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\BrandForms\frmBrandList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CategoryForms\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CategoryForms\frmCategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PosForms\frmDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PosForms\frmPos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PosForms\frmQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\PosForms\frmSettle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductForms\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ProductForms\frmProductList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\StockInForms\frmAddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\StockInForms\frmStockInDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\StockInForms\frmStockInList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SupplierForms\frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\SupplierForms\frmSupplierList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Dataset\PosResultDataSet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+</Project>

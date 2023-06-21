@@ -1,0 +1,24 @@
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.deps.json
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.csproj.AssemblyReference.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.AssemblyInfoInputs.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.AssemblyInfo.cs
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\refint\PoSApp.Entities.dll
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\source\repos\PoSApp\PoSApp.Entities\obj\Debug\net7.0\ref\PoSApp.Entities.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.deps.json
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\bin\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.csproj.AssemblyReference.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.AssemblyInfoInputs.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.AssemblyInfo.cs
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\refint\PoSApp.Entities.dll
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\PoSApp.Entities.pdb
+C:\Users\Ergin\Desktop\Yeni klasör\yedek\1\PoSApp.Entities\obj\Debug\net7.0\ref\PoSApp.Entities.dll
