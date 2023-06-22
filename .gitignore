@@ -610,5 +610,7 @@ obj/
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
-
+*.vsto binary
+*.deploy binary
+*.manifest binary
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,csharp,dotnetcore
