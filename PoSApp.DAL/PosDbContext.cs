@@ -12,9 +12,13 @@ namespace PoSApp.DAL
 {
     public class PosDbContext : DbContext
     {
+         
+
         public sealed class Settings
         {
+            
             public required string connectionString { get; set; }
+
         }
              
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

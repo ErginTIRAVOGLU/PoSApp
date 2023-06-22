@@ -34,12 +34,14 @@
             lblYukluVersion = new Label();
             btnUpdate = new Button();
             lblHeader = new Label();
+            btnControl = new Button();
+            updateBar = new ProgressBar();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(74, 115);
+            label1.Location = new Point(74, 155);
             label1.Name = "label1";
             label1.Size = new Size(87, 15);
             label1.TabIndex = 0;
@@ -48,7 +50,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(84, 145);
+            label2.Location = new Point(84, 185);
             label2.Name = "label2";
             label2.Size = new Size(77, 15);
             label2.TabIndex = 1;
@@ -58,7 +60,7 @@
             // 
             lblSonVersion.AutoSize = true;
             lblSonVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSonVersion.Location = new Point(157, 145);
+            lblSonVersion.Location = new Point(157, 185);
             lblSonVersion.Name = "lblSonVersion";
             lblSonVersion.Size = new Size(16, 15);
             lblSonVersion.TabIndex = 3;
@@ -68,7 +70,7 @@
             // 
             lblYukluVersion.AutoSize = true;
             lblYukluVersion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblYukluVersion.Location = new Point(157, 115);
+            lblYukluVersion.Location = new Point(157, 155);
             lblYukluVersion.Name = "lblYukluVersion";
             lblYukluVersion.Size = new Size(19, 15);
             lblYukluVersion.TabIndex = 2;
@@ -76,8 +78,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Enabled = false;
-            btnUpdate.Location = new Point(124, 197);
+            btnUpdate.Location = new Point(124, 237);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 4;
@@ -88,19 +89,39 @@
             // lblHeader
             // 
             lblHeader.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblHeader.Location = new Point(12, 19);
+            lblHeader.Location = new Point(12, 59);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new Size(304, 63);
             lblHeader.TabIndex = 5;
             lblHeader.Text = "...";
             lblHeader.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // btnControl
+            // 
+            btnControl.Location = new Point(124, 21);
+            btnControl.Name = "btnControl";
+            btnControl.Size = new Size(85, 44);
+            btnControl.TabIndex = 6;
+            btnControl.Text = "Güncelleme Kontrol";
+            btnControl.UseVisualStyleBackColor = true;
+            btnControl.Click += btnControl_Click;
+            // 
+            // updateBar
+            // 
+            updateBar.Location = new Point(12, 280);
+            updateBar.Name = "updateBar";
+            updateBar.Size = new Size(321, 23);
+            updateBar.TabIndex = 7;
+            updateBar.Visible = false;
+            // 
             // frmUpdate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(328, 264);
+            ClientSize = new Size(345, 315);
+            Controls.Add(updateBar);
+            Controls.Add(btnControl);
             Controls.Add(lblHeader);
             Controls.Add(btnUpdate);
             Controls.Add(lblSonVersion);
@@ -125,5 +146,7 @@
         private Label lblYukluVersion;
         private Button btnUpdate;
         private Label lblHeader;
+        private Button btnControl;
+        private ProgressBar updateBar;
     }
 }
