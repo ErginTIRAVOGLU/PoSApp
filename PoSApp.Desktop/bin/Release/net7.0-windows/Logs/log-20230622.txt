@@ -1,0 +1,8 @@
+2023-06-22 11:52:48.860 +03:00 [INF] Program başladı
+2023-06-22 11:53:43.479 +03:00 [INF] Program başladı
+2023-06-22 14:07:33.906 +03:00 [INF] Program başladı
+2023-06-22 14:08:21.025 +03:00 [INF] Program başladı
+2023-06-22 14:09:02.080 +03:00 [INF] Program başladı
+2023-06-22 14:09:26.939 +03:00 [INF] Program başladı
+2023-06-22 14:10:26.696 +03:00 [INF] Program başladı
+2023-06-22 14:10:40.264 +03:00 [INF] Program başladı

@@ -1,0 +1,6 @@
+﻿{
+  "Settings": {
+    "connectionString":"Server=.;Database=PoSAppDb;User Id=sa;Password=159357Et!1;TrustServerCertificate=True;",
+    "connectionString2":"Server=(localdb)\\mssqllocaldb;Database=PoSAppDb;Trusted_Connection=True;"
+  }
+}
