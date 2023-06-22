@@ -10,7 +10,7 @@
     <ApplicationIcon>pos.ico</ApplicationIcon>
     <AssemblyName>PoSApp</AssemblyName>
     <Version>1.0.0.0</Version>
-    <SignAssembly>True</SignAssembly>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
