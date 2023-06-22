@@ -150,7 +150,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_56E31DE167504602B7724EF360794EE0"
             {
-            "SourcePath" = "8:..\\PoSApp.UI\\bin\\Debug\\net7.0-windows\\Reports\\PosResultReport.rdlc"
+            "SourcePath" = "8:..\\PoSApp.Desktop\\bin\\Debug\\net7.0-windows\\Reports\\PosResultReport.rdlc"
             "TargetName" = "8:PosResultReport.rdlc"
             "Tag" = "8:"
             "Folder" = "8:_DEB9E98B182644199F9E62ECB4CFE071"
@@ -810,7 +810,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_05D0C832A5404742B5F8F8BECCAADD4E"
             {
-            "SourcePath" = "8:..\\PoSApp.UI\\obj\\Release\\net7.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\PoSApp.Desktop\\obj\\Release\\net7.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7A67AFEDAC65484BA732EF5858C1E9BD"
