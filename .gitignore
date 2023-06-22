@@ -21,18 +21,37 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+PoSApp.BLL/bin/[Dd]ebug/
+PoSApp.BLL/bin/[Dd]ebugPublic/
+PoSApp.BLL/bin/[Rr]elease/
+PoSApp.BLL/bin/[Rr]eleases/
+
+PoSApp.DAL/bin/[Dd]ebug/
+PoSApp.DAL/bin/[Dd]ebugPublic/
+PoSApp.DAL/bin/[Rr]elease/
+PoSApp.DAL/bin/[Rr]eleases/
+
+PoSApp.Entities/bin/[Dd]ebug/
+PoSApp.Entities/bin/[Dd]ebugPublic/
+PoSApp.Entities/bin/[Rr]elease/
+PoSApp.Entities/bin/[Rr]eleases/
+
+
+
+ 
 x64/
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
-[Oo]bj/
+PoSApp.BLL/bin/[Bb]in/
+PoSApp.BLL/bin/[Oo]bj/
+PoSApp.DAL/bin/[Bb]in/
+PoSApp.DAL/bin/[Oo]bj/
+PoSApp.Entities/bin/[Oo]bj/
+PoSApp.Entities/bin/[Oo]bj/
+ 
 [Ll]og/
 [Ll]ogs/
 
@@ -401,7 +420,9 @@ FodyWeavers.xsd
 
 ### DotnetCore ###
 # .NET Core build folders
-bin/
+PoSApp.BLL/bin/
+PoSApp.DAL/bin/
+PoSApp.Entities/bin/
 obj/
 
 # Common node modules locations
