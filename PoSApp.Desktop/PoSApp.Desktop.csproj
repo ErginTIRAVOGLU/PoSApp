@@ -13,7 +13,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="printsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\PoSApp.BLL\appsettings.json" Link="appsettings.json" />
+    <Content Include="..\PoSApp.DAL\App.config.json" Link="App.config.json" />
     <Content Include="pos.ico" />
+    <Content Include="printsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,9 +76,6 @@
     <None Update="Dataset\PosResultDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>PosResultDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="printsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

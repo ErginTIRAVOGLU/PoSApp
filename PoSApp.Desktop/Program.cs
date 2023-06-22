@@ -37,7 +37,7 @@ namespace PoSApp.Desktop
             }
             if (!File.Exists(fileName))
             {
-                if (!File.Exists(subPath + @"\"+ fileName))
+                if (File.Exists(subPath + @"\"+ fileName))
                 {
                     File.Copy(subPath + @"\"+ fileName, fileName, true);
                 }

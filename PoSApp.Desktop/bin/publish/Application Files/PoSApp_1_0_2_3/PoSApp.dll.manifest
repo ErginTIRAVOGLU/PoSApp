@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="PoSApp.exe" version="1.0.2.3" publicKeyToken="0000000000000000" language="tr" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="PoSApp.exe" version="1.0.2.3" publicKeyToken="848805db7d65514c" language="tr" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="pos.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="15872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher.exe" size="17248">
       <assemblyIdentity name="Launcher" version="7.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2t1L0AQSgEIuaj7EYUjrahK4LQvyvRwqfUHMzU0MKww=</dsig:DigestValue>
+        <dsig:DigestValue>15cEXjECv61OY5GBFAZM9nb0ogir/YGjgKMkUI1ooy0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -531,13 +531,13 @@
       <dsig:DigestValue>EXbpFx2G1yfZAaU4NH6YDV0wjNtU6IbR1UpwI/LTxYE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PoSApp.dll" size="332288">
+  <file name="PoSApp.dll" size="333664">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>DaJ/dsNX5ElNGrwdS3p+YtK07vCPGiJgRp5Y6kcsNHM=</dsig:DigestValue>
+      <dsig:DigestValue>wySceV72uqXSOi5QhdW0G07g77ZQKwJT8U2hYH80y28=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoSApp.Entities.dll" size="17408">
@@ -549,13 +549,13 @@
       <dsig:DigestValue>xLRlEe3ebMImLWhg5v8PIFrmDPJB8j9CNEmAH+wKeL8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PoSApp.exe" size="171008">
+  <file name="PoSApp.exe" size="172384">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hgftmvDdWyVuWfXlALCI4g9VllbDMFYEmtL8EwWA7us=</dsig:DigestValue>
+      <dsig:DigestValue>n7b2Xor8+BpZqfH8N5dm/awatsSG+kf3QZ+MBDTsuoE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="PoSApp.runtimeconfig.json" size="441">
@@ -692,4 +692,4 @@
       <!--<supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />-->
     </application>
   </compatibility>
-</asmv1:assembly>
+<publisherIdentity name="CN=OpenIddict Server Signing Certificate" issuerKeyHash="5b88cc9e961db24a7f6809a773cd553d116b14d7" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>6qymmZvdABSMgQuWzTQoTDQAX0xtrnf0ruDuXF6Xa/Y=</DigestValue></Reference></SignedInfo><SignatureValue>RT3O3tmZPF0cWikHM9PoGbE306KbOsOmNzt4G2DvKhRo5eAUvecILlCSobs11PrlNTQlsZOX6gf2DqHR+NmjoejL5P7TFcvz5XO3GrUy8bGC1gMhg42E/2CG6NYabbSMR2QIwgu4dkuNJ+mSDWILMFW7+ev2yjd2stW+Hu3Zzqfa3CEOs3lz2muI8rC5Cl420f2NeAswoxfDqaa1xNfNMuKXbzJRH7rWC5eAwNmXghAu0Gv/DdJ20/vo9GNZUU+0L+NA4nqbgN9d4cgNAAqFG698MYbLYt0RMWUbl9HqnTnju7cuRogsOea2MsXZzOVnlL6bp3WjAmtgdMWVVCXboQ==</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>slQZAdPwsGTZFXnh2Sj2buYRJlHr3xebh24NgJnBwgjSB6d7DlRYAoMObWVZ0ALggdj1xGVO/v8FKdfbkDGHH/i7np23MKZP4O4YbHkijLGTK6p9VF+L2pG9JHYh6buByUDM/PujSzCKwpLxTRVtoPcx+rpCnGQbupbTOxh0ZZtDJhtUkasApZCagq1FuF2ex8TFGj8GGEiDZUyrYfstFxFTlaDAoNdcdQvFUQCg+ngm6qCZCS8oIVy5uWrRBbf2hSfFh0EuIaeww7P7Uqx36Iu6f9Ba3mJl97CvrzTgXVL8JZbzRCCqWPRg+4+qYuyP8boUzh0Sgaodfv8LW5cwKQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="f66b975e5ceee0aef477ae6d4c5f00344c2834cd960b818c1400dd9b99a6acea" Description="" Url=""><as:assemblyIdentity name="PoSApp.exe" version="1.0.2.3" publicKeyToken="848805db7d65514c" language="tr" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=OpenIddict Server Signing Certificate</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>4Z3RY/yF9kT+agQJ4X+K0Ki7FSpzMhIThnILh5ZJ3oo=</DigestValue></Reference></SignedInfo><SignatureValue>TUXeIrc2dAt5G7UliGbP3+YtTc6bQkfjCMf4l3gARjy4dJo8EWocGCes387MUim6JuWKUeFai0vZtLa8Ox7kpsqKPKdgJuG/qdVukPlYZdf2Eugyyjd+pRw4Adh53TZeKZCeNLY8kg86UHK6rSZSZ4kO4P5mjrzzYR7LkECIeJhbDHfzWvOQmWJJkeVyY9MRn8DNO8w3JYeL4pN7U/K4cWHSzWCdDC/RtbWRLZXccoThaMedrKCZUHMGCyua5APxQo1j+gyoucGv/BpQn/vTCq5mbxdC+5XSx4brpvz2cRGt/u7lm76+BaQGnq0OeFbBPIpBNbWc0sO+TV5x88Oicg==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>slQZAdPwsGTZFXnh2Sj2buYRJlHr3xebh24NgJnBwgjSB6d7DlRYAoMObWVZ0ALggdj1xGVO/v8FKdfbkDGHH/i7np23MKZP4O4YbHkijLGTK6p9VF+L2pG9JHYh6buByUDM/PujSzCKwpLxTRVtoPcx+rpCnGQbupbTOxh0ZZtDJhtUkasApZCagq1FuF2ex8TFGj8GGEiDZUyrYfstFxFTlaDAoNdcdQvFUQCg+ngm6qCZCS8oIVy5uWrRBbf2hSfFh0EuIaeww7P7Uqx36Iu6f9Ba3mJl97CvrzTgXVL8JZbzRCCqWPRg+4+qYuyP8boUzh0Sgaodfv8LW5cwKQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIC9TCCAd2gAwIBAgIJAKq4ozWNUsugMA0GCSqGSIb3DQEBCwUAMDAxLjAsBgNVBAMTJU9wZW5JZGRpY3QgU2VydmVyIFNpZ25pbmcgQ2VydGlmaWNhdGUwHhcNMjMwMzEyMTU1NDM3WhcNMjUwMzEyMTU1NDM3WjAwMS4wLAYDVQQDEyVPcGVuSWRkaWN0IFNlcnZlciBTaWduaW5nIENlcnRpZmljYXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAslQZAdPwsGTZFXnh2Sj2buYRJlHr3xebh24NgJnBwgjSB6d7DlRYAoMObWVZ0ALggdj1xGVO/v8FKdfbkDGHH/i7np23MKZP4O4YbHkijLGTK6p9VF+L2pG9JHYh6buByUDM/PujSzCKwpLxTRVtoPcx+rpCnGQbupbTOxh0ZZtDJhtUkasApZCagq1FuF2ex8TFGj8GGEiDZUyrYfstFxFTlaDAoNdcdQvFUQCg+ngm6qCZCS8oIVy5uWrRBbf2hSfFh0EuIaeww7P7Uqx36Iu6f9Ba3mJl97CvrzTgXVL8JZbzRCCqWPRg+4+qYuyP8boUzh0Sgaodfv8LW5cwKQIDAQABoxIwEDAOBgNVHQ8BAf8EBAMCB4AwDQYJKoZIhvcNAQELBQADggEBAHiVOw5xewy8qEIVvZi8lNUF/aCbNdxbo2S4n6wfF3eGMzZUOX/Yd/BAjL+O63387AROrxSYQNISiVdvVpKk096/V3oVCRVY/QmsP56BRJ6KZtu6d7/SOb5ia7Nwq/el6kbeqFaBfO4Wl3rfbEbg8ACTGRpWAOTaDV+wYKb3bLvfrj6lE8XpzGZXJe0mT+mUHcVnZaowYpj0YOUWjh2bQ+b9Z8HTQ0t3JpWUuVqtyLaqFzUb2SwdMzmpfrkU0EdkRvM7EML01c0Z2jf3C5xd4NKF8lNKXtmiHg5fbAv02I3cxgO17mdgxPaFRIBE0xoyv9c43xhuEzA7GwKSf7bT5HI=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
