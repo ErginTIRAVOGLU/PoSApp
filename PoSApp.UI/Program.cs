@@ -29,7 +29,12 @@ namespace PoSApp.UI
         private static void controlAndSave(string fileName)
         {
             string subPath = "yedek";
+            bool exists = Directory.Exists(subPath);
 
+            if (!exists)
+            {
+                Directory.CreateDirectory(subPath);
+            }
             if (!File.Exists(fileName))
             {
                 if (File.Exists(subPath + @"\"+ fileName))
