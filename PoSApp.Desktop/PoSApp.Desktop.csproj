@@ -10,10 +10,11 @@
     <ApplicationIcon>pos.ico</ApplicationIcon>
     <AssemblyName>PoSApp</AssemblyName>
     <Version>1.0.0.0</Version>
-    <SignAssembly>False</SignAssembly>
+    <SignAssembly>True</SignAssembly>
     <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
     <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <DelaySign>True</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
