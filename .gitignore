@@ -36,7 +36,8 @@ PoSApp.Entities/bin/[Dd]ebugPublic/
 PoSApp.Entities/bin/[Rr]elease/
 PoSApp.Entities/bin/[Rr]eleases/
 
-
+PoSApp.Desktop/bin/[Rr]elease/
+PoSApp.Desktop/bin/[Rr]eleases/
 
  
 x64/
