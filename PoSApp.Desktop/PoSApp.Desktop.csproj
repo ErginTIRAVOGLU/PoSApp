@@ -11,7 +11,9 @@
     <AssemblyName>PoSApp</AssemblyName>
     <Version>1.0.0.0</Version>
     <SignAssembly>False</SignAssembly>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
