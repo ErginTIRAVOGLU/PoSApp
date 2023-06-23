@@ -83,19 +83,21 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     //_stockInDetail.Product = _product;
 
                     frmAddStock _frmAddStock = new frmAddStock();
-                    _frmAddStock.ShowDialog();
-                    var source = new BindingSource();
-                    StockInDetailListDTO stockInDetailListDTO = new StockInDetailListDTO();
-                    stockInDetailListDTO.ProductId = _product.Id;
-                    stockInDetailListDTO.ProductName = _product.ProductName;
-                    stockInDetailListDTO.ProductCode = _product.ProductCode;
-                    stockInDetailListDTO.StockInDetailUnit = _frmAddStock.productQuantity;
-                    stockInDetailListDTO.ProductWarehouseId = _frmAddStock.warehouseId;
-                    stockInDetailListDTO.DepoAdi = _frmAddStock.warehouseName;
-                    stokDetay.Add(stockInDetailListDTO);
-                    source.DataSource = stokDetay;
-                    dGWStockInDetail.DataSource = source;
-
+                    DialogResult dialogResult= _frmAddStock.ShowDialog();
+                    if(dialogResult == DialogResult.OK)
+                    {       
+                        var source = new BindingSource();
+                        StockInDetailListDTO stockInDetailListDTO = new StockInDetailListDTO();
+                        stockInDetailListDTO.ProductId = _product.Id;
+                        stockInDetailListDTO.ProductName = _product.ProductName;
+                        stockInDetailListDTO.ProductCode = _product.ProductCode;
+                        stockInDetailListDTO.StockInDetailUnit = _frmAddStock.productQuantity;
+                        stockInDetailListDTO.ProductWarehouseId = _frmAddStock.warehouseId;
+                        stockInDetailListDTO.DepoAdi = _frmAddStock.warehouseName;
+                        stokDetay.Add(stockInDetailListDTO);
+                        source.DataSource = stokDetay;
+                        dGWStockInDetail.DataSource = source;
+                    }
                     break;
                 default:
                     break;

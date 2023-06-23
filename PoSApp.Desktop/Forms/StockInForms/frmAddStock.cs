@@ -28,6 +28,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Abort;
             this.Close();
         }
 
@@ -36,6 +37,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
             warehouseId = int.Parse(cmBoxWarehouse.SelectedValue.ToString());
             warehouseName = cmBoxWarehouse.Text;
             productQuantity = int.Parse(txtCount.Text);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -44,6 +46,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
             warehouseId = int.Parse(cmBoxWarehouse.SelectedValue.ToString());
             warehouseName = cmBoxWarehouse.Text;
             productQuantity = int.Parse(txtCount.Text);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

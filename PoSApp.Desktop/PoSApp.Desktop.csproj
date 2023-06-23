@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <None Remove="printsettings.json" />
+    <None Remove="Reports\PosResultReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,9 @@
     <Content Include="..\PoSApp.DAL\App.config.json" Link="App.config.json" />
     <Content Include="pos.ico" />
     <Content Include="printsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\PosResultReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -85,9 +89,6 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="Reports\PosResultReport.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
