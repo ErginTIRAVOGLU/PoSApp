@@ -26,10 +26,21 @@ namespace PoSApp.Desktop.Forms.PosForms
         public frmRecipt()
         {
             InitializeComponent();
-            configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("printsettings.json").Build();
+
+            var printSettingsFile = GetSettingsFile("printsettings.json");
+
+            configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(printSettingsFile).Build();
             _store=configuration.GetValue<string>("pStore");
             _address=configuration.GetValue<string>("pAddress");
             var data = "";
+        }
+
+        private string GetSettingsFile(string fileName)
+        {
+            string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string userFilePath = Path.Combine(localAppData, "PoSApp");           
+            string destFilePath = Path.Combine(userFilePath, fileName);
+            return destFilePath;            
         }
 
         private void frmRecipt_Load(object sender, EventArgs e)

@@ -28,6 +28,7 @@ namespace PoSApp.Desktop
 
         private static void controlAndSave(string fileName)
         {
+            /*
             string subPath = "yedek";
             bool exists = Directory.Exists(subPath);
 
@@ -42,6 +43,24 @@ namespace PoSApp.Desktop
                     File.Copy(subPath + @"\"+ fileName, fileName, true);
                 }
             }
+            */
+
+            string localAppData =  Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData);
+            string userFilePath= Path.Combine(localAppData, "PoSApp");
+
+            if (!Directory.Exists(userFilePath))
+            { 
+                Directory.CreateDirectory(userFilePath);
+            }
+
+            
+            string sourceFilePath = Path.Combine(System.Windows.Forms.Application.StartupPath, fileName);
+            string destFilePath = Path.Combine(userFilePath, fileName);
+            if (!File.Exists(destFilePath))
+            {
+                File.Copy(sourceFilePath, destFilePath);
+            }
+                
 
         }
     }

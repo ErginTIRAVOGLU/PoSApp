@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             panel1 = new Panel();
             pnlSide = new Panel();
+            btnUpdate = new Button();
             btnStockIn = new Button();
             btnSupplier = new Button();
             btnBrand = new Button();
@@ -47,7 +48,6 @@
             lblName = new Label();
             pictureBox1 = new PictureBox();
             pnlMain = new Panel();
-            btnUpdate = new Button();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -86,6 +86,17 @@
             pnlSide.Size = new Size(200, 660);
             pnlSide.TabIndex = 1;
             pnlSide.Paint += pnlSide_Paint;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(24, 594);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(90, 23);
+            btnUpdate.TabIndex = 15;
+            btnUpdate.Text = "Güncelleme";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Visible = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnStockIn
             // 
@@ -342,16 +353,6 @@
             pnlMain.Size = new Size(1083, 660);
             pnlMain.TabIndex = 2;
             pnlMain.Paint += pnlMain_Paint;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Location = new Point(24, 594);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(90, 23);
-            btnUpdate.TabIndex = 15;
-            btnUpdate.Text = "Güncelleme";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnUpdate_Click;
             // 
             // frmMain
             // 

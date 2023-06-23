@@ -18,10 +18,19 @@ namespace PoSApp.BLL.Log
        
         public AppLogger()
         {
-            configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+            var printSettingsFile = GetSettingsFile("appsettings.json");
+            configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(printSettingsFile).Build();
             logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();//.WriteTo.File("TheCodeBuzz.txt").CreateLogger();
            
 
+        }
+
+        private string GetSettingsFile(string fileName)
+        {
+            string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string userFilePath = Path.Combine(localAppData, "PoSApp");
+            string destFilePath = Path.Combine(userFilePath, fileName);
+            return destFilePath;
         }
 
         public void WriteLog(string message)

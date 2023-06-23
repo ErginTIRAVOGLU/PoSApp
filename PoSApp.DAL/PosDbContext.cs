@@ -29,14 +29,23 @@ namespace PoSApp.DAL
             //optionsBuilder.UseSqlServer(connectionString);
             //optionsBuilder.UseSqlite(@"Data Source=PoSAppDB.db;");
             //optionsBuilder.UseSqlServer();
+            var printSettingsFile = GetSettingsFile("App.config.json");
             IConfiguration Configuration = new ConfigurationBuilder()
-              .AddJsonFile("App.config.json", optional: true, reloadOnChange: true)
+              .AddJsonFile(printSettingsFile, optional: true, reloadOnChange: true)
               .AddEnvironmentVariables()
               .Build();
 
 
             Settings section = Configuration.GetSection("Settings").Get<Settings>();
             optionsBuilder.UseSqlServer(section.connectionString);
+        }
+
+        private string GetSettingsFile(string fileName)
+        {
+            string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string userFilePath = Path.Combine(localAppData, "PoSApp");
+            string destFilePath = Path.Combine(userFilePath, fileName);
+            return destFilePath;
         }
 
         DbSet<Brand> Brands { get; set; }
