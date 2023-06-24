@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PoSApp.Desktop.Forms.ProductForms
 {
@@ -105,18 +106,20 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     _frmProduct.txtCode.Text = product.ProductCode;
                     _frmProduct.txtDescription.Text = product.ProductDescription;
                     _frmProduct.txtBarcode.Text = product.ProductBarcode;
-                    _frmProduct.txtProductPrice.Text = product.ProductPrice.ToString("C3", CultureInfo.CreateSpecificCulture("tr-TR"));
+                    _frmProduct.txtProductPrice.Text = product.ProductPrice.ToString("N", CultureInfo.CreateSpecificCulture("tr-TR"));
 
                     _frmProduct.cmBoxBrand.DisplayMember = "BrandName";
                     _frmProduct.cmBoxBrand.ValueMember = "Id";
                     _frmProduct.cmBoxBrand.DataSource = brands;
+                    _frmProduct.cmBoxBrand.SelectedValue = product.BrandId;
 
                     _frmProduct.cmBoxCategory.DisplayMember = "CategoryName";
                     _frmProduct.cmBoxCategory.ValueMember = "Id";
                     _frmProduct.cmBoxCategory.DataSource = categories;
+                    _frmProduct.cmBoxCategory.SelectedValue = product.CategoryID;
 
-                    _frmProduct.cmBoxProductUnitType.DisplayMember = "Description";
-                    _frmProduct.cmBoxProductUnitType.ValueMember = "Value";
+                    _frmProduct.txtVat.Text = product.ProductVat.ToString();
+                    
                     _frmProduct.cmBoxProductUnitType.DataSource = Enum.GetValues(typeof(ProductUnitType))
                             .Cast<Enum>()
                             .Select(value => new
@@ -126,6 +129,11 @@ namespace PoSApp.Desktop.Forms.ProductForms
                             })
                             .OrderBy(item => item.value)
                             .ToList();
+                    _frmProduct.cmBoxProductUnitType.DisplayMember = "Description";
+                    _frmProduct.cmBoxProductUnitType.ValueMember = "value";
+
+                    _frmProduct.cmBoxProductUnitType.SelectedValue = product.ProductUnitType;
+                    //_frmProduct.cmBoxProductUnitType.SelectedValue = ProductUnitType.Quantity;
 
                     _frmProduct.productId = productId;
                     _frmProduct.IsUpdate = true;
@@ -167,7 +175,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         private void dGWProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dGWProduct.Columns[e.ColumnIndex].Name == "ProductUnitType")
+            if (dGWProduct.Columns[e.ColumnIndex].Name == "ProductUnitTypeColon")
             {
                 ProductUnitType enumValue = (ProductUnitType)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;

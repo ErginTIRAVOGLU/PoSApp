@@ -46,7 +46,7 @@
             ProductBarcode = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
             Vat = new DataGridViewTextBoxColumn();
-            ProductUnitType = new DataGridViewTextBoxColumn();
+            ProductUnitTypeColon = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
             panel1.SuspendLayout();
@@ -129,7 +129,7 @@
             dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, Vat, ProductUnitType, Edit, Delete });
+            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, Vat, ProductUnitTypeColon, Edit, Delete });
             dGWProduct.Dock = DockStyle.Fill;
             dGWProduct.EditMode = DataGridViewEditMode.EditOnF2;
             dGWProduct.EnableHeadersVisualStyles = false;
@@ -240,11 +240,11 @@
             Vat.Name = "Vat";
             Vat.Width = 56;
             // 
-            // ProductUnitType
+            // ProductUnitTypeColon
             // 
-            ProductUnitType.DataPropertyName = "ProductUnitType";
-            ProductUnitType.HeaderText = "BİRİM TİPİ";
-            ProductUnitType.Name = "ProductUnitType";
+            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
+            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
+            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
             // 
             // Edit
             // 
@@ -304,7 +304,7 @@
         private DataGridViewTextBoxColumn ProductBarcode;
         private DataGridViewTextBoxColumn ProductPrice;
         private DataGridViewTextBoxColumn Vat;
-        private DataGridViewTextBoxColumn ProductUnitType;
+        private DataGridViewTextBoxColumn ProductUnitTypeColon;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
     }

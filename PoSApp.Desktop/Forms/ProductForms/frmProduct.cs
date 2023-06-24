@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using PoSApp.Entities.Enums;
 
 namespace PoSApp.Desktop.Forms.ProductForms
 {
@@ -48,8 +49,11 @@ namespace PoSApp.Desktop.Forms.ProductForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             decimal pprice = 0;
-
             decimal.TryParse(txtProductPrice.Text, out pprice);
+
+            int Vat = 0;
+            int.TryParse(txtVat.Text, out Vat);
+
 
             var durum = _productRepository.Insert(new Product()
             {
@@ -57,17 +61,18 @@ namespace PoSApp.Desktop.Forms.ProductForms
                 BrandId = int.Parse(cmBoxBrand.SelectedValue.ToString()),
                 CategoryID = int.Parse(cmBoxCategory.SelectedValue.ToString()),
                 ProductUnitType = (Entities.Enums.ProductUnitType)cmBoxProductUnitType.SelectedValue,
-                CreatedDate = DateTime.Now,
                 ProductBarcode = txtBarcode.Text,
                 ProductCode = txtCode.Text,
                 ProductPrice = pprice,
                 ProductDescription = txtDescription.Text,
-                IsDeleted = false,
+                ProductVat = Vat
+
                 //ProductUnitType = int.Parse(cmBoxProductUnitType.SelectedValue.ToString())
 
             });
             temizle();
             _frmProductList.yukle();
+            this.Close();
         }
 
         private void temizle()
@@ -80,8 +85,23 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            decimal pprice = 0;
+            decimal.TryParse(txtProductPrice.Text, out pprice);
+
+            int Vat = 0;
+            int.TryParse(txtVat.Text, out Vat);
+
             var product = _productRepository.GetById(productId);
+
             product.ProductName = txtProduct.Text;
+            product.BrandId = int.Parse(cmBoxBrand.SelectedValue.ToString());
+            product.CategoryID = int.Parse(cmBoxCategory.SelectedValue.ToString());
+            product.ProductUnitType = (Entities.Enums.ProductUnitType)cmBoxProductUnitType.SelectedValue;
+            product.ProductBarcode = txtBarcode.Text;
+            product.ProductCode = txtCode.Text;
+            product.ProductPrice = pprice;
+            product.ProductDescription = txtDescription.Text;
+            product.ProductVat = Vat;
             var durum = _productRepository.Update(product);
             temizle();
             _frmProductList.yukle();

@@ -53,13 +53,15 @@
             label9 = new Label();
             txtDescription = new TextBox();
             label10 = new Label();
+            txtVat = new TextBox();
+            label11 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             SuspendLayout();
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(270, 279);
+            btnCancel.Location = new Point(270, 314);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
             btnCancel.TabIndex = 12;
@@ -69,7 +71,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(189, 279);
+            btnUpdate.Location = new Point(189, 314);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
             btnUpdate.TabIndex = 11;
@@ -79,7 +81,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(108, 279);
+            btnSave.Location = new Point(108, 314);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
             btnSave.TabIndex = 10;
@@ -141,7 +143,7 @@
             // cmBoxBrand
             // 
             cmBoxBrand.FormattingEnabled = true;
-            cmBoxBrand.Location = new Point(108, 116);
+            cmBoxBrand.Location = new Point(360, 145);
             cmBoxBrand.Name = "cmBoxBrand";
             cmBoxBrand.Size = new Size(158, 23);
             cmBoxBrand.TabIndex = 13;
@@ -157,7 +159,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(35, 119);
+            label3.Location = new Point(287, 148);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
             label3.TabIndex = 15;
@@ -175,7 +177,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(29, 148);
+            label5.Location = new Point(281, 177);
             label5.Name = "label5";
             label5.Size = new Size(73, 15);
             label5.TabIndex = 18;
@@ -184,7 +186,7 @@
             // cmBoxProductUnitType
             // 
             cmBoxProductUnitType.FormattingEnabled = true;
-            cmBoxProductUnitType.Location = new Point(108, 145);
+            cmBoxProductUnitType.Location = new Point(360, 174);
             cmBoxProductUnitType.Name = "cmBoxProductUnitType";
             cmBoxProductUnitType.Size = new Size(158, 23);
             cmBoxProductUnitType.TabIndex = 17;
@@ -192,7 +194,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(284, 151);
+            label6.Location = new Point(32, 119);
             label6.Name = "label6";
             label6.Size = new Size(70, 15);
             label6.TabIndex = 8;
@@ -201,7 +203,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(68, 335);
+            label7.Location = new Point(68, 370);
             label7.Name = "label7";
             label7.Size = new Size(36, 15);
             label7.TabIndex = 8;
@@ -210,7 +212,7 @@
             // lblStok
             // 
             lblStok.AutoSize = true;
-            lblStok.Location = new Point(110, 335);
+            lblStok.Location = new Point(110, 370);
             lblStok.Name = "lblStok";
             lblStok.Size = new Size(13, 15);
             lblStok.TabIndex = 19;
@@ -218,7 +220,7 @@
             // 
             // txtProductPrice
             // 
-            txtProductPrice.Location = new Point(360, 145);
+            txtProductPrice.Location = new Point(108, 113);
             txtProductPrice.Name = "txtProductPrice";
             txtProductPrice.Size = new Size(158, 23);
             txtProductPrice.TabIndex = 21;
@@ -258,7 +260,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(110, 174);
+            txtDescription.Location = new Point(108, 209);
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(408, 99);
@@ -267,17 +269,35 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(34, 177);
+            label10.Location = new Point(32, 212);
             label10.Name = "label10";
             label10.Size = new Size(62, 15);
             label10.TabIndex = 26;
             label10.Text = "Açıklama :";
             // 
+            // txtVat
+            // 
+            txtVat.Location = new Point(108, 142);
+            txtVat.Name = "txtVat";
+            txtVat.Size = new Size(158, 23);
+            txtVat.TabIndex = 29;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(38, 148);
+            label11.Name = "label11";
+            label11.Size = new Size(64, 15);
+            label11.TabIndex = 28;
+            label11.Text = "Ürün KDV :";
+            // 
             // frmProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(539, 368);
+            ClientSize = new Size(539, 396);
+            Controls.Add(txtVat);
+            Controls.Add(label11);
             Controls.Add(txtDescription);
             Controls.Add(label10);
             Controls.Add(txtCode);
@@ -337,5 +357,7 @@
         private Label label9;
         public TextBox txtDescription;
         private Label label10;
+        public TextBox txtVat;
+        private Label label11;
     }
 }

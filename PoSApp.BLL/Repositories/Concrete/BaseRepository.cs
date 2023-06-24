@@ -27,7 +27,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public bool Insert(T p)
         {
             using (_postDbContext = new Context())
-            {
+            {   p.CreatedDate = DateTime.Now;
                 var T = _postDbContext.Set<T>().Add(p);
                 var result =  _postDbContext.SaveChanges();
                 return result > 0 ? true : false;
