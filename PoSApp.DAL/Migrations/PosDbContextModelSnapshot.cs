@@ -56,28 +56,28 @@ namespace PoSApp.DAL.Migrations
                         {
                             Id = 1,
                             BrandName = "Marka 1",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6516),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8276),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             BrandName = "Marka 2",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6518),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8278),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
                             BrandName = "Marka 3",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6520),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8279),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
                             BrandName = "Marka 4",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6521),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8281),
                             IsDeleted = false
                         });
                 });
@@ -100,16 +100,16 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("DiscountTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<decimal>("PriceTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -122,7 +122,7 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Vat")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 
@@ -151,25 +151,25 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("DiscountTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<decimal>("PriceTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<decimal>("ProductDiscount")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("ProductUnit")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("ProductUnitType")
                         .HasColumnType("int");
@@ -223,28 +223,28 @@ namespace PoSApp.DAL.Migrations
                         {
                             Id = 1,
                             CategoryName = "Kategori 1",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6824),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8443),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             CategoryName = "Kategori 2",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6827),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8445),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
                             CategoryName = "Kategori 3",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6829),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8446),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
                             CategoryName = "Kategori 4",
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6831),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8448),
                             IsDeleted = false
                         });
                 });
@@ -273,7 +273,7 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("PriceTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -326,7 +326,7 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("ProductUnitType")
                         .HasColumnType("int");
@@ -351,7 +351,7 @@ namespace PoSApp.DAL.Migrations
                             Id = 1,
                             BrandId = 1,
                             CategoryID = 1,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6899),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8517),
                             IsDeleted = false,
                             ProductBarcode = "12345",
                             ProductCode = "PR001",
@@ -366,7 +366,7 @@ namespace PoSApp.DAL.Migrations
                             Id = 2,
                             BrandId = 2,
                             CategoryID = 2,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6902),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8520),
                             IsDeleted = false,
                             ProductBarcode = "12345",
                             ProductCode = "PR002",
@@ -381,7 +381,7 @@ namespace PoSApp.DAL.Migrations
                             Id = 3,
                             BrandId = 3,
                             CategoryID = 3,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6905),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8523),
                             IsDeleted = false,
                             ProductBarcode = "12345",
                             ProductCode = "PR003",
@@ -396,7 +396,7 @@ namespace PoSApp.DAL.Migrations
                             Id = 4,
                             BrandId = 4,
                             CategoryID = 4,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6908),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8526),
                             IsDeleted = false,
                             ProductBarcode = "12345",
                             ProductCode = "PR004",
@@ -467,7 +467,7 @@ namespace PoSApp.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("StockInDetailUnit")
-                        .HasColumnType("decimal(18,3)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("StockInId")
                         .HasColumnType("int");
@@ -562,7 +562,7 @@ namespace PoSApp.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6862),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8470),
                             IsDeleted = false,
                             SupplierAddress1 = "Adres 11",
                             SupplierAddress2 = "Adres 21",
@@ -577,7 +577,7 @@ namespace PoSApp.DAL.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6864),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8472),
                             IsDeleted = false,
                             SupplierAddress1 = "Adres 21",
                             SupplierAddress2 = "Adres 22",
@@ -592,7 +592,7 @@ namespace PoSApp.DAL.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6867),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8485),
                             IsDeleted = false,
                             SupplierAddress1 = "Adres 31",
                             SupplierAddress2 = "Adres 23",
@@ -607,7 +607,7 @@ namespace PoSApp.DAL.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6869),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8488),
                             IsDeleted = false,
                             SupplierAddress1 = "Adres 41",
                             SupplierAddress2 = "Adres 24",
@@ -653,14 +653,14 @@ namespace PoSApp.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6924),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8540),
                             IsDeleted = false,
                             WarehouseName = "Depo 1"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 16, 16, 44, 35, 766, DateTimeKind.Local).AddTicks(6926),
+                            CreatedDate = new DateTime(2023, 6, 25, 10, 44, 1, 161, DateTimeKind.Local).AddTicks(8541),
                             IsDeleted = false,
                             WarehouseName = "Depo 2"
                         });

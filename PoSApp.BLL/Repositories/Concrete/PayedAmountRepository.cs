@@ -46,7 +46,7 @@ namespace PoSApp.BLL.Repositories.Concrete
     public class PayedAmountList
     {
         public int Id { get; set; }
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal PriceTotal { get; set; }
         public PaymentType PaymentType { get; set; }
 

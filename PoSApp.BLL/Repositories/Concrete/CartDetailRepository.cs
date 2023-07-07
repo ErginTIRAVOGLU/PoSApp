@@ -33,7 +33,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                      Discount=x.ProductDiscount,
                      Price=x.Price,
                      Quantity=x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
-                     Total= x.ProductUnitType == ProductUnitType.Quantity ? x.Price * Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
+                     Total = x.PriceTotal,
                      ProductId=x.ProductId
                 }).ToList();
 
@@ -53,7 +53,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                     Discount = x.ProductDiscount,
                     Price = x.Price,
                     Quantity = x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
-                    Total = x.ProductUnitType == ProductUnitType.Quantity ? x.Price * Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
+                    Total = x.PriceTotal,
                     ProductId = x.ProductId
                 }).ToList();
 
@@ -90,6 +90,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public string Description { get; set; }       
         public decimal Quantity { get; set; }       
         public ProductUnitType CartDetailUnitType { get; set; }
+
         public decimal Discount { get; set; }
         public decimal Price { get; set; }
         public int Vat { get; set; }

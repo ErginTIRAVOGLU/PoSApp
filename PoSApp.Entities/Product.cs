@@ -27,12 +27,12 @@ namespace PoSApp.Entities
 
         public string ProductDescription { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal ProductPrice { get; set; }
 
         public int ProductVat { get; set; } = 18;
 
-        //[Column(TypeName = "decimal(18,3)")]
+        //[Column(TypeName = "decimal(18,4)")]
         //public decimal ProductUnit { get; set; }
 
         public ProductUnitType ProductUnitType { get; set; }

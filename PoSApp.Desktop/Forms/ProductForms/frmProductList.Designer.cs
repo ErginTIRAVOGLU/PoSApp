@@ -45,8 +45,8 @@
             ProductName = new DataGridViewTextBoxColumn();
             ProductBarcode = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
-            Vat = new DataGridViewTextBoxColumn();
             ProductUnitTypeColon = new DataGridViewTextBoxColumn();
+            Vat = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
             panel1.SuspendLayout();
@@ -129,7 +129,7 @@
             dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, Vat, ProductUnitTypeColon, Edit, Delete });
+            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, ProductUnitTypeColon, Vat, Edit, Delete });
             dGWProduct.Dock = DockStyle.Fill;
             dGWProduct.EditMode = DataGridViewEditMode.EditOnF2;
             dGWProduct.EnableHeadersVisualStyles = false;
@@ -232,6 +232,12 @@
             ProductPrice.HeaderText = "FİYATI";
             ProductPrice.Name = "ProductPrice";
             // 
+            // ProductUnitTypeColon
+            // 
+            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
+            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
+            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
+            // 
             // Vat
             // 
             Vat.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -239,12 +245,6 @@
             Vat.HeaderText = "KDV";
             Vat.Name = "Vat";
             Vat.Width = 56;
-            // 
-            // ProductUnitTypeColon
-            // 
-            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
-            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
-            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
             // 
             // Edit
             // 
@@ -303,8 +303,8 @@
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductBarcode;
         private DataGridViewTextBoxColumn ProductPrice;
-        private DataGridViewTextBoxColumn Vat;
         private DataGridViewTextBoxColumn ProductUnitTypeColon;
+        private DataGridViewTextBoxColumn Vat;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
     }

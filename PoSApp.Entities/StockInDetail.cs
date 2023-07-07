@@ -12,7 +12,7 @@ namespace PoSApp.Entities
     public class StockInDetail : Base
     {
         
-        [Column(TypeName = "decimal(18,3)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal StockInDetailUnit { get; set; }
 
 

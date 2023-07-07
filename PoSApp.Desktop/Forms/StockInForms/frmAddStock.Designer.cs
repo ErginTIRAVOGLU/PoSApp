@@ -39,13 +39,19 @@
             panel1 = new Panel();
             pBClose = new PictureBox();
             label1 = new Label();
+            textBox1 = new TextBox();
+            label4 = new Label();
+            textBox2 = new TextBox();
+            label5 = new Label();
+            textBox3 = new TextBox();
+            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             SuspendLayout();
             // 
             // txtCount
             // 
-            txtCount.Location = new Point(76, 81);
+            txtCount.Location = new Point(95, 81);
             txtCount.Name = "txtCount";
             txtCount.Size = new Size(146, 23);
             txtCount.TabIndex = 16;
@@ -53,16 +59,16 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(32, 84);
+            label2.Location = new Point(11, 84);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(78, 15);
             label2.TabIndex = 15;
-            label2.Text = "Adet :";
+            label2.Text = "Adet / Gram :";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 55);
+            label3.Location = new Point(48, 55);
             label3.Name = "label3";
             label3.Size = new Size(41, 15);
             label3.TabIndex = 18;
@@ -71,14 +77,14 @@
             // cmBoxWarehouse
             // 
             cmBoxWarehouse.FormattingEnabled = true;
-            cmBoxWarehouse.Location = new Point(76, 52);
+            cmBoxWarehouse.Location = new Point(95, 52);
             cmBoxWarehouse.Name = "cmBoxWarehouse";
             cmBoxWarehouse.Size = new Size(146, 23);
             cmBoxWarehouse.TabIndex = 17;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(191, 125);
+            btnCancel.Location = new Point(328, 168);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
             btnCancel.TabIndex = 21;
@@ -88,17 +94,17 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(29, 125);
+            btnSave.Location = new Point(166, 168);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
             btnSave.TabIndex = 19;
-            btnSave.Text = "Kaydet";
+            btnSave.Text = "Ekle";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(110, 125);
+            btnUpdate.Location = new Point(247, 168);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
             btnUpdate.TabIndex = 20;
@@ -114,7 +120,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(274, 40);
+            panel1.Size = new Size(510, 40);
             panel1.TabIndex = 22;
             // 
             // pBClose
@@ -123,11 +129,12 @@
             pBClose.BackgroundImage = (Image)resources.GetObject("pBClose.BackgroundImage");
             pBClose.BackgroundImageLayout = ImageLayout.Center;
             pBClose.Cursor = Cursors.Hand;
-            pBClose.Location = new Point(242, 6);
+            pBClose.Location = new Point(478, 6);
             pBClose.Name = "pBClose";
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 1;
             pBClose.TabStop = false;
+            pBClose.Click += pBClose_Click;
             // 
             // label1
             // 
@@ -136,15 +143,69 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(77, 21);
+            label1.Size = new Size(85, 21);
             label1.TabIndex = 0;
-            label1.Text = "Ürün Ekle";
+            label1.Text = "Ürün Girişi";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(344, 52);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(146, 23);
+            textBox1.TabIndex = 24;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(262, 55);
+            label4.Name = "label4";
+            label4.Size = new Size(69, 15);
+            label4.TabIndex = 23;
+            label4.Text = "Geliş Fiyatı :";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(344, 81);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(146, 23);
+            textBox2.TabIndex = 26;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(262, 84);
+            label5.Name = "label5";
+            label5.Size = new Size(52, 15);
+            label5.TabIndex = 25;
+            label5.Text = "İskonto :";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(344, 110);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(146, 23);
+            textBox3.TabIndex = 28;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(262, 113);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 15);
+            label6.TabIndex = 27;
+            label6.Text = "Son Fiyat :";
             // 
             // frmAddStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(274, 175);
+            ClientSize = new Size(510, 218);
+            Controls.Add(textBox3);
+            Controls.Add(label6);
+            Controls.Add(textBox2);
+            Controls.Add(label5);
+            Controls.Add(textBox1);
+            Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(btnCancel);
             Controls.Add(btnUpdate);
@@ -177,5 +238,11 @@
         private Panel panel1;
         private PictureBox pBClose;
         private Label label1;
+        public TextBox textBox1;
+        private Label label4;
+        public TextBox textBox2;
+        private Label label5;
+        public TextBox textBox3;
+        private Label label6;
     }
 }

@@ -126,7 +126,7 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void frmSettle_Load(object sender, EventArgs e)
         {
             txtSale.Text = _saleAmount.ToString("C");
-            txtCash.Text = _cashAmount.ToString("N");
+            txtCash.Text = _cashAmount.ToString("N4");
             txtChange.Text = _changeAmount.ToString("C");
             pendingPayment();
             payedTotal();

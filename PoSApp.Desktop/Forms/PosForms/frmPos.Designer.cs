@@ -636,14 +636,13 @@
             Id.DataPropertyName = "Id";
             Id.HeaderText = "#";
             Id.Name = "Id";
-            Id.Visible = false;
+            Id.Width = 39;
             // 
             // ProductId
             // 
             ProductId.DataPropertyName = "ProductId";
             ProductId.HeaderText = "ProductId";
             ProductId.Name = "ProductId";
-            ProductId.Visible = false;
             // 
             // Description
             // 

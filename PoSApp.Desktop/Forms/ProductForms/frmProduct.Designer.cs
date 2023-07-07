@@ -220,7 +220,7 @@
             // 
             // txtProductPrice
             // 
-            txtProductPrice.Location = new Point(108, 113);
+            txtProductPrice.Location = new Point(108, 116);
             txtProductPrice.Name = "txtProductPrice";
             txtProductPrice.Size = new Size(158, 23);
             txtProductPrice.TabIndex = 21;
@@ -277,7 +277,7 @@
             // 
             // txtVat
             // 
-            txtVat.Location = new Point(108, 142);
+            txtVat.Location = new Point(108, 145);
             txtVat.Name = "txtVat";
             txtVat.Size = new Size(158, 23);
             txtVat.TabIndex = 29;

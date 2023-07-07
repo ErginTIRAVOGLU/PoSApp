@@ -13,7 +13,7 @@ namespace PoSApp.Entities
         public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal PriceTotal { get; set; }
 
         public PaymentType PayedType { get; set; }

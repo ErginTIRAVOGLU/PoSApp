@@ -273,7 +273,7 @@ namespace PoSApp.Desktop.Forms.PosForms
 
             foreach (var item in oldCartDetail)
             {
-                productTotalPrice = item.Total;
+                productTotalPrice = item.Price*item.Quantity;
                 vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
                 totalPrice = totalPrice + productTotalPrice;
                 totalVat = totalVat + (productTotalPrice - (productTotalPrice / (1 + vatRatio)));
@@ -305,7 +305,17 @@ namespace PoSApp.Desktop.Forms.PosForms
                     if (MessageBox.Show("Ürünü silmek istediğinizden emin misiniz?", "Ürün Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         var selectedRowIndex = e.RowIndex;
-                        oldCartDetail.RemoveAt(selectedRowIndex);
+                        if (oldCartDetail[selectedRowIndex].Id==0)
+                        {
+                            oldCartDetail.RemoveAt(selectedRowIndex);
+                        }
+                        else
+                        {
+                            var cartDetail = _cartDetailRepository.GetById(oldCartDetail[selectedRowIndex].Id);
+                            _cartDetailRepository.Delete(cartDetail);
+                            oldCartDetail.RemoveAt(selectedRowIndex);
+                        }
+                        
                         FillGridView();
                         totalCalculate();
                     }
@@ -328,8 +338,15 @@ namespace PoSApp.Desktop.Forms.PosForms
                 int outSelectedProductId = 0;
                 outSelectedProductId = oldCartDetail[selectedRowIndex].ProductId;
                 var productListPrice = _productRepository.GetById(outSelectedProductId).ProductPrice;
-
-                var percentage = 100 - (100 * selectedPrice) / productListPrice;
+                decimal percentage = 0;
+                if (selectedPrice == 0 || productListPrice == 0)
+                {
+                    percentage = 0;
+                }
+                else
+                {
+                    percentage = 100 - (100 * selectedPrice) / productListPrice;
+                }
                 var pPercentage = 0;
                 int.TryParse(Math.Floor(percentage).ToString(), out pPercentage);
 
@@ -339,7 +356,7 @@ namespace PoSApp.Desktop.Forms.PosForms
 
                 _frmDiscount.txtPercentage.Text = pPercentage.ToString();
                 _frmDiscount.txtTotalDiscount.Text = selectedDiscount.ToString();
-                _frmDiscount.txtListPrice.Text = productListPrice.ToString("N");
+                _frmDiscount.txtListPrice.Text = productListPrice.ToString("N4");
                 DialogResult result = _frmDiscount.ShowDialog();
                 if (result == DialogResult.OK)
                 {
@@ -352,9 +369,9 @@ namespace PoSApp.Desktop.Forms.PosForms
 
 
 
-                    oldCartDetail[selectedRowIndex].Price = decimal.Parse(price.ToString("N"));
-                    oldCartDetail[selectedRowIndex].Discount = decimal.Parse(discountPrice.ToString("N"));
-                    oldCartDetail[selectedRowIndex].Total = decimal.Parse(totalPrice.ToString("N"));
+                    oldCartDetail[selectedRowIndex].Price = decimal.Parse(price.ToString("N4"));
+                    oldCartDetail[selectedRowIndex].Discount = decimal.Parse(discountPrice.ToString("N4"));
+                    oldCartDetail[selectedRowIndex].Total = decimal.Parse(totalPrice.ToString("N4"));
                     totalCalculate();
                     FillGridView();
                 }
@@ -389,13 +406,13 @@ namespace PoSApp.Desktop.Forms.PosForms
             frmSettle _frmSettle = new frmSettle(this);
             _frmSettle._transNo = _transNo;
 
-            //_frmSettle.txtSale.Text = decimal.Parse(_priceTotal.ToString()).ToString("N");
+            //_frmSettle.txtSale.Text = decimal.Parse(_priceTotal.ToString()).ToString("N4");
             _frmSettle._saleAmount = _priceTotal;
 
             //_frmSettle.txtCash.Text = "";
             _frmSettle._cashAmount = 0;
 
-            //_frmSettle.txtChange.Text = decimal.Parse("0").ToString("N");
+            //_frmSettle.txtChange.Text = decimal.Parse("0").ToString("N4");
             _frmSettle._changeAmount = 0;
 
             _frmSettle.txtCash.Focus();
@@ -471,7 +488,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             decimal totalDiscount = 0;
             foreach (var item in oldCartDetail)
             {
-                productTotalPrice = item.Total;
+                productTotalPrice = item.Price;// *item.Quantity; //TO-DO kontrol
                 vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
                 totalPrice = totalPrice + productTotalPrice;
                 totalVat = totalVat + (productTotalPrice - (productTotalPrice / (1 + vatRatio)));
@@ -494,7 +511,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                 {
 
                     DiscountTotal = item.Discount,
-                    PriceTotal = item.Price,
+                    PriceTotal = item.Price* item.Quantity,
                     Price = item.Price,
                     Vat = item.Vat,
                     ProductUnit = item.Quantity,
@@ -514,7 +531,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                 cartDetail = _cartDetailRepository.GetById(item.Id);
                 cartDetail.DiscountTotal = item.Discount;
                 cartDetail.ProductDiscount = item.Discount;
-                cartDetail.PriceTotal = item.Price;
+                cartDetail.PriceTotal = item.Price * item.Quantity;
                 cartDetail.Price = item.Price;
                 cartDetail.Vat = item.Vat;
                 cartDetail.Description = item.Description;

@@ -49,7 +49,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             decimal dPrice = 0;
             decimal.TryParse(txtTotalDiscount.Text, out dValue);
             _totalDiscount = dValue;
-            txtTotalDiscount.Text = dValue.ToString("N");
+            txtTotalDiscount.Text = dValue.ToString("N4");
 
             decimal.TryParse(txtPrice.Text, out dPrice);
             _price = dPrice;
@@ -71,8 +71,8 @@ namespace PoSApp.Desktop.Forms.PosForms
             decimal.TryParse(txtPercentage.Text, out value);
 
             decimal discountRatio = value / 100;
-            txtTotalDiscount.Text = (initPrice - (initPrice * (1 - discountRatio))).ToString("N");
-            txtPrice.Text= (initPrice * (1 - discountRatio)).ToString("N");
+            txtTotalDiscount.Text = (initPrice - (initPrice * (1 - discountRatio))).ToString("N4");
+            txtPrice.Text= (initPrice * (1 - discountRatio)).ToString("N4");
         }
 
         private void txtTotalDiscount_KeyUp(object sender, KeyEventArgs e)
@@ -91,7 +91,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             int intValue = 0;
             int.TryParse(Decimal.Floor(percentageValue).ToString(), out intValue);
             txtPercentage.Text = intValue.ToString();
-            txtPrice.Text = (initPrice-value).ToString("N");
+            txtPrice.Text = (initPrice-value).ToString("N4");
 
         }
 
@@ -106,7 +106,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             var pPercentage = 0;
             int.TryParse(Math.Floor(percentage).ToString(), out pPercentage);
             txtPercentage.Text = pPercentage.ToString();
-            txtTotalDiscount.Text = (initPrice - price).ToString("N"); ;
+            txtTotalDiscount.Text = (initPrice - price).ToString("N4"); ;
         }
 
         private void frmDiscount_Load(object sender, EventArgs e)

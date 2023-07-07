@@ -106,7 +106,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     _frmProduct.txtCode.Text = product.ProductCode;
                     _frmProduct.txtDescription.Text = product.ProductDescription;
                     _frmProduct.txtBarcode.Text = product.ProductBarcode;
-                    _frmProduct.txtProductPrice.Text = product.ProductPrice.ToString("N", CultureInfo.CreateSpecificCulture("tr-TR"));
+                    _frmProduct.txtProductPrice.Text = product.ProductPrice.ToString("N4", CultureInfo.CreateSpecificCulture("tr-TR"));
 
                     _frmProduct.cmBoxBrand.DisplayMember = "BrandName";
                     _frmProduct.cmBoxBrand.ValueMember = "Id";
@@ -119,7 +119,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     _frmProduct.cmBoxCategory.SelectedValue = product.CategoryID;
 
                     _frmProduct.txtVat.Text = product.ProductVat.ToString();
-                    
+
                     _frmProduct.cmBoxProductUnitType.DataSource = Enum.GetValues(typeof(ProductUnitType))
                             .Cast<Enum>()
                             .Select(value => new

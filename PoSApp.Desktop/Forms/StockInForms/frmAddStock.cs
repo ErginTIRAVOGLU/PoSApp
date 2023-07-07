@@ -57,5 +57,11 @@ namespace PoSApp.Desktop.Forms.StockInForms
             cmBoxWarehouse.ValueMember = "Id";
             cmBoxWarehouse.DataSource = warehouse;
         }
+
+        private void pBClose_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Abort;
+            this.Close();
+        }
     }
 }

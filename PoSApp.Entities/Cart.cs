@@ -19,16 +19,16 @@ namespace PoSApp.Entities
 
         public string TransNo { get; set; }         
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }        
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal PriceTotal { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal DiscountTotal { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Vat { get; set; }
 
         public virtual ICollection<CartDetail> CartDetails { get; set; }
