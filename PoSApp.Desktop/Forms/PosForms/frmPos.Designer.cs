@@ -81,6 +81,7 @@
             Vat = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
+            btnPosKaydet = new Button();
             pnlSide.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -96,6 +97,7 @@
             // pnlSide
             // 
             pnlSide.BackColor = Color.FromArgb(37, 37, 38);
+            pnlSide.Controls.Add(btnPosKaydet);
             pnlSide.Controls.Add(btnLockTheButtons);
             pnlSide.Controls.Add(btnExit);
             pnlSide.Controls.Add(btnUnLockTheButtons);
@@ -144,7 +146,7 @@
             // 
             // btnUnLockTheButtons
             // 
-            btnUnLockTheButtons.Location = new Point(99, 631);
+            btnUnLockTheButtons.Location = new Point(95, 632);
             btnUnLockTheButtons.Name = "btnUnLockTheButtons";
             btnUnLockTheButtons.Size = new Size(38, 28);
             btnUnLockTheButtons.TabIndex = 10;
@@ -603,6 +605,7 @@
             dGWCartDetail.AllowUserToDeleteRows = false;
             dGWCartDetail.AllowUserToOrderColumns = true;
             dGWCartDetail.AllowUserToResizeRows = false;
+            dGWCartDetail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dGWCartDetail.BackgroundColor = Color.White;
             dGWCartDetail.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -707,6 +710,16 @@
             Delete.Name = "Delete";
             Delete.Width = 5;
             // 
+            // btnPosKaydet
+            // 
+            btnPosKaydet.Location = new Point(24, 631);
+            btnPosKaydet.Name = "btnPosKaydet";
+            btnPosKaydet.Size = new Size(65, 28);
+            btnPosKaydet.TabIndex = 12;
+            btnPosKaydet.Text = "Kaydet";
+            btnPosKaydet.UseVisualStyleBackColor = true;
+            btnPosKaydet.Click += btnPosKaydet_Click;
+            // 
             // frmPos
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -721,6 +734,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmPos";
             StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += frmPos_Load;
             pnlSide.ResumeLayout(false);
             panel1.ResumeLayout(false);
@@ -791,5 +805,6 @@
         private DataGridViewTextBoxColumn Vat;
         private DataGridViewTextBoxColumn Total;
         private DataGridViewImageColumn Delete;
+        private Button btnPosKaydet;
     }
 }

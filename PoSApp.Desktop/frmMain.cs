@@ -94,6 +94,11 @@ namespace PoSApp.Desktop
         private void btnPos_Click(object sender, EventArgs e)
         {
             frmPos frm = new frmPos();
+            //frm.TopLevel = false;
+            //pnlMain.Controls.Clear();
+            //pnlMain.Controls.Add(frm);
+            //frm.BringToFront();
+            //frm.Show();
             frm.ShowDialog();
         }
 

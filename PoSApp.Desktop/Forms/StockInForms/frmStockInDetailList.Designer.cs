@@ -30,10 +30,14 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInDetailList));
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInDetailList));
             dGWProduct = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            ProductCode = new DataGridViewTextBoxColumn();
+            ProductName = new DataGridViewTextBoxColumn();
+            Select = new DataGridViewImageColumn();
             panel1 = new Panel();
             label1 = new Label();
             pBClose = new PictureBox();
@@ -59,15 +63,18 @@
             detailProductId = new DataGridViewTextBoxColumn();
             detailProductCode = new DataGridViewTextBoxColumn();
             detailProductName = new DataGridViewTextBoxColumn();
+            DepoAdi = new DataGridViewTextBoxColumn();
             detailStockInDetailUnit = new DataGridViewTextBoxColumn();
             StockInDetailUnitType = new DataGridViewTextBoxColumn();
             ProductWarehouseId = new DataGridViewTextBoxColumn();
-            DepoAdi = new DataGridViewTextBoxColumn();
+            ProductArrivalPrice = new DataGridViewTextBoxColumn();
+            ProductDiscountPercentage = new DataGridViewTextBoxColumn();
+            ProductUnitDiscountAmount = new DataGridViewTextBoxColumn();
+            ProductTotalDiscountAmount = new DataGridViewTextBoxColumn();
+            ProductTotalVatAmount = new DataGridViewTextBoxColumn();
+            ProductLastPriceWithoutVat = new DataGridViewTextBoxColumn();
+            ProductLastPriceWithVat = new DataGridViewTextBoxColumn();
             detailDelete = new DataGridViewImageColumn();
-            Id = new DataGridViewTextBoxColumn();
-            ProductCode = new DataGridViewTextBoxColumn();
-            ProductName = new DataGridViewTextBoxColumn();
-            Select = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
@@ -120,6 +127,37 @@
             dGWProduct.Size = new Size(964, 186);
             dGWProduct.TabIndex = 4;
             dGWProduct.CellContentClick += dGWProduct_CellContentClick;
+            // 
+            // Id
+            // 
+            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "#";
+            Id.Name = "Id";
+            Id.Visible = false;
+            // 
+            // ProductCode
+            // 
+            ProductCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ProductCode.DataPropertyName = "ProductCode";
+            ProductCode.HeaderText = "KOD";
+            ProductCode.Name = "ProductCode";
+            ProductCode.Width = 57;
+            // 
+            // ProductName
+            // 
+            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProductName.DataPropertyName = "ProductName";
+            ProductName.HeaderText = "ADI";
+            ProductName.Name = "ProductName";
+            // 
+            // Select
+            // 
+            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Select.HeaderText = "";
+            Select.Image = (Image)resources.GetObject("Select.Image");
+            Select.Name = "Select";
+            Select.Width = 5;
             // 
             // panel1
             // 
@@ -345,7 +383,7 @@
             // dGWStockInDetail
             // 
             dGWStockInDetail.AllowUserToAddRows = false;
-            dGWStockInDetail.AllowUserToResizeRows = false;
+            dGWStockInDetail.AllowUserToDeleteRows = false;
             dataGridViewCellStyle3.BackColor = Color.LightSkyBlue;
             dGWStockInDetail.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             dGWStockInDetail.BackgroundColor = Color.White;
@@ -360,11 +398,12 @@
             dGWStockInDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dGWStockInDetail.ColumnHeadersHeight = 30;
             dGWStockInDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWStockInDetail.Columns.AddRange(new DataGridViewColumn[] { detailId, detailProductId, detailProductCode, detailProductName, detailStockInDetailUnit, StockInDetailUnitType, ProductWarehouseId, DepoAdi, detailDelete });
+            dGWStockInDetail.Columns.AddRange(new DataGridViewColumn[] { detailId, detailProductId, detailProductCode, detailProductName, DepoAdi, detailStockInDetailUnit, StockInDetailUnitType, ProductWarehouseId, ProductArrivalPrice, ProductDiscountPercentage, ProductUnitDiscountAmount, ProductTotalDiscountAmount, ProductTotalVatAmount, ProductLastPriceWithoutVat, ProductLastPriceWithVat, detailDelete });
             dGWStockInDetail.Dock = DockStyle.Fill;
             dGWStockInDetail.EnableHeadersVisualStyles = false;
             dGWStockInDetail.Location = new Point(0, 0);
             dGWStockInDetail.Name = "dGWStockInDetail";
+            dGWStockInDetail.ReadOnly = true;
             dGWStockInDetail.RowHeadersVisible = false;
             dGWStockInDetail.RowTemplate.Height = 25;
             dGWStockInDetail.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -392,6 +431,7 @@
             detailId.DataPropertyName = "Id";
             detailId.HeaderText = "#";
             detailId.Name = "detailId";
+            detailId.ReadOnly = true;
             detailId.Visible = false;
             detailId.Width = 39;
             // 
@@ -400,6 +440,7 @@
             detailProductId.DataPropertyName = "ProductId";
             detailProductId.HeaderText = "ProductId";
             detailProductId.Name = "detailProductId";
+            detailProductId.ReadOnly = true;
             detailProductId.Visible = false;
             // 
             // detailProductCode
@@ -408,41 +449,103 @@
             detailProductCode.DataPropertyName = "ProductCode";
             detailProductCode.HeaderText = "KOD";
             detailProductCode.Name = "detailProductCode";
+            detailProductCode.ReadOnly = true;
             detailProductCode.Width = 57;
             // 
             // detailProductName
             // 
-            detailProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            detailProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             detailProductName.DataPropertyName = "ProductName";
             detailProductName.HeaderText = "ÜRÜN ADI";
             detailProductName.Name = "detailProductName";
-            // 
-            // detailStockInDetailUnit
-            // 
-            detailStockInDetailUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            detailStockInDetailUnit.DataPropertyName = "StockInDetailUnit";
-            detailStockInDetailUnit.HeaderText = "ADET";
-            detailStockInDetailUnit.Name = "detailStockInDetailUnit";
-            detailStockInDetailUnit.Width = 62;
-            // 
-            // StockInDetailUnitType
-            // 
-            StockInDetailUnitType.DataPropertyName = "StockInDetailUnitType";
-            StockInDetailUnitType.HeaderText = "";
-            StockInDetailUnitType.Name = "StockInDetailUnitType";
-            // 
-            // ProductWarehouseId
-            // 
-            ProductWarehouseId.DataPropertyName = "ProductWarehouseId";
-            ProductWarehouseId.HeaderText = "Depo";
-            ProductWarehouseId.Name = "ProductWarehouseId";
-            ProductWarehouseId.Visible = false;
+            detailProductName.ReadOnly = true;
+            detailProductName.Width = 91;
             // 
             // DepoAdi
             // 
             DepoAdi.DataPropertyName = "DepoAdi";
             DepoAdi.HeaderText = "Depo Adi";
             DepoAdi.Name = "DepoAdi";
+            DepoAdi.ReadOnly = true;
+            // 
+            // detailStockInDetailUnit
+            // 
+            detailStockInDetailUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            detailStockInDetailUnit.DataPropertyName = "StockInDetailUnit";
+            detailStockInDetailUnit.HeaderText = "Miktar";
+            detailStockInDetailUnit.Name = "detailStockInDetailUnit";
+            detailStockInDetailUnit.ReadOnly = true;
+            detailStockInDetailUnit.Width = 68;
+            // 
+            // StockInDetailUnitType
+            // 
+            StockInDetailUnitType.DataPropertyName = "StockInDetailUnitType";
+            StockInDetailUnitType.HeaderText = "";
+            StockInDetailUnitType.Name = "StockInDetailUnitType";
+            StockInDetailUnitType.ReadOnly = true;
+            // 
+            // ProductWarehouseId
+            // 
+            ProductWarehouseId.DataPropertyName = "ProductWarehouseId";
+            ProductWarehouseId.HeaderText = "Depo";
+            ProductWarehouseId.Name = "ProductWarehouseId";
+            ProductWarehouseId.ReadOnly = true;
+            ProductWarehouseId.Visible = false;
+            // 
+            // ProductArrivalPrice
+            // 
+            ProductArrivalPrice.DataPropertyName = "ProductArrivalPrice";
+            ProductArrivalPrice.HeaderText = "Birim Fiyat";
+            ProductArrivalPrice.Name = "ProductArrivalPrice";
+            ProductArrivalPrice.ReadOnly = true;
+            // 
+            // ProductDiscountPercentage
+            // 
+            ProductDiscountPercentage.DataPropertyName = "ProductDiscountPercentage";
+            ProductDiscountPercentage.HeaderText = "İskonto Oranı";
+            ProductDiscountPercentage.Name = "ProductDiscountPercentage";
+            ProductDiscountPercentage.ReadOnly = true;
+            // 
+            // ProductUnitDiscountAmount
+            // 
+            ProductUnitDiscountAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ProductUnitDiscountAmount.DataPropertyName = "ProductUnitDiscountAmount";
+            ProductUnitDiscountAmount.HeaderText = "Tek Ürün İndirim Tutarı";
+            ProductUnitDiscountAmount.Name = "ProductUnitDiscountAmount";
+            ProductUnitDiscountAmount.ReadOnly = true;
+            ProductUnitDiscountAmount.Width = 163;
+            // 
+            // ProductTotalDiscountAmount
+            // 
+            ProductTotalDiscountAmount.DataPropertyName = "ProductTotalDiscountAmount";
+            ProductTotalDiscountAmount.HeaderText = "İskonto Tutarı";
+            ProductTotalDiscountAmount.Name = "ProductTotalDiscountAmount";
+            ProductTotalDiscountAmount.ReadOnly = true;
+            // 
+            // ProductTotalVatAmount
+            // 
+            ProductTotalVatAmount.DataPropertyName = "ProductTotalVatAmount";
+            ProductTotalVatAmount.HeaderText = "KDV Tutarı";
+            ProductTotalVatAmount.Name = "ProductTotalVatAmount";
+            ProductTotalVatAmount.ReadOnly = true;
+            // 
+            // ProductLastPriceWithoutVat
+            // 
+            ProductLastPriceWithoutVat.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ProductLastPriceWithoutVat.DataPropertyName = "ProductLastPriceWithoutVat";
+            ProductLastPriceWithoutVat.HeaderText = "KDV'siz Toplam Fiyat";
+            ProductLastPriceWithoutVat.Name = "ProductLastPriceWithoutVat";
+            ProductLastPriceWithoutVat.ReadOnly = true;
+            ProductLastPriceWithoutVat.Width = 151;
+            // 
+            // ProductLastPriceWithVat
+            // 
+            ProductLastPriceWithVat.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ProductLastPriceWithVat.DataPropertyName = "ProductLastPriceWithVat";
+            ProductLastPriceWithVat.HeaderText = "KDV'li Toplam Fiyat";
+            ProductLastPriceWithVat.Name = "ProductLastPriceWithVat";
+            ProductLastPriceWithVat.ReadOnly = true;
+            ProductLastPriceWithVat.Width = 142;
             // 
             // detailDelete
             // 
@@ -450,41 +553,10 @@
             detailDelete.HeaderText = "";
             detailDelete.Image = (Image)resources.GetObject("detailDelete.Image");
             detailDelete.Name = "detailDelete";
+            detailDelete.ReadOnly = true;
             detailDelete.Resizable = DataGridViewTriState.True;
             detailDelete.SortMode = DataGridViewColumnSortMode.Automatic;
             detailDelete.Width = 17;
-            // 
-            // Id
-            // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "#";
-            Id.Name = "Id";
-            Id.Visible = false;
-            Id.Width = 39;
-            // 
-            // ProductCode
-            // 
-            ProductCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ProductCode.DataPropertyName = "ProductCode";
-            ProductCode.HeaderText = "KOD";
-            ProductCode.Name = "ProductCode";
-            ProductCode.Width = 57;
-            // 
-            // ProductName
-            // 
-            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ProductName.DataPropertyName = "ProductName";
-            ProductName.HeaderText = "ADI";
-            ProductName.Name = "ProductName";
-            // 
-            // Select
-            // 
-            Select.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Select.HeaderText = "";
-            Select.Image = (Image)resources.GetObject("Select.Image");
-            Select.Name = "Select";
-            Select.Width = 5;
             // 
             // frmStockInDetailList
             // 
@@ -557,10 +629,17 @@
         private DataGridViewTextBoxColumn detailProductId;
         private DataGridViewTextBoxColumn detailProductCode;
         private DataGridViewTextBoxColumn detailProductName;
+        private DataGridViewTextBoxColumn DepoAdi;
         private DataGridViewTextBoxColumn detailStockInDetailUnit;
         private DataGridViewTextBoxColumn StockInDetailUnitType;
         private DataGridViewTextBoxColumn ProductWarehouseId;
-        private DataGridViewTextBoxColumn DepoAdi;
+        private DataGridViewTextBoxColumn ProductArrivalPrice;
+        private DataGridViewTextBoxColumn ProductDiscountPercentage;
+        private DataGridViewTextBoxColumn ProductUnitDiscountAmount;
+        private DataGridViewTextBoxColumn ProductTotalDiscountAmount;
+        private DataGridViewTextBoxColumn ProductTotalVatAmount;
+        private DataGridViewTextBoxColumn ProductLastPriceWithoutVat;
+        private DataGridViewTextBoxColumn ProductLastPriceWithVat;
         private DataGridViewImageColumn detailDelete;
     }
 }

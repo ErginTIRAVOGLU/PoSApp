@@ -148,7 +148,12 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     if (MessageBox.Show("Ürünü silmek istediğinizden emin misiniz?", "Ürün Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         _stockInRepository.Delete(stockIn);
-                        yukle();
+                        var beginDate = dTPBeginDate.Value;
+                        var newBeginDate = new DateTime(beginDate.Year, beginDate.Month, beginDate.Day, 0, 0, 0);
+                        var endDate = dTPEndDate.Value;
+                        var newEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 23, 59, 59);
+
+                        yukle(newBeginDate, newEndDate);
                     }
                     break;
                 default:

@@ -15,6 +15,21 @@ namespace PoSApp.Entities
         [Column(TypeName = "decimal(18,4)")]
         public decimal StockInDetailUnit { get; set; }
 
+         
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductArrivalPrice { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductDiscountPercentage { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductUnitDiscountAmount { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductTotalDiscountAmount { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductTotalVatAmount { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductLastPriceWithoutVat { get; set; }
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal ProductLastPriceWithVat { get; set; }
 
 
         public int WarehouseId { get; set; }

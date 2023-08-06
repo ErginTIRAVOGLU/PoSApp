@@ -32,9 +32,16 @@ namespace PoSApp.BLL.Repositories.Concrete
                     ProductName = x.Product.ProductName,
                     ProductId = x.Product.Id,
                     ProductWarehouseId=x.WarehouseId,
-                    DepoAdi=x.Warehouse.WarehouseName
-                    
+                    DepoAdi=x.Warehouse.WarehouseName,
 
+
+                    ProductArrivalPrice = x.ProductArrivalPrice,
+                    ProductDiscountPercentage = x.ProductDiscountPercentage,
+                    ProductUnitDiscountAmount = x.ProductUnitDiscountAmount,
+                    ProductTotalDiscountAmount = x.ProductTotalDiscountAmount,
+                    ProductTotalVatAmount = x.ProductTotalVatAmount,
+                    ProductLastPriceWithoutVat = x.ProductLastPriceWithoutVat,
+                    ProductLastPriceWithVat = x.ProductLastPriceWithoutVat
 
 
 
@@ -65,9 +72,17 @@ namespace PoSApp.BLL.Repositories.Concrete
                     ProductName = x.Product.ProductName,
                     ProductId = x.Product.Id,
                     ProductWarehouseId = x.WarehouseId,
-                    DepoAdi = x.Warehouse.WarehouseName
+                    DepoAdi = x.Warehouse.WarehouseName,
+                    
+                    ProductArrivalPrice = x.ProductArrivalPrice,
+                    ProductDiscountPercentage = x.ProductDiscountPercentage,
+                    ProductUnitDiscountAmount = x.ProductUnitDiscountAmount,
+                    ProductTotalDiscountAmount = x.ProductTotalDiscountAmount,
+                    ProductTotalVatAmount = x.ProductTotalVatAmount,
+                    ProductLastPriceWithoutVat = x.ProductLastPriceWithoutVat,
+                    ProductLastPriceWithVat = x.ProductLastPriceWithoutVat
 
-
+                    
 
                 }).ToList();
 
@@ -79,12 +94,23 @@ namespace PoSApp.BLL.Repositories.Concrete
     }
     public class StockInDetailListDTO
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
         public int ProductId { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
+
         public decimal StockInDetailUnit { get; set; }
         public ProductUnitType StockInDetailUnitType { get; set; }
+
+        public decimal ProductArrivalPrice { get; set; }
+        public decimal ProductDiscountPercentage { get; set; }
+        public decimal ProductUnitDiscountAmount { get; set; }
+        public decimal ProductTotalDiscountAmount { get; set; }
+        public decimal ProductTotalVatAmount { get; set; }
+        public decimal ProductLastPriceWithoutVat { get; set; }
+        public decimal ProductLastPriceWithVat { get; set; }
+
+        
         public int ProductWarehouseId { get; set; }
         public string DepoAdi { get; set; }
 

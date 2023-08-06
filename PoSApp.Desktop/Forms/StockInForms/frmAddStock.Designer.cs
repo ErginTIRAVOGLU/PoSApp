@@ -39,12 +39,20 @@
             panel1 = new Panel();
             pBClose = new PictureBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtArrivalPrice = new TextBox();
             label4 = new Label();
-            textBox2 = new TextBox();
+            txtDiscountPercentage = new TextBox();
             label5 = new Label();
-            textBox3 = new TextBox();
+            txtLastPriceWithoutVat = new TextBox();
             label6 = new Label();
+            txtTotalDiscountAmount = new TextBox();
+            label7 = new Label();
+            txtUnitDiscountAmount = new TextBox();
+            label8 = new Label();
+            txtLastPriceWithVat = new TextBox();
+            label9 = new Label();
+            txtTotalVatAmount = new TextBox();
+            label10 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             SuspendLayout();
@@ -84,7 +92,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(328, 168);
+            btnCancel.Location = new Point(302, 375);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
             btnCancel.TabIndex = 21;
@@ -94,7 +102,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(166, 168);
+            btnSave.Location = new Point(140, 375);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
             btnSave.TabIndex = 19;
@@ -104,7 +112,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(247, 168);
+            btnUpdate.Location = new Point(221, 375);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
             btnUpdate.TabIndex = 20;
@@ -147,64 +155,136 @@
             label1.TabIndex = 0;
             label1.Text = "Ürün Girişi";
             // 
-            // textBox1
+            // txtArrivalPrice
             // 
-            textBox1.Location = new Point(344, 52);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 23);
-            textBox1.TabIndex = 24;
+            txtArrivalPrice.Location = new Point(405, 52);
+            txtArrivalPrice.Name = "txtArrivalPrice";
+            txtArrivalPrice.Size = new Size(93, 23);
+            txtArrivalPrice.TabIndex = 24;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(262, 55);
+            label4.Location = new Point(277, 55);
             label4.Name = "label4";
-            label4.Size = new Size(69, 15);
+            label4.Size = new Size(100, 15);
             label4.TabIndex = 23;
-            label4.Text = "Geliş Fiyatı :";
+            label4.Text = "Birim Geliş Fiyatı :";
             // 
-            // textBox2
+            // txtDiscountPercentage
             // 
-            textBox2.Location = new Point(344, 81);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(146, 23);
-            textBox2.TabIndex = 26;
+            txtDiscountPercentage.Location = new Point(405, 81);
+            txtDiscountPercentage.Name = "txtDiscountPercentage";
+            txtDiscountPercentage.Size = new Size(93, 23);
+            txtDiscountPercentage.TabIndex = 26;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(262, 84);
+            label5.Location = new Point(250, 142);
             label5.Name = "label5";
-            label5.Size = new Size(52, 15);
+            label5.Size = new Size(127, 15);
             label5.TabIndex = 25;
-            label5.Text = "İskonto :";
+            label5.Text = "Toplam İskonto Tutarı :";
             // 
-            // textBox3
+            // txtLastPriceWithoutVat
             // 
-            textBox3.Location = new Point(344, 110);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(146, 23);
-            textBox3.TabIndex = 28;
+            txtLastPriceWithoutVat.Location = new Point(405, 197);
+            txtLastPriceWithoutVat.Name = "txtLastPriceWithoutVat";
+            txtLastPriceWithoutVat.Size = new Size(93, 23);
+            txtLastPriceWithoutVat.TabIndex = 28;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(262, 113);
+            label6.Location = new Point(272, 200);
             label6.Name = "label6";
-            label6.Size = new Size(61, 15);
+            label6.Size = new Size(105, 15);
             label6.TabIndex = 27;
-            label6.Text = "Son Fiyat :";
+            label6.Text = "Son Fiyat KDV'siz : ";
+            // 
+            // txtTotalDiscountAmount
+            // 
+            txtTotalDiscountAmount.Location = new Point(405, 139);
+            txtTotalDiscountAmount.Name = "txtTotalDiscountAmount";
+            txtTotalDiscountAmount.Size = new Size(93, 23);
+            txtTotalDiscountAmount.TabIndex = 30;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(293, 84);
+            label7.Name = "label7";
+            label7.Size = new Size(84, 15);
+            label7.TabIndex = 29;
+            label7.Text = "İskonto Oranı :";
+            // 
+            // txtUnitDiscountAmount
+            // 
+            txtUnitDiscountAmount.Location = new Point(405, 110);
+            txtUnitDiscountAmount.Name = "txtUnitDiscountAmount";
+            txtUnitDiscountAmount.Size = new Size(93, 23);
+            txtUnitDiscountAmount.TabIndex = 32;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(261, 113);
+            label8.Name = "label8";
+            label8.Size = new Size(116, 15);
+            label8.TabIndex = 31;
+            label8.Text = "Birim İskonto Tutarı :";
+            // 
+            // txtLastPriceWithVat
+            // 
+            txtLastPriceWithVat.Location = new Point(405, 226);
+            txtLastPriceWithVat.Name = "txtLastPriceWithVat";
+            txtLastPriceWithVat.Size = new Size(93, 23);
+            txtLastPriceWithVat.TabIndex = 34;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(313, 229);
+            label9.Name = "label9";
+            label9.Size = new Size(64, 15);
+            label9.TabIndex = 33;
+            label9.Text = "Son Fiyat : ";
+            // 
+            // txtTotalVatAmount
+            // 
+            txtTotalVatAmount.Location = new Point(405, 168);
+            txtTotalVatAmount.Name = "txtTotalVatAmount";
+            txtTotalVatAmount.Size = new Size(93, 23);
+            txtTotalVatAmount.TabIndex = 36;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(267, 171);
+            label10.Name = "label10";
+            label10.Size = new Size(110, 15);
+            label10.TabIndex = 35;
+            label10.Text = "Toplam KDV Tutarı :";
             // 
             // frmAddStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 218);
-            Controls.Add(textBox3);
+            ClientSize = new Size(510, 423);
+            Controls.Add(txtTotalVatAmount);
+            Controls.Add(label10);
+            Controls.Add(txtLastPriceWithVat);
+            Controls.Add(label9);
+            Controls.Add(txtUnitDiscountAmount);
+            Controls.Add(label8);
+            Controls.Add(txtTotalDiscountAmount);
+            Controls.Add(label7);
+            Controls.Add(txtLastPriceWithoutVat);
             Controls.Add(label6);
-            Controls.Add(textBox2);
+            Controls.Add(txtDiscountPercentage);
             Controls.Add(label5);
-            Controls.Add(textBox1);
+            Controls.Add(txtArrivalPrice);
             Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(btnCancel);
@@ -238,11 +318,19 @@
         private Panel panel1;
         private PictureBox pBClose;
         private Label label1;
-        public TextBox textBox1;
+        public TextBox txtArrivalPrice;
         private Label label4;
-        public TextBox textBox2;
+        public TextBox txtDiscountPercentage;
         private Label label5;
-        public TextBox textBox3;
+        public TextBox txtLastPriceWithoutVat;
         private Label label6;
+        public TextBox txtTotalDiscountAmount;
+        private Label label7;
+        public TextBox txtUnitDiscountAmount;
+        private Label label8;
+        public TextBox txtLastPriceWithVat;
+        private Label label9;
+        public TextBox txtTotalVatAmount;
+        private Label label10;
     }
 }

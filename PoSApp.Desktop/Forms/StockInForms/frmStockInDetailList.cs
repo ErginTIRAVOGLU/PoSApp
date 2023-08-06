@@ -33,7 +33,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
         public frmStockInDetailList()
         {
             InitializeComponent();
-
+            dGWStockInDetail.AutoGenerateColumns = false;
         }
 
         public void yukle()
@@ -83,9 +83,9 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     //_stockInDetail.Product = _product;
 
                     frmAddStock _frmAddStock = new frmAddStock();
-                    DialogResult dialogResult= _frmAddStock.ShowDialog();
-                    if(dialogResult == DialogResult.OK)
-                    {       
+                    DialogResult dialogResult = _frmAddStock.ShowDialog();
+                    if (dialogResult == DialogResult.OK)
+                    {
                         var source = new BindingSource();
                         StockInDetailListDTO stockInDetailListDTO = new StockInDetailListDTO();
                         stockInDetailListDTO.ProductId = _product.Id;
@@ -94,6 +94,15 @@ namespace PoSApp.Desktop.Forms.StockInForms
                         stockInDetailListDTO.StockInDetailUnit = _frmAddStock.productQuantity;
                         stockInDetailListDTO.ProductWarehouseId = _frmAddStock.warehouseId;
                         stockInDetailListDTO.DepoAdi = _frmAddStock.warehouseName;
+
+                        stockInDetailListDTO.ProductArrivalPrice = _frmAddStock.productArrivalPrice;
+                        stockInDetailListDTO.ProductDiscountPercentage = _frmAddStock.productDiscountPercentage;
+                        stockInDetailListDTO.ProductUnitDiscountAmount = _frmAddStock.productUnitDiscountAmount;
+                        stockInDetailListDTO.ProductTotalDiscountAmount = _frmAddStock.productTotalDiscountAmount;
+                        stockInDetailListDTO.ProductTotalVatAmount = _frmAddStock.productTotalVatAmount;
+                        stockInDetailListDTO.ProductLastPriceWithoutVat = _frmAddStock.productLastPriceWithoutVat;
+                        stockInDetailListDTO.ProductLastPriceWithVat = _frmAddStock.productLastPriceWithVat;
+
                         stokDetay.Add(stockInDetailListDTO);
                         source.DataSource = stokDetay;
                         dGWStockInDetail.DataSource = source;
@@ -138,6 +147,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                 stockIn.StockInRefNo = txtStockInRefNo.Text;
                 _stockInRepository.Update(stockIn);
 
+                /*
                 foreach (DataGridViewRow row in dGWStockInDetail.Rows)
                 {
                     var rowIDValue = int.Parse(row.Cells["detailId"].Value.ToString());
@@ -160,7 +170,48 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     }
 
                 }
+                */
+                foreach (var item in stokDetay)
+                {
+                    if (item.Id == 0)
+                    {
+                        _stockInDetail = new StockInDetail();
+                        _stockInDetail.StockInId = stockInListId;
+                        _stockInDetail.ProductId = item.ProductId;
+                        _stockInDetail.StockInDetailUnit = item.StockInDetailUnit;
+                        _stockInDetail.WarehouseId = item.ProductWarehouseId;
+
+                        _stockInDetail.ProductArrivalPrice = item.ProductArrivalPrice;
+                        _stockInDetail.ProductDiscountPercentage = item.ProductDiscountPercentage;
+                        _stockInDetail.ProductUnitDiscountAmount = item.ProductUnitDiscountAmount;
+                        _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
+                        _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
+                        _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
+
+                        _stockInDetailRepository.Insert(_stockInDetail);
+                    }
+                    else
+                    {
+                        _stockInDetail = _stockInDetailRepository.GetById(item.Id);
+
+                        //_stockInDetail.StockInId = stockInListId;
+                        //_stockInDetail.ProductId = item.ProductId;
+                        _stockInDetail.StockInDetailUnit = item.StockInDetailUnit;
+                        _stockInDetail.WarehouseId = item.ProductWarehouseId;
+
+                        _stockInDetail.ProductArrivalPrice = item.ProductArrivalPrice;
+                        _stockInDetail.ProductDiscountPercentage = item.ProductDiscountPercentage;
+                        _stockInDetail.ProductUnitDiscountAmount = item.ProductUnitDiscountAmount;
+                        _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
+                        _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
+                        _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
+                        _stockInDetailRepository.Update(_stockInDetail);
+
+                    }
+                }
                 oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
+
+
 
                 yukle();
             }
@@ -193,7 +244,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                 _stockIn.SupplierId = int.Parse(cmBoxSupplier.SelectedValue.ToString());
                 _stockInRepository.Insert(_stockIn);
                 stockInListId = _stockIn.Id;
-
+                /*
                 foreach (DataGridViewRow row in dGWStockInDetail.Rows)
                 {
 
@@ -204,7 +255,22 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     _stockInDetail.WarehouseId = int.Parse(row.Cells["ProductWarehouseId"].Value.ToString());
                     _stockInDetailRepository.Insert(_stockInDetail);
                 }
-
+                */
+                foreach (var item in stokDetay)
+                {
+                    _stockInDetail = new StockInDetail();
+                    _stockInDetail.StockInId = _stockIn.Id;
+                    _stockInDetail.ProductId = item.ProductId;//int.Parse(row.Cells["detailProductId"].Value.ToString());
+                    _stockInDetail.StockInDetailUnit = item.StockInDetailUnit;// decimal.Parse(row.Cells["detailStockInDetailUnit"].Value.ToString());
+                    _stockInDetail.WarehouseId = item.ProductWarehouseId;//int.Parse(row.Cells["ProductWarehouseId"].Value.ToString());
+                    _stockInDetail.ProductArrivalPrice = item.ProductArrivalPrice;
+                    _stockInDetail.ProductDiscountPercentage = item.ProductDiscountPercentage;
+                    _stockInDetail.ProductUnitDiscountAmount = item.ProductUnitDiscountAmount;
+                    _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
+                    _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
+                    _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
+                    _stockInDetailRepository.Insert(_stockInDetail);
+                }
                 IsUpdate = true;
                 btnSave.Enabled = false;
                 btnUpdate.Enabled = true;
@@ -220,34 +286,37 @@ namespace PoSApp.Desktop.Forms.StockInForms
         {
             string colName = dGWStockInDetail.Columns[e.ColumnIndex].Name;
             int rowId = e.RowIndex;
-            var stockInDetailId = int.Parse(dGWStockInDetail.Rows[e.RowIndex].Cells["detailId"].Value.ToString());
-
-            switch (colName)
+            if (rowId > 0)
             {
+                var stockInDetailId = int.Parse(dGWStockInDetail.Rows[e.RowIndex].Cells["detailId"].Value.ToString());
 
-                case "detailDelete":
+                switch (colName)
+                {
 
-                    if (stockInDetailId != 0)
-                    {
-                        var stockInDetail = _stockInDetailRepository.GetById(stockInDetailId);
-                        _stockInDetailRepository.Delete(stockInDetail);
+                    case "detailDelete":
+
+                        if (stockInDetailId != 0)
+                        {
+                            var stockInDetail = _stockInDetailRepository.GetById(stockInDetailId);
+                            _stockInDetailRepository.Delete(stockInDetail);
 
 
-                        oldStokDetay = oldStokDetay.Where(m => m.Id != stockInDetail.Id).ToList();
+                            oldStokDetay = oldStokDetay.Where(m => m.Id != stockInDetail.Id).ToList();
 
 
-                        //var tempOldStockInDetail = oldStokDetay;
-                        //oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
-                        yukle();
-                    }
-                    else
-                    {
-                        dGWStockInDetail.Rows.RemoveAt(rowId);
-                    }
+                            //var tempOldStockInDetail = oldStokDetay;
+                            //oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
+                            yukle();
+                        }
+                        else
+                        {
+                            dGWStockInDetail.Rows.RemoveAt(rowId);
+                        }
 
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -267,6 +336,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void frmStockInDetailList_Load(object sender, EventArgs e)
         {
+            
             yukle();
         }
 

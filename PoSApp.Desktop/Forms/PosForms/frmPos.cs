@@ -273,7 +273,7 @@ namespace PoSApp.Desktop.Forms.PosForms
 
             foreach (var item in oldCartDetail)
             {
-                productTotalPrice = item.Price*item.Quantity;
+                productTotalPrice = item.Price * item.Quantity;
                 vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
                 totalPrice = totalPrice + productTotalPrice;
                 totalVat = totalVat + (productTotalPrice - (productTotalPrice / (1 + vatRatio)));
@@ -305,7 +305,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                     if (MessageBox.Show("Ürünü silmek istediğinizden emin misiniz?", "Ürün Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         var selectedRowIndex = e.RowIndex;
-                        if (oldCartDetail[selectedRowIndex].Id==0)
+                        if (oldCartDetail[selectedRowIndex].Id == 0)
                         {
                             oldCartDetail.RemoveAt(selectedRowIndex);
                         }
@@ -315,7 +315,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                             _cartDetailRepository.Delete(cartDetail);
                             oldCartDetail.RemoveAt(selectedRowIndex);
                         }
-                        
+
                         FillGridView();
                         totalCalculate();
                     }
@@ -511,7 +511,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                 {
 
                     DiscountTotal = item.Discount,
-                    PriceTotal = item.Price* item.Quantity,
+                    PriceTotal = item.Price * item.Quantity,
                     Price = item.Price,
                     Vat = item.Vat,
                     ProductUnit = item.Quantity,
@@ -663,6 +663,89 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void btnLockTheButtons_Click(object sender, EventArgs e)
         {
             lockTheButtons();
+        }
+
+        private void btnPosKaydet_Click(object sender, EventArgs e)
+        {
+
+            Cart cart = _cartRepository.GetbyTransNoNoInc(_transNo);
+            if (cart == null)
+            {
+                cart = new Cart();
+                cart.TransNo = _transNo;
+
+                DateTime cartDate = DateTime.Now;
+                DateTime.TryParse(lblDate.Text, out cartDate);
+                cart.CartDate = cartDate;
+                cart.Status = CartStatus.Pending;
+                _cartRepository.Insert(cart);
+            }
+            decimal totalPrice = 0;
+            decimal totalVat = 0;
+            decimal productTotalPrice = 0;
+            decimal vatRatio = 0;
+
+            decimal totalDiscount = 0;
+            foreach (var item in oldCartDetail)
+            {
+                productTotalPrice = item.Price;// *item.Quantity; //TO-DO kontrol
+                vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
+                totalPrice = totalPrice + productTotalPrice;
+                totalVat = totalVat + (productTotalPrice - (productTotalPrice / (1 + vatRatio)));
+                totalDiscount = totalDiscount + (item.Discount * item.Quantity);
+            }
+
+            cart.PriceTotal = _priceTotal;
+
+            cart.Vat = totalVat;
+            cart.Price = totalPrice;
+            cart.DiscountTotal = totalDiscount;
+
+
+
+
+
+            foreach (var item in oldCartDetail.Where(m => m.Id == 0))
+            {
+                cart.CartDetails.Add(new CartDetail()
+                {
+
+                    DiscountTotal = item.Discount,
+                    PriceTotal = item.Price * item.Quantity,
+                    Price = item.Price,
+                    Vat = item.Vat,
+                    ProductUnit = item.Quantity,
+                    ProductUnitType = item.CartDetailUnitType,
+                    ProductDiscount = item.Discount,
+                    ProductId = item.ProductId,
+                    Description = item.Description
+
+
+                });
+
+            }
+
+            CartDetail cartDetail = new CartDetail();
+            foreach (var item in oldCartDetail.Where(m => m.Id != 0))
+            {
+                cartDetail = _cartDetailRepository.GetById(item.Id);
+                cartDetail.DiscountTotal = item.Discount;
+                cartDetail.ProductDiscount = item.Discount;
+                cartDetail.PriceTotal = item.Price * item.Quantity;
+                cartDetail.Price = item.Price;
+                cartDetail.Vat = item.Vat;
+                cartDetail.Description = item.Description;
+
+                _cartDetailRepository.Update(cartDetail);
+               
+
+            }
+ 
+            _cartRepository.Update(cart);
+            oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo).ToList();
+
+            unlockTheButtons();
+            FillGridView();
         }
     }
 }
