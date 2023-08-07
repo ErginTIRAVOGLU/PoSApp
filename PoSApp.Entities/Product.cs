@@ -14,6 +14,7 @@ namespace PoSApp.Entities
         public Product()
         {
             StockInDetails = new HashSet<StockInDetail>();
+            CartDetails = new HashSet<CartDetail>();
         }
 
         [Required]
@@ -44,6 +45,7 @@ namespace PoSApp.Entities
         public virtual Category Category { get; set; }
 
         public virtual ICollection<StockInDetail> StockInDetails { get; set; }
+        public virtual ICollection<CartDetail> CartDetails { get; set; }
 
 
     }

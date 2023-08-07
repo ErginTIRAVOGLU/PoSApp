@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
- 
+
 using PoSApp.BLL.Repositories.Abstract;
 using PoSApp.DAL;
 using PoSApp.Entities;
@@ -19,22 +19,43 @@ namespace PoSApp.BLL.Repositories.Concrete
 
         private PosDbContext _postDbContext;
 
-        public virtual  IEnumerable<ProductListDTO> GetAllSelected()
+        public virtual IEnumerable<ProductListDTO> GetAllSelected()
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<Product>().Where(m => m.IsDeleted == false)
+                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false)
                     .Select(x => new ProductListDTO
-                    { 
-                        Id = x.Id, 
+                    {
+                        Id = x.Id,
                         ProductCode = x.ProductCode,
-                        ProductName = x.ProductName,                        
+                        ProductName = x.ProductName,
                         ProductBarcode = x.ProductBarcode,
-                        ProductPrice = x.ProductPrice,                       
-                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet": "Gram",
+                        ProductPrice = x.ProductPrice,
+                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
-                        
-                        
+
+
+                    }).ToList();
+
+                return list;
+            }
+        }
+        public virtual IEnumerable<ProductListDTOWithStock> GetAllSelectedWithStock()
+        {
+            using (_postDbContext = new PosDbContext())
+            {
+                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Include(m => m.StockInDetails).Include(m => m.CartDetails).AsNoTracking()
+                    .Select(x => new ProductListDTOWithStock
+                    {
+                        Id = x.Id,
+                        ProductCode = x.ProductCode,
+                        ProductName = x.ProductName,
+                        ProductBarcode = x.ProductBarcode,
+                        ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
+                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
+                        Vat = x.ProductVat,
+                        NetProductAmountInStock = x.ProductUnitType == ProductUnitType.Quantity ? (x.StockInDetails.Sum(sd => sd.StockInDetailUnit)- x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0"): (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0.0000")
+
                     }).ToList();
 
                 return list;
@@ -44,14 +65,14 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<Product>().Where(m => m.IsDeleted == false)
+                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false)
                     .Select(x => new ProductListUrunGirisDTO
                     {
                         Id = x.Id,
                         ProductCode = x.ProductCode,
-                        ProductName = x.ProductName,                        
+                        ProductName = x.ProductName,
                     }).ToList();
-                
+
                 return list;
             }
         }
@@ -60,7 +81,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Where(method)
+                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Where(method)
                     .Select(x => new ProductListUrunGirisDTO
                     {
                         Id = x.Id,
@@ -92,15 +113,54 @@ namespace PoSApp.BLL.Repositories.Concrete
                 return list;
             }
         }
-    }
+        public virtual IEnumerable<ProductListDTOWithStock> GetWhereUrunDialogSearchWithStock(Expression<Func<Product, bool>> method)
+        {
+            using (_postDbContext = new PosDbContext())
+            {
+                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Where(method)
+                    .Select(x => new ProductListDTOWithStock
+                    {
+                        Id = x.Id,
+                        ProductCode = x.ProductCode,
+                        ProductName = x.ProductName,
+                        ProductBarcode = x.ProductBarcode,
+                        ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
+                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
+                        Vat = x.ProductVat,
+                        NetProductAmountInStock = x.ProductUnitType == ProductUnitType.Quantity ? (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0") : (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0.0000")
+                    }).ToList();
+
+                return list;
+            }
+        }
+        public ProductWithStock GetByIdWithStockNumber(int id)
+        {
+            using (_postDbContext = new PosDbContext())
+            {
+                var p = _postDbContext.Set<Product>().Where(m => m.Id == id && m.IsDeleted == false).Include(m => m.StockInDetails).Include(m => m.CartDetails)
+                    .Select(product => new ProductWithStock
+                    {
+                        product = product,
+                        NetProductAmountInStock = product.StockInDetails.Sum(sd => sd.StockInDetailUnit)
+                                              - product.CartDetails.Sum(cd => cd.ProductUnit)
+
+
+                    }).FirstOrDefault();
+                return p;
+            }
+
+        }
+
+        
+    } 
     public class ProductListDTO
     {
         public int Id { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string ProductBarcode { get; set; }
-         
-        public decimal ProductPrice { get; set; }      
+
+        public decimal ProductPrice { get; set; }
         public string ProductUnitType { get; set; }
         public int Vat { get; set; }
     }
@@ -109,7 +169,27 @@ namespace PoSApp.BLL.Repositories.Concrete
     {
         public int Id { get; set; }
         public string ProductCode { get; set; }
-        public string ProductName { get; set; }         
+        public string ProductName { get; set; }
+
+    }
+
+    public class ProductWithStock
+    {
+        public Product product { get; set; }
+        public decimal NetProductAmountInStock { get; set; }
+    }
+
+    public class ProductListDTOWithStock
+    {
+        public int Id { get; set; }
+        public string ProductCode { get; set; }
+        public string ProductName { get; set; }
+        public string ProductBarcode { get; set; }
+
+        public string ProductPrice { get; set; }
+        public string ProductUnitType { get; set; }
+        public int Vat { get; set; }
+        public string NetProductAmountInStock { get; set; }
 
     }
 }

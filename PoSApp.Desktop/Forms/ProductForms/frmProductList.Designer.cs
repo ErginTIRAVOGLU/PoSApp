@@ -36,19 +36,20 @@
             pbAdd = new PictureBox();
             pBClose = new PictureBox();
             dGWProduct = new DataGridView();
+            splitContainer1 = new SplitContainer();
+            txtProductSearch = new TextBox();
+            pictureBox1 = new PictureBox();
             Column1 = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             ProductCode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
             ProductBarcode = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
+            NetProductAmountInStock = new DataGridViewTextBoxColumn();
             ProductUnitTypeColon = new DataGridViewTextBoxColumn();
             Vat = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
-            splitContainer1 = new SplitContainer();
-            txtProductSearch = new TextBox();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbAdd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
@@ -129,7 +130,7 @@
             dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, ProductUnitTypeColon, Vat, Edit, Delete });
+            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, NetProductAmountInStock, ProductUnitTypeColon, Vat, Edit, Delete });
             dGWProduct.Dock = DockStyle.Fill;
             dGWProduct.EditMode = DataGridViewEditMode.EditOnF2;
             dGWProduct.EnableHeadersVisualStyles = false;
@@ -146,77 +147,6 @@
             dGWProduct.CellFormatting += dGWProduct_CellFormatting;
             dGWProduct.KeyDown += dGWProduct_KeyDown;
             dGWProduct.KeyUp += dGWProduct_KeyUp;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column1.HeaderText = "#";
-            Column1.Name = "Column1";
-            Column1.Visible = false;
-            // 
-            // Id
-            // 
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "ID";
-            Id.Name = "Id";
-            Id.Visible = false;
-            // 
-            // ProductCode
-            // 
-            ProductCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            ProductCode.DataPropertyName = "ProductCode";
-            ProductCode.HeaderText = "ÜRÜN KODU";
-            ProductCode.Name = "ProductCode";
-            ProductCode.Width = 106;
-            // 
-            // ProductName
-            // 
-            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ProductName.DataPropertyName = "ProductName";
-            ProductName.HeaderText = "ÜRÜN";
-            ProductName.Name = "ProductName";
-            // 
-            // ProductBarcode
-            // 
-            ProductBarcode.DataPropertyName = "ProductBarcode";
-            ProductBarcode.HeaderText = "BARKOD";
-            ProductBarcode.Name = "ProductBarcode";
-            // 
-            // ProductPrice
-            // 
-            ProductPrice.DataPropertyName = "ProductPrice";
-            ProductPrice.HeaderText = "FİYATI";
-            ProductPrice.Name = "ProductPrice";
-            // 
-            // ProductUnitTypeColon
-            // 
-            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
-            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
-            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
-            // 
-            // Vat
-            // 
-            Vat.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Vat.DataPropertyName = "Vat";
-            Vat.HeaderText = "KDV";
-            Vat.Name = "Vat";
-            Vat.Width = 56;
-            // 
-            // Edit
-            // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Edit.HeaderText = "";
-            Edit.Image = (Image)resources.GetObject("Edit.Image");
-            Edit.Name = "Edit";
-            Edit.Width = 5;
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Delete.HeaderText = "";
-            Delete.Image = (Image)resources.GetObject("Delete.Image");
-            Delete.Name = "Delete";
-            Delete.Width = 5;
             // 
             // splitContainer1
             // 
@@ -262,6 +192,84 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Column1.HeaderText = "#";
+            Column1.Name = "Column1";
+            Column1.Visible = false;
+            Column1.Width = 39;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "ID";
+            Id.Name = "Id";
+            Id.Visible = false;
+            // 
+            // ProductCode
+            // 
+            ProductCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ProductCode.DataPropertyName = "ProductCode";
+            ProductCode.HeaderText = "ÜRÜN KODU";
+            ProductCode.Name = "ProductCode";
+            ProductCode.Width = 106;
+            // 
+            // ProductName
+            // 
+            ProductName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProductName.DataPropertyName = "ProductName";
+            ProductName.HeaderText = "ÜRÜN";
+            ProductName.Name = "ProductName";
+            // 
+            // ProductBarcode
+            // 
+            ProductBarcode.DataPropertyName = "ProductBarcode";
+            ProductBarcode.HeaderText = "BARKOD";
+            ProductBarcode.Name = "ProductBarcode";
+            // 
+            // ProductPrice
+            // 
+            ProductPrice.DataPropertyName = "ProductPrice";
+            ProductPrice.HeaderText = "FİYATI";
+            ProductPrice.Name = "ProductPrice";
+            // 
+            // NetProductAmountInStock
+            // 
+            NetProductAmountInStock.DataPropertyName = "NetProductAmountInStock";
+            NetProductAmountInStock.HeaderText = "STOK";
+            NetProductAmountInStock.Name = "NetProductAmountInStock";
+            // 
+            // ProductUnitTypeColon
+            // 
+            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
+            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
+            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
+            // 
+            // Vat
+            // 
+            Vat.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Vat.DataPropertyName = "Vat";
+            Vat.HeaderText = "KDV";
+            Vat.Name = "Vat";
+            Vat.Width = 56;
+            // 
+            // Edit
+            // 
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Edit.HeaderText = "";
+            Edit.Image = (Image)resources.GetObject("Edit.Image");
+            Edit.Name = "Edit";
+            Edit.Width = 5;
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Delete.HeaderText = "";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.Name = "Delete";
+            Delete.Width = 5;
+            // 
             // frmProductList
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -304,6 +312,7 @@
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductBarcode;
         private DataGridViewTextBoxColumn ProductPrice;
+        private DataGridViewTextBoxColumn NetProductAmountInStock;
         private DataGridViewTextBoxColumn ProductUnitTypeColon;
         private DataGridViewTextBoxColumn Vat;
         private DataGridViewImageColumn Edit;

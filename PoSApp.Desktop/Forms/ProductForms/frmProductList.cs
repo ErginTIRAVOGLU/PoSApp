@@ -32,9 +32,10 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         public bool quickMode = true;
 
-        public frmProductList(IEnumerable<ProductListDTO> _productListDTOs = null, frmPos _frmPos = null)
+        public frmProductList(IEnumerable<ProductListDTOWithStock> _productListDTOs = null, frmPos _frmPos = null)
         {
             InitializeComponent();
+            dGWProduct.AutoGenerateColumns = false;
 
             if (_frmPos != null)
             {
@@ -98,28 +99,31 @@ namespace PoSApp.Desktop.Forms.ProductForms
             switch (colName)
             {
                 case "Edit":
-                    var product = _productRepository.GetById(productId);
+                    var p = _productRepository.GetByIdWithStockNumber(productId);
                     var brands = _brandRepository.GetAll();
                     var categories = _categoryRepository.GetAll();
 
                     frmProduct _frmProduct = new frmProduct(this);
-                    _frmProduct.txtProduct.Text = product.ProductName;
-                    _frmProduct.txtCode.Text = product.ProductCode;
-                    _frmProduct.txtDescription.Text = product.ProductDescription;
-                    _frmProduct.txtBarcode.Text = product.ProductBarcode;
-                    _frmProduct.txtProductPrice.Text = product.ProductPrice.ToString("N4", CultureInfo.CreateSpecificCulture("tr-TR"));
+                    _frmProduct.txtProduct.Text = p.product.ProductName;
+                    _frmProduct.txtCode.Text = p.product.ProductCode;
+                    _frmProduct.txtDescription.Text = p.product.ProductDescription;
+                    _frmProduct.txtBarcode.Text = p.product.ProductBarcode;
+                    decimal totalStock = 0.0M;
+                    decimal.TryParse(p.NetProductAmountInStock.ToString(), out totalStock);
+                    _frmProduct.lblStok.Text = totalStock.ToString();
+                    _frmProduct.txtProductPrice.Text = p.product.ProductPrice.ToString("N4", CultureInfo.CreateSpecificCulture("tr-TR"));
 
                     _frmProduct.cmBoxBrand.DisplayMember = "BrandName";
                     _frmProduct.cmBoxBrand.ValueMember = "Id";
                     _frmProduct.cmBoxBrand.DataSource = brands;
-                    _frmProduct.cmBoxBrand.SelectedValue = product.BrandId;
+                    _frmProduct.cmBoxBrand.SelectedValue = p.product.BrandId;
 
                     _frmProduct.cmBoxCategory.DisplayMember = "CategoryName";
                     _frmProduct.cmBoxCategory.ValueMember = "Id";
                     _frmProduct.cmBoxCategory.DataSource = categories;
-                    _frmProduct.cmBoxCategory.SelectedValue = product.CategoryID;
+                    _frmProduct.cmBoxCategory.SelectedValue = p.product.CategoryID;
 
-                    _frmProduct.txtVat.Text = product.ProductVat.ToString();
+                    _frmProduct.txtVat.Text = p.product.ProductVat.ToString();
 
                     _frmProduct.cmBoxProductUnitType.DataSource = Enum.GetValues(typeof(ProductUnitType))
                             .Cast<Enum>()
@@ -133,7 +137,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     _frmProduct.cmBoxProductUnitType.DisplayMember = "Description";
                     _frmProduct.cmBoxProductUnitType.ValueMember = "value";
 
-                    _frmProduct.cmBoxProductUnitType.SelectedValue = product.ProductUnitType;
+                    _frmProduct.cmBoxProductUnitType.SelectedValue = p.product.ProductUnitType;
                     //_frmProduct.cmBoxProductUnitType.SelectedValue = ProductUnitType.Quantity;
 
                     _frmProduct.productId = productId;
@@ -159,13 +163,13 @@ namespace PoSApp.Desktop.Forms.ProductForms
         public void yukle()
         {
 
-            var productList = _productRepository.GetAllSelected();
+            var productList = _productRepository.GetAllSelectedWithStock();
 
             dGWProduct.DataSource = productList;
             dGWProduct.Refresh();
 
         }
-        public void yukle(IEnumerable<ProductListDTO> productList)
+        public void yukle(IEnumerable<ProductListDTOWithStock> productList)
         {
 
 
@@ -299,7 +303,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
             if (e.KeyCode == Keys.Enter)
             {
                 var criterion = txtProductSearch.Text.ToLower();
-                var productList = _productRepository.GetWhereUrunDialogSearch(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
+                var productList = _productRepository.GetWhereUrunDialogSearchWithStock(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
 
 
                 dGWProduct.DataSource = productList;

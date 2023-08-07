@@ -346,7 +346,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label lblStok;
         public ComboBox cmBoxBrand;
         public ComboBox cmBoxCategory;
         public ComboBox cmBoxProductUnitType;
@@ -359,5 +358,6 @@
         private Label label10;
         public TextBox txtVat;
         private Label label11;
+        public Label lblStok;
     }
 }

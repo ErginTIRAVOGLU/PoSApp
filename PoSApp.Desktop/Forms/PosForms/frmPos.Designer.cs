@@ -657,6 +657,7 @@
             ProductId.DataPropertyName = "ProductId";
             ProductId.HeaderText = "ProductId";
             ProductId.Name = "ProductId";
+            ProductId.Visible = false;
             // 
             // Description
             // 

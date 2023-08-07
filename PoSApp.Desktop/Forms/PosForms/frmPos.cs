@@ -130,7 +130,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             if (e.KeyCode == Keys.Enter)
             {
                 var criterion = txtProductSearch.Text.ToLower();
-                var productList = _productRepository.GetWhereUrunDialogSearch(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion)).ToList();
+                var productList = _productRepository.GetWhereUrunDialogSearchWithStock(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion)).ToList();
 
                 var count = productList.Count;
 

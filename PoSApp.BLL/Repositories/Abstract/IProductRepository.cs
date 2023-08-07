@@ -1,4 +1,5 @@
-﻿using PoSApp.DAL;
+﻿using PoSApp.BLL.Repositories.Concrete;
+using PoSApp.DAL;
 using PoSApp.Entities;
 using System;
 using System.Collections;
@@ -11,6 +12,6 @@ namespace PoSApp.BLL.Repositories.Abstract
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
-
+        public ProductWithStock GetByIdWithStockNumber(int id);
     }
 }
