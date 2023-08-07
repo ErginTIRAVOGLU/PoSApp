@@ -258,11 +258,13 @@ namespace PoSApp.Desktop.Forms.PosForms
 
         private void dGWPayedDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (dGWPayedDetail.Columns[e.ColumnIndex].Name == "PayedAmountPaymentType")
             {
                 PaymentType enumValue = (PaymentType)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
             }
+            */
         }
 
         private void dGWPayedDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)

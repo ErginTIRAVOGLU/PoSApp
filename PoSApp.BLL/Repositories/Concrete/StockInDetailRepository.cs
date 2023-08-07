@@ -27,7 +27,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                 {
                     Id = x.Id,        
                     StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,                  
-                    StockInDetailUnitType = x.Product.ProductUnitType,
+                    StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     ProductCode = x.Product.ProductCode,
                     ProductName = x.Product.ProductName,
                     ProductId = x.Product.Id,
@@ -41,7 +41,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                     ProductTotalDiscountAmount = x.ProductTotalDiscountAmount,
                     ProductTotalVatAmount = x.ProductTotalVatAmount,
                     ProductLastPriceWithoutVat = x.ProductLastPriceWithoutVat,
-                    ProductLastPriceWithVat = x.ProductLastPriceWithoutVat
+                    ProductLastPriceWithVat = x.ProductLastPriceWithVat
 
 
 
@@ -67,7 +67,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                 {
                     Id = x.Id,
                     StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,
-                    StockInDetailUnitType = x.Product.ProductUnitType,
+                    StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     ProductCode = x.Product.ProductCode,
                     ProductName = x.Product.ProductName,
                     ProductId = x.Product.Id,
@@ -80,9 +80,9 @@ namespace PoSApp.BLL.Repositories.Concrete
                     ProductTotalDiscountAmount = x.ProductTotalDiscountAmount,
                     ProductTotalVatAmount = x.ProductTotalVatAmount,
                     ProductLastPriceWithoutVat = x.ProductLastPriceWithoutVat,
-                    ProductLastPriceWithVat = x.ProductLastPriceWithoutVat
+                    ProductLastPriceWithVat = x.ProductLastPriceWithVat
 
-                    
+
 
                 }).ToList();
 
@@ -100,7 +100,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public string ProductName { get; set; }
 
         public decimal StockInDetailUnit { get; set; }
-        public ProductUnitType StockInDetailUnitType { get; set; }
+        public string StockInDetailUnitType { get; set; }
 
         public decimal ProductArrivalPrice { get; set; }
         public decimal ProductDiscountPercentage { get; set; }

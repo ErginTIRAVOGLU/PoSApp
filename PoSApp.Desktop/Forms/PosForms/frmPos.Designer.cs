@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPos));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlSide = new Panel();
+            btnPosKaydet = new Button();
             btnLockTheButtons = new Button();
             btnExit = new Button();
             btnUnLockTheButtons = new Button();
@@ -81,7 +82,6 @@
             Vat = new DataGridViewTextBoxColumn();
             Total = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
-            btnPosKaydet = new Button();
             pnlSide.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -113,6 +113,16 @@
             pnlSide.Name = "pnlSide";
             pnlSide.Size = new Size(207, 700);
             pnlSide.TabIndex = 0;
+            // 
+            // btnPosKaydet
+            // 
+            btnPosKaydet.Location = new Point(24, 631);
+            btnPosKaydet.Name = "btnPosKaydet";
+            btnPosKaydet.Size = new Size(65, 28);
+            btnPosKaydet.TabIndex = 12;
+            btnPosKaydet.Text = "Kaydet";
+            btnPosKaydet.UseVisualStyleBackColor = true;
+            btnPosKaydet.Click += btnPosKaydet_Click;
             // 
             // btnLockTheButtons
             // 
@@ -549,6 +559,7 @@
             txtProductSearch.PlaceholderText = "Ürün Ara";
             txtProductSearch.Size = new Size(531, 25);
             txtProductSearch.TabIndex = 2;
+            txtProductSearch.TextChanged += txtProductSearch_TextChanged_1;
             txtProductSearch.KeyDown += txtProductSearch_KeyDown;
             // 
             // pictureBox2
@@ -710,16 +721,6 @@
             Delete.Name = "Delete";
             Delete.Width = 5;
             // 
-            // btnPosKaydet
-            // 
-            btnPosKaydet.Location = new Point(24, 631);
-            btnPosKaydet.Name = "btnPosKaydet";
-            btnPosKaydet.Size = new Size(65, 28);
-            btnPosKaydet.TabIndex = 12;
-            btnPosKaydet.Text = "Kaydet";
-            btnPosKaydet.UseVisualStyleBackColor = true;
-            btnPosKaydet.Click += btnPosKaydet_Click;
-            // 
             // frmPos
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -729,6 +730,7 @@
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(pnlSide);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");

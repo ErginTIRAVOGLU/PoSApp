@@ -362,6 +362,7 @@
             Controls.Add(pnlMain);
             Controls.Add(pnlSide);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");

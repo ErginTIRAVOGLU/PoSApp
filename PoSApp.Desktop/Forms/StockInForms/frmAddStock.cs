@@ -45,17 +45,42 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            int tCount = 0;
+            decimal tArrivalPrice = 0M;
+            decimal tDiscountPercentage = 0M;
+            decimal tUnitDiscountAmount = 0M;
+            decimal tTotalDiscountAmount = 0M;
+            decimal tTotalVatAmount = 0M;
+            decimal tLastPriceWithoutVat = 0M;
+            decimal tLastPriceWithVat = 0M;
+
             warehouseId = int.Parse(cmBoxWarehouse.SelectedValue.ToString());
             warehouseName = cmBoxWarehouse.Text;
-            productQuantity = int.Parse(txtCount.Text);
+          
 
-            productArrivalPrice = decimal.Parse(txtArrivalPrice.Text);
-            productDiscountPercentage = decimal.Parse(txtDiscountPercentage.Text);
-            productUnitDiscountAmount = decimal.Parse(txtUnitDiscountAmount.Text);
-            productTotalDiscountAmount = decimal.Parse(txtTotalDiscountAmount.Text);
-            productTotalVatAmount = decimal.Parse(txtTotalVatAmount.Text);
-            productLastPriceWithoutVat = decimal.Parse(txtLastPriceWithoutVat.Text);
-            productLastPriceWithVat = decimal.Parse(txtLastPriceWithVat.Text);
+            int.TryParse(txtCount.Text, out tCount);
+            productQuantity = tCount;
+
+            decimal.TryParse(txtArrivalPrice.Text, out tArrivalPrice);
+            productArrivalPrice = tArrivalPrice;
+
+            decimal.TryParse(txtDiscountPercentage.Text, out tDiscountPercentage);
+            productDiscountPercentage = tDiscountPercentage;
+
+            decimal.TryParse(txtUnitDiscountAmount.Text, out tUnitDiscountAmount);
+            productUnitDiscountAmount = tUnitDiscountAmount;
+
+            decimal.TryParse(txtTotalDiscountAmount.Text, out tTotalDiscountAmount);
+            productTotalDiscountAmount = tTotalDiscountAmount;
+
+            decimal.TryParse(txtTotalVatAmount.Text, out tTotalVatAmount);
+            productTotalVatAmount = tTotalVatAmount;
+
+            decimal.TryParse(txtLastPriceWithoutVat.Text, out tLastPriceWithoutVat);
+            productLastPriceWithoutVat = tLastPriceWithoutVat;
+
+            decimal.TryParse(txtLastPriceWithVat.Text, out tLastPriceWithVat);
+            productLastPriceWithVat = tLastPriceWithVat;
 
 
             this.DialogResult = DialogResult.OK;
@@ -85,14 +110,19 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
             decimal.TryParse(txtDiscountPercentage.Text, out tDiscountPercentage);
             productDiscountPercentage = tDiscountPercentage;
+            
             decimal.TryParse(txtUnitDiscountAmount.Text, out tUnitDiscountAmount);
             productUnitDiscountAmount = tUnitDiscountAmount;
+            
             decimal.TryParse(txtTotalDiscountAmount.Text, out tTotalDiscountAmount);
             productTotalDiscountAmount = tTotalDiscountAmount;
+            
             decimal.TryParse(txtTotalVatAmount.Text, out tTotalVatAmount);
             productTotalVatAmount = tTotalVatAmount;
+            
             decimal.TryParse(txtLastPriceWithoutVat.Text, out tLastPriceWithoutVat);
             productLastPriceWithoutVat = tLastPriceWithoutVat;
+            
             decimal.TryParse(txtLastPriceWithVat.Text, out tLastPriceWithVat);
             productLastPriceWithVat = tLastPriceWithVat;
 

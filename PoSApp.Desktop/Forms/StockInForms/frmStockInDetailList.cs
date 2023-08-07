@@ -116,7 +116,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void txtProductSearch_TextChanged(object sender, EventArgs e)
         {
-
+            /*
             // var productList = _productRepository.GetWhereUrunGirisAsync(m => m.ProductName.ToLower(new CultureInfo("tr-TR")).Contains(txtProductSearch.Text.ToLower(new CultureInfo("tr-TR"))));
             // var productList = _productRepository.GetWhereUrunGirisAsync(x => EF.Functions.Like(x.ProductName, $"%{txtProductSearch.Text}%"));
             var criterion = txtProductSearch.Text.ToLower();
@@ -125,7 +125,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
             dGWProduct.DataSource = productList;
             dGWProduct.Refresh();
-
+            */
         }
 
 
@@ -187,7 +187,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                         _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
                         _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
                         _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
-
+                        _stockInDetail.ProductLastPriceWithVat = item.ProductLastPriceWithVat;
                         _stockInDetailRepository.Insert(_stockInDetail);
                     }
                     else
@@ -205,6 +205,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                         _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
                         _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
                         _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
+                        _stockInDetail.ProductLastPriceWithVat = item.ProductLastPriceWithVat;
                         _stockInDetailRepository.Update(_stockInDetail);
 
                     }
@@ -269,6 +270,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                     _stockInDetail.ProductTotalDiscountAmount = item.ProductTotalDiscountAmount;
                     _stockInDetail.ProductTotalVatAmount = item.ProductTotalVatAmount;
                     _stockInDetail.ProductLastPriceWithoutVat = item.ProductLastPriceWithoutVat;
+                    _stockInDetail.ProductLastPriceWithVat = item.ProductLastPriceWithVat;
                     _stockInDetailRepository.Insert(_stockInDetail);
                 }
                 IsUpdate = true;
@@ -322,11 +324,13 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void dGWStockInDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (dGWStockInDetail.Columns[e.ColumnIndex].Name == "StockInDetailUnitType")
             {
                 ProductUnitType enumValue = (ProductUnitType)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
             }
+            */
         }
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
@@ -336,13 +340,26 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
         private void frmStockInDetailList_Load(object sender, EventArgs e)
         {
-            
+
             yukle();
         }
 
         private void pbAdd_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtProductSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            { 
+            var criterion = txtProductSearch.Text.ToLower();
+            var productList = _productRepository.GetWhereUrunGiris(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
+
+
+            dGWProduct.DataSource = productList;
+            dGWProduct.Refresh();
+            }
         }
     }
 }

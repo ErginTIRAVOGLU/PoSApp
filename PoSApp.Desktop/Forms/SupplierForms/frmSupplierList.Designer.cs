@@ -197,6 +197,7 @@
             ClientSize = new Size(800, 510);
             Controls.Add(dGWSupplier);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmSupplierList";

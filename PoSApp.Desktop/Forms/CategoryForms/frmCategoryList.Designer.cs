@@ -32,6 +32,7 @@ namespace PoSApp.Desktop.Forms.CategoryForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoryList));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             pbAdd = new PictureBox();
@@ -101,16 +102,18 @@ namespace PoSApp.Desktop.Forms.CategoryForms
             // 
             dGWCategory.AllowUserToAddRows = false;
             dGWCategory.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.LightSkyBlue;
+            dGWCategory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dGWCategory.BackgroundColor = Color.White;
             dGWCategory.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(37, 37, 38);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dGWCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dGWCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWCategory.ColumnHeadersHeight = 30;
             dGWCategory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dGWCategory.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, CategoryName, Edit, Delete });
@@ -168,6 +171,7 @@ namespace PoSApp.Desktop.Forms.CategoryForms
             ClientSize = new Size(800, 510);
             Controls.Add(dGWCategory);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmCategoryList";

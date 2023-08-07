@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBrandList));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             pbAdd = new PictureBox();
@@ -98,16 +99,18 @@
             // 
             dGWBrand.AllowUserToAddRows = false;
             dGWBrand.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.LightSkyBlue;
+            dGWBrand.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dGWBrand.BackgroundColor = Color.White;
             dGWBrand.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(37, 37, 38);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dGWBrand.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dGWBrand.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWBrand.ColumnHeadersHeight = 30;
             dGWBrand.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dGWBrand.Columns.AddRange(new DataGridViewColumn[] { Id, Column3, Edit, Delete });
@@ -159,6 +162,7 @@
             ClientSize = new Size(800, 510);
             Controls.Add(dGWBrand);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmBrandList";

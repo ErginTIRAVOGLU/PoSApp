@@ -30,7 +30,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                     CartDiscount =x.DiscountTotal,
                     CartVat =x.Vat,
                     CartPriceTotal =x.PriceTotal,                    
-                    CartStatusType = x.Status,
+                    CartStatusType = x.Status == CartStatus.Pending ? "Ödeme Bekliyor" : x.Status == CartStatus.Payed ? "Ödendi" : "İptal Edildi",
                     CartDate =x.CartDate
                 }).ToList();
 
@@ -49,7 +49,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                     CartDiscount = x.DiscountTotal,
                     CartVat = x.Vat,
                     CartPriceTotal = x.PriceTotal,
-                    CartStatusType = x.Status,
+                    CartStatusType = x.Status== CartStatus.Pending?"Ödeme Bekliyor": x.Status == CartStatus.Payed?"Ödendi":"İptal Edildi",
                     CartDate = x.CartDate
                 }).ToList();
 
@@ -106,7 +106,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public decimal CartDiscount { get; set; }
         public decimal CartVat { get; set; }
         public decimal CartPriceTotal { get; set; }       
-        public CartStatus CartStatusType { get; set; }
+        public string CartStatusType { get; set; }
         public DateTime CartDate { get; set; }
        
 

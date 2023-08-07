@@ -31,7 +31,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductName = x.ProductName,                        
                         ProductBarcode = x.ProductBarcode,
                         ProductPrice = x.ProductPrice,                       
-                        ProductUnitType = x.ProductUnitType,
+                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet": "Gram",
                         Vat = x.ProductVat,
                         
                         
@@ -85,7 +85,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductName = x.ProductName,
                         ProductBarcode = x.ProductBarcode,
                         ProductPrice = x.ProductPrice,
-                        ProductUnitType = x.ProductUnitType,
+                        ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat
                     }).ToList();
 
@@ -101,7 +101,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public string ProductBarcode { get; set; }
          
         public decimal ProductPrice { get; set; }      
-        public ProductUnitType ProductUnitType { get; set; }
+        public string ProductUnitType { get; set; }
         public int Vat { get; set; }
     }
 

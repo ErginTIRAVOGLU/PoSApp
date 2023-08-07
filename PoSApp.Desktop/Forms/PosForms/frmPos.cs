@@ -167,7 +167,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                             {
                                 Description = returnedProductName,
                                 Quantity = returnedProductQuantity,
-                                CartDetailUnitType = returnedProductUnitType,
+                                CartDetailUnitType = returnedProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                                 Discount = 0,
                                 Price = returnedProductPrice,
                                 Vat = returnedProductVat,
@@ -210,11 +210,13 @@ namespace PoSApp.Desktop.Forms.PosForms
 
         private void dGWCartDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (dGWCartDetail.Columns[e.ColumnIndex].Name == "CartDetailUnitType")
             {
                 ProductUnitType enumValue = (ProductUnitType)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
             }
+            */
         }
 
         private void btnProductList_Click(object sender, EventArgs e)
@@ -235,7 +237,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             {
                 Description = returnedProductName,
                 Quantity = returnedProductQuantity,
-                CartDetailUnitType = returnedProductUnitType,
+                CartDetailUnitType = returnedProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                 Discount = 0,
                 Price = returnedProductPrice,
                 Vat = returnedVat,
@@ -515,7 +517,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                     Price = item.Price,
                     Vat = item.Vat,
                     ProductUnit = item.Quantity,
-                    ProductUnitType = item.CartDetailUnitType,
+                    ProductUnitType = item.CartDetailUnitType == "Adet" ? ProductUnitType.Quantity : ProductUnitType.Gram,
                     ProductDiscount = item.Discount,
                     ProductId = item.ProductId,
                     Description = item.Description
@@ -715,7 +717,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                     Price = item.Price,
                     Vat = item.Vat,
                     ProductUnit = item.Quantity,
-                    ProductUnitType = item.CartDetailUnitType,
+                    ProductUnitType = item.CartDetailUnitType == "Adet" ? ProductUnitType.Quantity : ProductUnitType.Gram,
                     ProductDiscount = item.Discount,
                     ProductId = item.ProductId,
                     Description = item.Description
@@ -737,15 +739,20 @@ namespace PoSApp.Desktop.Forms.PosForms
                 cartDetail.Description = item.Description;
 
                 _cartDetailRepository.Update(cartDetail);
-               
+
 
             }
- 
+
             _cartRepository.Update(cart);
             oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo).ToList();
 
             unlockTheButtons();
             FillGridView();
+        }
+
+        private void txtProductSearch_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

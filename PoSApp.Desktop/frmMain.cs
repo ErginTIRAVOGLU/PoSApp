@@ -84,6 +84,7 @@ namespace PoSApp.Desktop
         private void btnProduct_Click(object sender, EventArgs e)
         {
             frmProductList frm = new frmProductList();
+
             frm.TopLevel = false;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(frm);

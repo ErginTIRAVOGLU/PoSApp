@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
- 
+
 using PoSApp.BLL.Repositories.Abstract;
 using PoSApp.DAL;
 using PoSApp.Entities;
@@ -25,16 +25,17 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Select(x => new CartDetailList { 
+                var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Select(x => new CartDetailList
+                {
                     Id = x.Id,
                     Description = x.Description,//x.Product.ProductName,
-                     CartDetailUnitType= x.ProductUnitType,
-                     Vat=x.Product.ProductVat,
-                     Discount=x.ProductDiscount,
-                     Price=x.Price,
-                     Quantity=x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
-                     Total = x.PriceTotal,
-                     ProductId=x.ProductId
+                    CartDetailUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
+                    Vat = x.Product.ProductVat,
+                    Discount = x.ProductDiscount,
+                    Price = x.Price,
+                    Quantity = x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
+                    Total = x.PriceTotal,
+                    ProductId = x.ProductId
                 }).ToList();
 
                 return list;
@@ -44,11 +45,11 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Where(m=>m.Cart.TransNo==transNo).Select(x => new CartDetailList
+                var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Select(x => new CartDetailList
                 {
                     Id = x.Id,
                     Description = x.Description, //x.Product.ProductName,
-                    CartDetailUnitType = x.ProductUnitType,
+                    CartDetailUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     Vat = x.Product.ProductVat,
                     Discount = x.ProductDiscount,
                     Price = x.Price,
@@ -62,20 +63,20 @@ namespace PoSApp.BLL.Repositories.Concrete
         }
         public virtual IEnumerable<PrintDetailList> GetAllPrintbyTransNo(string transNo)
         {
-            
+
             using (_postDbContext = new PosDbContext())
             {
                 var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Select(x => new PrintDetailList
-                {             
-                    ProductCode= x.Product.ProductCode,
+                {
+                    ProductCode = x.Product.ProductCode,
                     Description = x.Description,//x.Product.ProductName,                     
                     Vat = x.Product.ProductVat,
                     Discount = x.ProductDiscount,
                     Price = x.Price,
-                    CartDetailUnitTypeName= x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
+                    CartDetailUnitTypeName = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     Quantity = x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
                     Total = x.ProductUnitType == ProductUnitType.Quantity ? x.Price * Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
-                    
+
                 }).ToList();
 
                 return list;
@@ -87,9 +88,9 @@ namespace PoSApp.BLL.Repositories.Concrete
     {
         public int Id { get; set; } = 0;
         public int ProductId { get; set; }
-        public string Description { get; set; }       
-        public decimal Quantity { get; set; }       
-        public ProductUnitType CartDetailUnitType { get; set; }
+        public string Description { get; set; }
+        public decimal Quantity { get; set; }
+        public string CartDetailUnitType { get; set; }
 
         public decimal Discount { get; set; }
         public decimal Price { get; set; }

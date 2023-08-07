@@ -36,9 +36,6 @@
             pbAdd = new PictureBox();
             pBClose = new PictureBox();
             dGWProduct = new DataGridView();
-            splitContainer1 = new SplitContainer();
-            txtProductSearch = new TextBox();
-            pictureBox1 = new PictureBox();
             Column1 = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
             ProductCode = new DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@
             Vat = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
+            splitContainer1 = new SplitContainer();
+            txtProductSearch = new TextBox();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbAdd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
@@ -147,56 +147,12 @@
             dGWProduct.KeyDown += dGWProduct_KeyDown;
             dGWProduct.KeyUp += dGWProduct_KeyUp;
             // 
-            // splitContainer1
-            // 
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.FixedPanel = FixedPanel.Panel1;
-            splitContainer1.IsSplitterFixed = true;
-            splitContainer1.Location = new Point(0, 40);
-            splitContainer1.Name = "splitContainer1";
-            splitContainer1.Orientation = Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            splitContainer1.Panel1.Controls.Add(txtProductSearch);
-            splitContainer1.Panel1.Controls.Add(pictureBox1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            splitContainer1.Panel2.Controls.Add(dGWProduct);
-            splitContainer1.Size = new Size(800, 470);
-            splitContainer1.SplitterDistance = 37;
-            splitContainer1.TabIndex = 6;
-            // 
-            // txtProductSearch
-            // 
-            txtProductSearch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtProductSearch.Location = new Point(33, 6);
-            txtProductSearch.Name = "txtProductSearch";
-            txtProductSearch.PlaceholderText = "Ürün Ara";
-            txtProductSearch.Size = new Size(755, 25);
-            txtProductSearch.TabIndex = 3;
-            txtProductSearch.TextChanged += txtProductSearch_TextChanged;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Location = new Point(3, 7);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 24);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
             // Column1
             // 
             Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Column1.HeaderText = "#";
             Column1.Name = "Column1";
             Column1.Visible = false;
-            Column1.Width = 39;
             // 
             // Id
             // 
@@ -262,6 +218,50 @@
             Delete.Name = "Delete";
             Delete.Width = 5;
             // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.FixedPanel = FixedPanel.Panel1;
+            splitContainer1.IsSplitterFixed = true;
+            splitContainer1.Location = new Point(0, 40);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(txtProductSearch);
+            splitContainer1.Panel1.Controls.Add(pictureBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(dGWProduct);
+            splitContainer1.Size = new Size(800, 470);
+            splitContainer1.SplitterDistance = 37;
+            splitContainer1.TabIndex = 6;
+            // 
+            // txtProductSearch
+            // 
+            txtProductSearch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtProductSearch.Location = new Point(33, 6);
+            txtProductSearch.Name = "txtProductSearch";
+            txtProductSearch.PlaceholderText = "Ürün Ara";
+            txtProductSearch.Size = new Size(755, 25);
+            txtProductSearch.TabIndex = 3;
+            txtProductSearch.TextChanged += txtProductSearch_TextChanged;
+            txtProductSearch.KeyDown += txtProductSearch_KeyDown;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Location = new Point(3, 7);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(24, 24);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // frmProductList
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -269,6 +269,7 @@
             ClientSize = new Size(800, 510);
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmProductList";

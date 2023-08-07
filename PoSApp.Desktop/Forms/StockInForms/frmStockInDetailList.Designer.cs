@@ -57,8 +57,6 @@
             splitContainer4 = new SplitContainer();
             splitContainer3 = new SplitContainer();
             dGWStockInDetail = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            StockInDetailUnit = new DataGridViewTextBoxColumn();
             detailId = new DataGridViewTextBoxColumn();
             detailProductId = new DataGridViewTextBoxColumn();
             detailProductCode = new DataGridViewTextBoxColumn();
@@ -75,6 +73,8 @@
             ProductLastPriceWithoutVat = new DataGridViewTextBoxColumn();
             ProductLastPriceWithVat = new DataGridViewTextBoxColumn();
             detailDelete = new DataGridViewImageColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            StockInDetailUnit = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
@@ -215,6 +215,7 @@
             txtProductSearch.Size = new Size(911, 25);
             txtProductSearch.TabIndex = 0;
             txtProductSearch.TextChanged += txtProductSearch_TextChanged;
+            txtProductSearch.KeyDown += txtProductSearch_KeyDown;
             // 
             // btnCancel
             // 
@@ -412,19 +413,6 @@
             dGWStockInDetail.CellContentClick += dGWStockInDetail_CellContentClick;
             dGWStockInDetail.CellFormatting += dGWStockInDetail_CellFormatting;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            dataGridViewTextBoxColumn1.HeaderText = "#";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // StockInDetailUnit
-            // 
-            StockInDetailUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StockInDetailUnit.DataPropertyName = "StockInDetailUnit";
-            StockInDetailUnit.HeaderText = "Adet";
-            StockInDetailUnit.Name = "StockInDetailUnit";
-            // 
             // detailId
             // 
             detailId.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -433,7 +421,6 @@
             detailId.Name = "detailId";
             detailId.ReadOnly = true;
             detailId.Visible = false;
-            detailId.Width = 39;
             // 
             // detailProductId
             // 
@@ -558,6 +545,19 @@
             detailDelete.SortMode = DataGridViewColumnSortMode.Automatic;
             detailDelete.Width = 17;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            dataGridViewTextBoxColumn1.HeaderText = "#";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // StockInDetailUnit
+            // 
+            StockInDetailUnit.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StockInDetailUnit.DataPropertyName = "StockInDetailUnit";
+            StockInDetailUnit.HeaderText = "Adet";
+            StockInDetailUnit.Name = "StockInDetailUnit";
+            // 
             // frmStockInDetailList
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -566,6 +566,7 @@
             ControlBox = false;
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmStockInDetailList";

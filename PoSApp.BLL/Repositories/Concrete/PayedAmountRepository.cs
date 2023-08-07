@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
- 
+
 using PoSApp.BLL.Repositories.Abstract;
 using PoSApp.DAL;
 using PoSApp.Entities;
@@ -22,12 +22,17 @@ namespace PoSApp.BLL.Repositories.Concrete
 
         public virtual IEnumerable<PayedAmountList> GetAllSelected(string transNo)
         {
-            List<PayedAmountList> list =new List<PayedAmountList>();
+            List<PayedAmountList> list = new List<PayedAmountList>();
             using (_postDbContext = new PosDbContext())
             {
-                list =  _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m=>m.Cart.TransNo == transNo).Include(m=>m.Cart).Select(x => new PayedAmountList { Id = x.Id, PriceTotal = x.PriceTotal, PaymentType=x.PayedType }).ToList();
+                list = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).Select(x => new PayedAmountList
+                {
+                    Id = x.Id,
+                    PriceTotal = x.PriceTotal,
+                    PaymentType = x.PayedType == PaymentType.Cash ? "Nakit" : x.PayedType == PaymentType.CreditCard ? "Kredi Kartı" : x.PayedType == PaymentType.BankTransfer ? "Banka Transferi" : "Yemek Kartı"
+                }).ToList();
 
-              
+
             }
             return list;
         }
@@ -37,7 +42,7 @@ namespace PoSApp.BLL.Repositories.Concrete
             decimal totalPayed = 0;
             using (_postDbContext = new PosDbContext())
             {
-                totalPayed=_postDbContext.Set<PayedAmount>().Where(m=>m.IsDeleted==false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).Select(m=>m.PriceTotal).Sum();
+                totalPayed = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).Select(m => m.PriceTotal).Sum();
             }
             return totalPayed;
         }
@@ -48,7 +53,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         public int Id { get; set; }
         [Column(TypeName = "decimal(18,4)")]
         public decimal PriceTotal { get; set; }
-        public PaymentType PaymentType { get; set; }
+        public string PaymentType { get; set; }
 
     }
 }

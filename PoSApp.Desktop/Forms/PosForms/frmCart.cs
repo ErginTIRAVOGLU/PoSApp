@@ -102,11 +102,13 @@ namespace PoSApp.Desktop.Forms.PosForms
 
         private void dGWCart_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (dGWCart.Columns[e.ColumnIndex].Name == "CartStatusType")
             {
                 CartStatus enumValue = (CartStatus)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
             }
+            */
         }
     }
 }

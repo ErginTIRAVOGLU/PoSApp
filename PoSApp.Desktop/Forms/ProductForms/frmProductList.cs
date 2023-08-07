@@ -35,6 +35,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
         public frmProductList(IEnumerable<ProductListDTO> _productListDTOs = null, frmPos _frmPos = null)
         {
             InitializeComponent();
+
             if (_frmPos != null)
             {
                 frmPos = _frmPos;
@@ -175,11 +176,13 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         private void dGWProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (dGWProduct.Columns[e.ColumnIndex].Name == "ProductUnitTypeColon")
             {
                 ProductUnitType enumValue = (ProductUnitType)e.Value;
                 e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
             }
+            */
         }
 
         private void dGWProduct_KeyDown(object sender, KeyEventArgs e)
@@ -232,7 +235,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         private void txtProductSearch_TextChanged(object sender, EventArgs e)
         {
-
+            /*
 
 
             var criterion = txtProductSearch.Text.ToLower();
@@ -241,7 +244,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
             dGWProduct.DataSource = productList;
             dGWProduct.Refresh();
-
+            */
 
         }
 
@@ -288,6 +291,19 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     deleteProduct(productId);
                     yukle();
                 }
+            }
+        }
+
+        private void txtProductSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var criterion = txtProductSearch.Text.ToLower();
+                var productList = _productRepository.GetWhereUrunDialogSearch(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
+
+
+                dGWProduct.DataSource = productList;
+                dGWProduct.Refresh();
             }
         }
     }
