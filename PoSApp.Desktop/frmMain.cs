@@ -4,6 +4,7 @@ using PoSApp.Desktop.Forms.BrandForms;
 using PoSApp.Desktop.Forms.CategoryForms;
 using PoSApp.Desktop.Forms.PosForms;
 using PoSApp.Desktop.Forms.ProductForms;
+using PoSApp.Desktop.Forms.RaportForms;
 using PoSApp.Desktop.Forms.StockInForms;
 using PoSApp.Desktop.Forms.SupplierForms;
 using PoSApp.Desktop.Forms.UpdateForms;
@@ -193,7 +194,8 @@ namespace PoSApp.Desktop
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-
+            frmStockInProductReports frmStockInProductReports = new frmStockInProductReports();
+            frmStockInProductReports.ShowDialog();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

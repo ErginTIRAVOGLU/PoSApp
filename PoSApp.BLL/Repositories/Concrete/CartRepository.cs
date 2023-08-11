@@ -77,12 +77,12 @@ namespace PoSApp.BLL.Repositories.Concrete
             }
             return cart;
         }
-        public string GetTransNo()
+        public string GetTransNo(DateTime Tarih)
         {
             var transNo = "";
             using (_postDbContext = new PosDbContext())
-            {
-                var firstDateOfToday = DateTime.Now.ToString("ddMMyyyy");             
+            {              
+                var firstDateOfToday = Tarih.ToString("ddMMyyyy");             
                 int count = 0;
                 var transNoValue = _postDbContext.Set<Cart>().Where(m => m.TransNo.StartsWith(firstDateOfToday) && m.IsDeleted == false).OrderByDescending(m => m.TransNo).Select(m => m.TransNo).FirstOrDefault();
                 if (!string.IsNullOrEmpty(transNoValue))

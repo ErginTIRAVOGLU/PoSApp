@@ -43,9 +43,9 @@ namespace PoSApp.Desktop.Forms.PosForms
         }
 
 
-        private void GetTransNo()
+        private void GetTransNo(DateTime Tarih)
         {
-            _transNo = _cartRepository.GetTransNo();
+            _transNo = _cartRepository.GetTransNo(Tarih);
             txtTransNo.Text = _transNo;
         }
 
@@ -78,7 +78,7 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void btnNew_Click(object sender, EventArgs e)
         {
             clearAll();
-            GetTransNo();
+            GetTransNo(dTPickerCart.Value);
             unlockTheButtons();
 
             txtProductSearch.Enabled = true;

@@ -54,7 +54,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
-                        NetProductAmountInStock = x.ProductUnitType == ProductUnitType.Quantity ? (x.StockInDetails.Sum(sd => sd.StockInDetailUnit)- x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0"): (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0.0000")
+                        NetProductAmountInStock =(x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
 
                     }).ToList();
 
@@ -127,7 +127,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
-                        NetProductAmountInStock = x.ProductUnitType == ProductUnitType.Quantity ? (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0") : (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0.0000")
+                        NetProductAmountInStock = (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
                     }).ToList();
 
                 return list;
