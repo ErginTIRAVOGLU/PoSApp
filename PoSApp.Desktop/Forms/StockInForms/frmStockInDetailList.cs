@@ -227,8 +227,15 @@ namespace PoSApp.Desktop.Forms.StockInForms
         }
         private void formClose(object sender, EventArgs e)
         {
-            frmMain frm = (frmMain)this.Parent.Parent;
-            frm.btnStockIn_Click(sender, e);
+            
+            if(this.Parent!=null)
+            { 
+                if(this.Parent.Parent != null)
+                { 
+                    frmMain frm = (frmMain)this.Parent.Parent;
+                    frm.btnStockIn_Click(sender, e);
+                }
+            }
             this.Close();
         }
         private void btnSave_Click(object sender, EventArgs e)

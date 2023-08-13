@@ -194,8 +194,30 @@ namespace PoSApp.Desktop
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            frmStockInProductReports frmStockInProductReports = new frmStockInProductReports();
-            frmStockInProductReports.ShowDialog();
+            frmMainReportForm frm = new frmMainReportForm(this);
+            frm.Show();
+
+
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(frm);
+
+            frm.BringToFront();
+            frm.Show();
+            /*
+            frmStockInProductReports frm = new frmStockInProductReports(this);
+            frm.Show();
+
+
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(frm);
+
+            frm.BringToFront();
+            frm.Show();
+            */
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

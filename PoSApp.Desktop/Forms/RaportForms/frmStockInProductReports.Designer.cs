@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInProductReports));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -43,17 +44,20 @@
             txtProductSearch = new TextBox();
             pictureBox1 = new PictureBox();
             dGWProduct = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
             Id = new DataGridViewTextBoxColumn();
+            StockInId = new DataGridViewTextBoxColumn();
             ProductCode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
             ProductBarcode = new DataGridViewTextBoxColumn();
+            onePrice = new DataGridViewTextBoxColumn();
+            StockInDetailUnit = new DataGridViewTextBoxColumn();
+            StockInDetailUnitType = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
-            NetProductAmountInStock = new DataGridViewTextBoxColumn();
-            ProductUnitTypeColon = new DataGridViewTextBoxColumn();
-            Vat = new DataGridViewTextBoxColumn();
+            StockInDate = new DataGridViewTextBoxColumn();
             Edit = new DataGridViewImageColumn();
             Delete = new DataGridViewImageColumn();
+            cProductMenuStrip = new ContextMenuStrip(components);
+            tSMIProductStockInDetail = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -66,6 +70,7 @@
             splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
+            cProductMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -90,6 +95,7 @@
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 0;
             pBClose.TabStop = false;
+            pBClose.Click += pBClose_Click;
             // 
             // panel1
             // 
@@ -217,7 +223,8 @@
             dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Column1, Id, ProductCode, ProductName, ProductBarcode, ProductPrice, NetProductAmountInStock, ProductUnitTypeColon, Vat, Edit, Delete });
+            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Id, StockInId, ProductCode, ProductName, ProductBarcode, onePrice, StockInDetailUnit, StockInDetailUnitType, ProductPrice, StockInDate, Edit, Delete });
+            dGWProduct.ContextMenuStrip = cProductMenuStrip;
             dGWProduct.Dock = DockStyle.Fill;
             dGWProduct.EditMode = DataGridViewEditMode.EditOnF2;
             dGWProduct.EnableHeadersVisualStyles = false;
@@ -230,19 +237,19 @@
             dGWProduct.Size = new Size(935, 457);
             dGWProduct.TabIndex = 6;
             // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Column1.HeaderText = "#";
-            Column1.Name = "Column1";
-            Column1.Visible = false;
-            // 
             // Id
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "ID";
             Id.Name = "Id";
             Id.Visible = false;
+            // 
+            // StockInId
+            // 
+            StockInId.DataPropertyName = "StockInId";
+            StockInId.HeaderText = "STOCKINID";
+            StockInId.Name = "StockInId";
+            StockInId.Visible = false;
             // 
             // ProductCode
             // 
@@ -265,31 +272,37 @@
             ProductBarcode.HeaderText = "BARKOD";
             ProductBarcode.Name = "ProductBarcode";
             // 
+            // onePrice
+            // 
+            onePrice.DataPropertyName = "onePrice";
+            onePrice.HeaderText = "ALIŞ FİYATI";
+            onePrice.Name = "onePrice";
+            // 
+            // StockInDetailUnit
+            // 
+            StockInDetailUnit.DataPropertyName = "StockInDetailUnit";
+            StockInDetailUnit.HeaderText = "ADET/GRAM";
+            StockInDetailUnit.Name = "StockInDetailUnit";
+            // 
+            // StockInDetailUnitType
+            // 
+            StockInDetailUnitType.DataPropertyName = "StockInDetailUnitType";
+            StockInDetailUnitType.HeaderText = "ÜRÜN TİPİ";
+            StockInDetailUnitType.Name = "StockInDetailUnitType";
+            // 
             // ProductPrice
             // 
             ProductPrice.DataPropertyName = "ProductPrice";
-            ProductPrice.HeaderText = "FİYATI";
+            ProductPrice.HeaderText = "SATIŞ FİYATI";
             ProductPrice.Name = "ProductPrice";
             // 
-            // NetProductAmountInStock
+            // StockInDate
             // 
-            NetProductAmountInStock.DataPropertyName = "NetProductAmountInStock";
-            NetProductAmountInStock.HeaderText = "STOK";
-            NetProductAmountInStock.Name = "NetProductAmountInStock";
-            // 
-            // ProductUnitTypeColon
-            // 
-            ProductUnitTypeColon.DataPropertyName = "ProductUnitType";
-            ProductUnitTypeColon.HeaderText = "BİRİM TİPİ";
-            ProductUnitTypeColon.Name = "ProductUnitTypeColon";
-            // 
-            // Vat
-            // 
-            Vat.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Vat.DataPropertyName = "Vat";
-            Vat.HeaderText = "KDV";
-            Vat.Name = "Vat";
-            Vat.Width = 56;
+            StockInDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            StockInDate.DataPropertyName = "StockInDate";
+            StockInDate.HeaderText = "STOK GİRİŞ TARİHİ";
+            StockInDate.Name = "StockInDate";
+            StockInDate.Width = 137;
             // 
             // Edit
             // 
@@ -307,6 +320,19 @@
             Delete.Name = "Delete";
             Delete.Width = 5;
             // 
+            // cProductMenuStrip
+            // 
+            cProductMenuStrip.Items.AddRange(new ToolStripItem[] { tSMIProductStockInDetail });
+            cProductMenuStrip.Name = "cProductMenuStrip";
+            cProductMenuStrip.Size = new Size(162, 26);
+            // 
+            // tSMIProductStockInDetail
+            // 
+            tSMIProductStockInDetail.Name = "tSMIProductStockInDetail";
+            tSMIProductStockInDetail.Size = new Size(161, 22);
+            tSMIProductStockInDetail.Text = "Ürün Girişini Gör";
+            tSMIProductStockInDetail.Click += tSMIProductStockInDetail_Click;
+            // 
             // frmStockInProductReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -314,8 +340,10 @@
             ClientSize = new Size(935, 570);
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "frmStockInProductReports";
             Text = "frmStockInProductReports";
+            Load += frmStockInProductReports_Load;
             ((System.ComponentModel.ISupportInitialize)pBClose).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -331,6 +359,7 @@
             splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).EndInit();
+            cProductMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -348,16 +377,19 @@
         private DateTimePicker dTPBeginDate;
         private Label label2;
         public DataGridView dGWProduct;
-        private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn StockInId;
         private DataGridViewTextBoxColumn ProductCode;
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductBarcode;
+        private DataGridViewTextBoxColumn onePrice;
+        private DataGridViewTextBoxColumn StockInDetailUnit;
+        private DataGridViewTextBoxColumn StockInDetailUnitType;
         private DataGridViewTextBoxColumn ProductPrice;
-        private DataGridViewTextBoxColumn NetProductAmountInStock;
-        private DataGridViewTextBoxColumn ProductUnitTypeColon;
-        private DataGridViewTextBoxColumn Vat;
+        private DataGridViewTextBoxColumn StockInDate;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
+        private ContextMenuStrip cProductMenuStrip;
+        private ToolStripMenuItem tSMIProductStockInDetail;
     }
 }

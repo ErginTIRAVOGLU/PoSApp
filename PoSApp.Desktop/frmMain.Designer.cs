@@ -165,7 +165,7 @@
             btnReports.Name = "btnReports";
             btnReports.Size = new Size(194, 34);
             btnReports.TabIndex = 9;
-            btnReports.Text = " [F10] Raporlar *";
+            btnReports.Text = " [F10] Raporlar";
             btnReports.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnReports.UseVisualStyleBackColor = true;
             btnReports.Click += btnReports_Click;

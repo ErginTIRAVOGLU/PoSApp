@@ -35,7 +35,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         Vat = x.ProductVat,
 
 
-                    }).ToList();
+                    }).AsNoTracking().ToList();
 
                 return list;
             }
@@ -56,7 +56,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         Vat = x.ProductVat,
                         NetProductAmountInStock =(x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
 
-                    }).ToList();
+                    }).AsNoTracking().ToList();
 
                 return list;
             }
@@ -71,7 +71,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         Id = x.Id,
                         ProductCode = x.ProductCode,
                         ProductName = x.ProductName,
-                    }).ToList();
+                    }).AsNoTracking().ToList();
 
                 return list;
             }
@@ -87,7 +87,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         Id = x.Id,
                         ProductCode = x.ProductCode,
                         ProductName = x.ProductName,
-                    }).ToList();
+                    }).AsNoTracking().ToList();
                 return list;
             }
 
@@ -108,7 +108,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductPrice = x.ProductPrice,
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat
-                    }).ToList();
+                    }).AsNoTracking().ToList();
 
                 return list;
             }
@@ -128,7 +128,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
                         NetProductAmountInStock = (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
-                    }).ToList();
+                    }).AsNoTracking().ToList();
 
                 return list;
             }

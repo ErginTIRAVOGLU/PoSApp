@@ -61,7 +61,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new Context())
             {
-                List<T> list =  _postDbContext.Set<T>().Where(m => m.IsDeleted == false).ToList();
+                List<T> list =  _postDbContext.Set<T>().Where(m => m.IsDeleted == false).AsNoTracking().ToList();
                 return list;
             }
 
