@@ -85,7 +85,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductBarcode = x.Product.ProductBarcode,
                         ProductName = x.Product.ProductName,
                         onePrice = (x.ProductLastPriceWithVat / x.StockInDetailUnit).ToString("0.00"),
-                        StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,
+                        StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : Decimal.ToInt32(x.StockInDetailUnit),
                         StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         ProductPrice = x.Product.ProductPrice.ToString("0.00"),
                         StockInDate = x.StockIn.StockInDate,

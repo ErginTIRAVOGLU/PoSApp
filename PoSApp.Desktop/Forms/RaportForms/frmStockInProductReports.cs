@@ -31,7 +31,14 @@ namespace PoSApp.Desktop.Forms.RaportForms
         public frmStockInProductReports(frmMain frmForm)
         {
             InitializeComponent();
-
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint |
+               ControlStyles.ResizeRedraw |
+               ControlStyles.ContainerControl |
+               ControlStyles.OptimizedDoubleBuffer |
+               ControlStyles.SupportsTransparentBackColor
+               , true);
             dGWProduct.AutoGenerateColumns = false;
             dGWProduct.Columns["Edit"].Visible = false;
             dGWProduct.Columns["Delete"].Visible = false;

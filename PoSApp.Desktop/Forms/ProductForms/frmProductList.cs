@@ -37,6 +37,14 @@ namespace PoSApp.Desktop.Forms.ProductForms
         public frmProductList(IEnumerable<ProductListDTOWithStock> _productListDTOs = null, frmPos _frmPos = null)
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.UserPaint |
+               ControlStyles.AllPaintingInWmPaint |
+               ControlStyles.ResizeRedraw |
+               ControlStyles.ContainerControl |
+               ControlStyles.OptimizedDoubleBuffer |
+               ControlStyles.SupportsTransparentBackColor
+               , true);
             dGWProduct.AutoGenerateColumns = false;
 
             if (_frmPos != null)
