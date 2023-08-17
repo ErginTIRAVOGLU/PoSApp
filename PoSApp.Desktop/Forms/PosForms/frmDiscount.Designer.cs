@@ -72,7 +72,6 @@
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(186, 23);
             txtPrice.TabIndex = 9;
-            txtPrice.TextChanged += txtPrice_TextChanged;
             txtPrice.KeyUp += txtPrice_KeyUp;
             // 
             // label2

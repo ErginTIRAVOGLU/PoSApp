@@ -5,6 +5,7 @@ using PoSApp.Desktop.Forms.CategoryForms;
 using PoSApp.Desktop.Forms.PosForms;
 using PoSApp.Desktop.Forms.ProductForms;
 using PoSApp.Desktop.Forms.RaportForms;
+using PoSApp.Desktop.Forms.SettingsForms;
 using PoSApp.Desktop.Forms.StockInForms;
 using PoSApp.Desktop.Forms.SupplierForms;
 using PoSApp.Desktop.Forms.UpdateForms;
@@ -85,7 +86,7 @@ namespace PoSApp.Desktop
         private void btnProduct_Click(object sender, EventArgs e)
         {
             frmProductList frm = new frmProductList();
-
+            frm.productMode = true;
             frm.TopLevel = false;
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(frm);
@@ -189,7 +190,12 @@ namespace PoSApp.Desktop
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-
+            frmSettingsForm frm = new frmSettingsForm();
+            frm.TopLevel = false;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnReports_Click(object sender, EventArgs e)

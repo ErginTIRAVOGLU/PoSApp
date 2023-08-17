@@ -56,7 +56,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
             warehouseId = int.Parse(cmBoxWarehouse.SelectedValue.ToString());
             warehouseName = cmBoxWarehouse.Text;
-          
+
 
             int.TryParse(txtCount.Text, out tCount);
             productQuantity = tCount;
@@ -110,19 +110,19 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
             decimal.TryParse(txtDiscountPercentage.Text, out tDiscountPercentage);
             productDiscountPercentage = tDiscountPercentage;
-            
+
             decimal.TryParse(txtUnitDiscountAmount.Text, out tUnitDiscountAmount);
             productUnitDiscountAmount = tUnitDiscountAmount;
-            
+
             decimal.TryParse(txtTotalDiscountAmount.Text, out tTotalDiscountAmount);
             productTotalDiscountAmount = tTotalDiscountAmount;
-            
+
             decimal.TryParse(txtTotalVatAmount.Text, out tTotalVatAmount);
             productTotalVatAmount = tTotalVatAmount;
-            
+
             decimal.TryParse(txtLastPriceWithoutVat.Text, out tLastPriceWithoutVat);
             productLastPriceWithoutVat = tLastPriceWithoutVat;
-            
+
             decimal.TryParse(txtLastPriceWithVat.Text, out tLastPriceWithVat);
             productLastPriceWithVat = tLastPriceWithVat;
 
@@ -143,6 +143,56 @@ namespace PoSApp.Desktop.Forms.StockInForms
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+        }
+
+        private void txtTotalVatAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            decimal totalVat = 0;
+            decimal.TryParse(txtTotalVatAmount.Text, out totalVat);
+
+            decimal priceWithoutVat = 0;
+            decimal.TryParse(txtLastPriceWithoutVat.Text, out priceWithoutVat);
+
+
+            decimal priceWithVat = 0;
+            decimal.TryParse(txtLastPriceWithVat.Text, out priceWithVat);
+
+            priceWithVat = totalVat + priceWithoutVat;
+            txtLastPriceWithVat.Text = priceWithVat.ToString("0.00");
+           
+        }
+
+        private void txtLastPriceWithoutVat_KeyUp(object sender, KeyEventArgs e)
+        {
+            decimal totalVat = 0;
+            decimal.TryParse(txtTotalVatAmount.Text, out totalVat);
+
+            decimal priceWithoutVat = 0;
+            decimal.TryParse(txtLastPriceWithoutVat.Text, out priceWithoutVat);
+
+
+            decimal priceWithVat = 0;
+            decimal.TryParse(txtLastPriceWithVat.Text, out priceWithVat);
+
+            priceWithVat= totalVat + priceWithoutVat;
+            txtLastPriceWithVat.Text = priceWithVat.ToString("0.00");
+
+        }
+
+        private void txtLastPriceWithVat_KeyUp(object sender, KeyEventArgs e)
+        {
+            decimal totalVat = 0;
+            decimal.TryParse(txtTotalVatAmount.Text, out totalVat);
+
+            decimal priceWithoutVat = 0;
+            decimal.TryParse(txtLastPriceWithoutVat.Text, out priceWithoutVat);
+
+
+            decimal priceWithVat = 0;
+            decimal.TryParse(txtLastPriceWithVat.Text, out priceWithVat);
+
+            totalVat = priceWithVat - priceWithoutVat;
+            txtTotalVatAmount.Text=totalVat.ToString("0.00");
         }
     }
 }

@@ -73,6 +73,8 @@
             ProductLastPriceWithoutVat = new DataGridViewTextBoxColumn();
             ProductLastPriceWithVat = new DataGridViewTextBoxColumn();
             detailDelete = new DataGridViewImageColumn();
+            lblToplamTutar = new Label();
+            label5 = new Label();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             StockInDetailUnit = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
@@ -213,8 +215,7 @@
             txtProductSearch.Name = "txtProductSearch";
             txtProductSearch.PlaceholderText = "Ürün Ara";
             txtProductSearch.Size = new Size(911, 25);
-            txtProductSearch.TabIndex = 0;
-            txtProductSearch.TextChanged += txtProductSearch_TextChanged;
+            txtProductSearch.TabIndex = 3;
             txtProductSearch.KeyDown += txtProductSearch_KeyDown;
             // 
             // btnCancel
@@ -223,7 +224,7 @@
             btnCancel.Location = new Point(1225, 1);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
-            btnCancel.TabIndex = 15;
+            btnCancel.TabIndex = 8;
             btnCancel.Text = "Vazgeç";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -234,7 +235,7 @@
             btnUpdate.Location = new Point(1144, 1);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
-            btnUpdate.TabIndex = 14;
+            btnUpdate.TabIndex = 7;
             btnUpdate.Text = "Güncelle";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
@@ -245,7 +246,7 @@
             btnSave.Location = new Point(1063, 1);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
-            btnSave.TabIndex = 13;
+            btnSave.TabIndex = 6;
             btnSave.Text = "Kaydet";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -273,7 +274,7 @@
             dtTimeInputDate.Location = new Point(97, 91);
             dtTimeInputDate.Name = "dtTimeInputDate";
             dtTimeInputDate.Size = new Size(200, 25);
-            dtTimeInputDate.TabIndex = 3;
+            dtTimeInputDate.TabIndex = 2;
             // 
             // cmBoxSupplier
             // 
@@ -281,14 +282,14 @@
             cmBoxSupplier.Location = new Point(96, 52);
             cmBoxSupplier.Name = "cmBoxSupplier";
             cmBoxSupplier.Size = new Size(169, 25);
-            cmBoxSupplier.TabIndex = 2;
+            cmBoxSupplier.TabIndex = 1;
             // 
             // txtStockInRefNo
             // 
             txtStockInRefNo.Location = new Point(97, 19);
             txtStockInRefNo.Name = "txtStockInRefNo";
             txtStockInRefNo.Size = new Size(168, 25);
-            txtStockInRefNo.TabIndex = 1;
+            txtStockInRefNo.TabIndex = 0;
             // 
             // label2
             // 
@@ -332,7 +333,6 @@
             splitContainer2.Panel1.Controls.Add(dtTimeInputDate);
             splitContainer2.Panel1.Controls.Add(cmBoxSupplier);
             splitContainer2.Panel1.Controls.Add(txtStockInRefNo);
-            splitContainer2.Panel1.Paint += splitContainer2_Panel1_Paint;
             // 
             // splitContainer2.Panel2
             // 
@@ -374,6 +374,8 @@
             // 
             // splitContainer3.Panel2
             // 
+            splitContainer3.Panel2.Controls.Add(lblToplamTutar);
+            splitContainer3.Panel2.Controls.Add(label5);
             splitContainer3.Panel2.Controls.Add(btnSave);
             splitContainer3.Panel2.Controls.Add(btnCancel);
             splitContainer3.Panel2.Controls.Add(btnUpdate);
@@ -411,7 +413,6 @@
             dGWStockInDetail.Size = new Size(1305, 289);
             dGWStockInDetail.TabIndex = 5;
             dGWStockInDetail.CellContentClick += dGWStockInDetail_CellContentClick;
-            dGWStockInDetail.CellFormatting += dGWStockInDetail_CellFormatting;
             // 
             // detailId
             // 
@@ -545,6 +546,25 @@
             detailDelete.SortMode = DataGridViewColumnSortMode.Automatic;
             detailDelete.Width = 17;
             // 
+            // lblToplamTutar
+            // 
+            lblToplamTutar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            lblToplamTutar.AutoSize = true;
+            lblToplamTutar.Location = new Point(939, 10);
+            lblToplamTutar.Name = "lblToplamTutar";
+            lblToplamTutar.Size = new Size(0, 17);
+            lblToplamTutar.TabIndex = 10;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Location = new Point(837, 10);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 17);
+            label5.TabIndex = 9;
+            label5.Text = "Toplam Tutar : ";
+            // 
             // dataGridViewTextBoxColumn1
             // 
             dataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -593,6 +613,7 @@
             splitContainer4.ResumeLayout(false);
             splitContainer3.Panel1.ResumeLayout(false);
             splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
             splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dGWStockInDetail).EndInit();
@@ -642,5 +663,7 @@
         private DataGridViewTextBoxColumn ProductLastPriceWithoutVat;
         private DataGridViewTextBoxColumn ProductLastPriceWithVat;
         private DataGridViewImageColumn detailDelete;
+        private Label lblToplamTutar;
+        private Label label5;
     }
 }

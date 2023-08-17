@@ -641,7 +641,6 @@
             dGWCartDetail.Size = new Size(748, 551);
             dGWCartDetail.TabIndex = 5;
             dGWCartDetail.CellContentClick += dGWCartDetail_CellContentClick;
-            dGWCartDetail.CellFormatting += dGWCartDetail_CellFormatting;
             dGWCartDetail.KeyUp += dGWCartDetail_KeyUp;
             // 
             // Id
@@ -733,7 +732,7 @@
             Controls.Add(pnlSide);
             DoubleBuffered = true;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmPos";
             StartPosition = FormStartPosition.CenterScreen;

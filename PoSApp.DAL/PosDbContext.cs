@@ -29,9 +29,9 @@ namespace PoSApp.DAL
             //optionsBuilder.UseSqlServer(connectionString);
             //optionsBuilder.UseSqlite(@"Data Source=PoSAppDB.db;");
             //optionsBuilder.UseSqlServer();
-            var printSettingsFile = GetSettingsFile("App.config.json");
+            var databaseSettingsFile = GetSettingsFile("App.config.json");
             IConfiguration Configuration = new ConfigurationBuilder()
-              .AddJsonFile(printSettingsFile, optional: true, reloadOnChange: true)
+              .AddJsonFile(databaseSettingsFile, optional: true, reloadOnChange: true)
               .AddEnvironmentVariables()
               .Build();
 

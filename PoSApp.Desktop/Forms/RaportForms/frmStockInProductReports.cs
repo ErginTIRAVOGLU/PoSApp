@@ -2,11 +2,14 @@
 using PoSApp.BLL.Repositories.Concrete;
 using PoSApp.Desktop.Forms.ProductForms;
 using PoSApp.Desktop.Forms.StockInForms;
+using PoSApp.Entities.Enums;
+using PoSApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +21,8 @@ namespace PoSApp.Desktop.Forms.RaportForms
     {
 
         private StockInRepository _stockInRepository = new StockInRepository();
-
+        private BrandRepository _brandRepository = new BrandRepository();
+        private CategoryRepository _categoryRepository = new CategoryRepository();
         private ProductRepository _productRepository = new ProductRepository();
         private StockInDetailRepository _stockInDetailRepository = new StockInDetailRepository();
         private SupplierRepository _supplierRepository = new SupplierRepository();
@@ -38,37 +42,37 @@ namespace PoSApp.Desktop.Forms.RaportForms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                var criterion = txtProductSearch.Text.ToLower();
-                //var productList = _productRepository.GetWhereUrunDialogSearchWithStock(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
-                var beginDate = dTPBeginDate.Value;
-                var newBeginDate = new DateTime(beginDate.Year, beginDate.Month, beginDate.Day, 0, 0, 0);
-                var endDate = dTPEndDate.Value;
-                var newEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 23, 59, 59);
-
-                var stockInList = _stockInRepository.GetAllProductsInStock(beginDate, endDate, criterion);
-
-                dGWProduct.DataSource = stockInList;
-                dGWProduct.Refresh();
+                filtrele();
             }
         }
 
         private void btnFiltre_Click(object sender, EventArgs e)
         {
+            filtrele();
+        }
+
+        public void filtrele()
+        {
+            var criterion = txtProductSearch.Text.ToLower();
+            //var productList = _productRepository.GetWhereUrunDialogSearchWithStock(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
             var beginDate = dTPBeginDate.Value;
             var newBeginDate = new DateTime(beginDate.Year, beginDate.Month, beginDate.Day, 0, 0, 0);
             var endDate = dTPEndDate.Value;
             var newEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 23, 59, 59);
 
-            yukle(newBeginDate, newEndDate);
-        }
-        public void yukle(DateTime beginDate, DateTime endDate)
-        {
+            if (chkBProductGroup.Checked)
+            {
 
-            //var stockInList = _stockInRepository.GetBetweenDates(m => m.StockInDate >= beginDate && m.StockInDate <= endDate);
-            var criterion = txtProductSearch.Text.ToLower();
-            var stockInList = _stockInRepository.GetAllProductsInStock(beginDate, endDate, criterion);
-            dGWProduct.DataSource = stockInList;
-            dGWProduct.Refresh();
+            }
+            else
+            {
+                var stockInList = _stockInRepository.GetAllProductsInStock(beginDate, endDate, criterion);
+
+                dGWProduct.DataSource = stockInList.ProductsInStockListDto;
+                dGWProduct.Refresh();
+                lblTotalAmount.Text = stockInList.TotalAmount.ToString("0.00") + " TL";
+            }
+
 
         }
 
@@ -102,8 +106,9 @@ namespace PoSApp.Desktop.Forms.RaportForms
             _frmStockInDetailList.dtTimeInputDate.Value = stockIn.StockInDate;
 
 
-            _frmStockInDetailList.dGWProduct.DataSource = products;
-            _frmStockInDetailList.oldStokDetay = stockInDetails;
+            _frmStockInDetailList.dGWProduct.DataSource = products;           
+            _frmStockInDetailList.oldStokDetay = stockInDetails.stockInDetailListDto;
+            _frmStockInDetailList.totalAmount = stockInDetails.totalPriceAmount;
             _frmStockInDetailList.dGWStockInDetail.DataSource = _frmStockInDetailList.oldStokDetay;
 
             _frmStockInDetailList.btnSave.Enabled = false;
@@ -127,6 +132,55 @@ namespace PoSApp.Desktop.Forms.RaportForms
         private void pBClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tSMIProductDetail_Click(object sender, EventArgs e)
+        {
+            int productId = int.Parse(dGWProduct.SelectedRows[0].Cells["ProductId"].Value.ToString());
+
+            var p = _productRepository.GetByIdWithStockNumber(productId);
+            var brands = _brandRepository.GetAll();
+            var categories = _categoryRepository.GetAll();
+
+            frmProduct _frmProduct = new frmProduct(this);
+            _frmProduct.txtProduct.Text = p.product.ProductName;
+            _frmProduct.txtCode.Text = p.product.ProductCode;
+            _frmProduct.txtDescription.Text = p.product.ProductDescription;
+            _frmProduct.txtBarcode.Text = p.product.ProductBarcode;
+            decimal totalStock = 0.0M;
+            decimal.TryParse(p.NetProductAmountInStock.ToString(), out totalStock);
+            _frmProduct.lblStok.Text = p.product.ProductUnitType == ProductUnitType.Quantity ? totalStock.ToString("0") : totalStock.ToString("0.0000");
+            _frmProduct.txtProductPrice.Text = p.product.ProductUnitType == ProductUnitType.Quantity ? p.product.ProductPrice.ToString("0.00") : p.product.ProductPrice.ToString("0.0000");// p.product.ProductPrice.ToString("N4", CultureInfo.CreateSpecificCulture("tr-TR"));
+
+            _frmProduct.cmBoxBrand.DisplayMember = "BrandName";
+            _frmProduct.cmBoxBrand.ValueMember = "Id";
+            _frmProduct.cmBoxBrand.DataSource = brands;
+            _frmProduct.cmBoxBrand.SelectedValue = p.product.BrandId;
+
+            _frmProduct.cmBoxCategory.DisplayMember = "CategoryName";
+            _frmProduct.cmBoxCategory.ValueMember = "Id";
+            _frmProduct.cmBoxCategory.DataSource = categories;
+            _frmProduct.cmBoxCategory.SelectedValue = p.product.CategoryID;
+
+            _frmProduct.txtVat.Text = p.product.ProductVat.ToString();
+
+            _frmProduct.cmBoxProductUnitType.DataSource = Enum.GetValues(typeof(ProductUnitType))
+                    .Cast<Enum>()
+                    .Select(value => new
+                    {
+                        (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
+                        value
+                    })
+                    .OrderBy(item => item.value)
+                    .ToList();
+            _frmProduct.cmBoxProductUnitType.DisplayMember = "Description";
+            _frmProduct.cmBoxProductUnitType.ValueMember = "value";
+
+            _frmProduct.cmBoxProductUnitType.SelectedValue = p.product.ProductUnitType;
+
+            _frmProduct.productId = productId;
+            _frmProduct.IsUpdate = true;
+            _frmProduct.ShowDialog();
         }
     }
 

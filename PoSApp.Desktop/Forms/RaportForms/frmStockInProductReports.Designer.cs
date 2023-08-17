@@ -37,6 +37,7 @@
             panel1 = new Panel();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
+            chkBProductGroup = new CheckBox();
             btnFiltre = new Button();
             dTPEndDate = new DateTimePicker();
             dTPBeginDate = new DateTimePicker();
@@ -46,11 +47,13 @@
             dGWProduct = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             StockInId = new DataGridViewTextBoxColumn();
+            ProductId = new DataGridViewTextBoxColumn();
             ProductCode = new DataGridViewTextBoxColumn();
             ProductName = new DataGridViewTextBoxColumn();
             ProductBarcode = new DataGridViewTextBoxColumn();
             onePrice = new DataGridViewTextBoxColumn();
             StockInDetailUnit = new DataGridViewTextBoxColumn();
+            LastPriceWithVat = new DataGridViewTextBoxColumn();
             StockInDetailUnitType = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
             StockInDate = new DataGridViewTextBoxColumn();
@@ -58,6 +61,10 @@
             Delete = new DataGridViewImageColumn();
             cProductMenuStrip = new ContextMenuStrip(components);
             tSMIProductStockInDetail = new ToolStripMenuItem();
+            tSMIProductDetail = new ToolStripMenuItem();
+            pnlAlt = new Panel();
+            lblTotalAmount = new Label();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -71,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
             cProductMenuStrip.SuspendLayout();
+            pnlAlt.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -80,9 +88,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(12, 11);
             label1.Name = "label1";
-            label1.Size = new Size(119, 21);
+            label1.Size = new Size(174, 21);
             label1.TabIndex = 2;
-            label1.Text = "Ürün Stok Girişi";
+            label1.Text = "Ürün Stok Girişi Raporu";
             // 
             // pBClose
             // 
@@ -90,7 +98,7 @@
             pBClose.BackgroundImage = (Image)resources.GetObject("pBClose.BackgroundImage");
             pBClose.BackgroundImageLayout = ImageLayout.Center;
             pBClose.Cursor = Cursors.Hand;
-            pBClose.Location = new Point(899, 8);
+            pBClose.Location = new Point(1109, 8);
             pBClose.Name = "pBClose";
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 0;
@@ -105,7 +113,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(935, 40);
+            panel1.Size = new Size(1145, 40);
             panel1.TabIndex = 4;
             // 
             // splitContainer1
@@ -122,8 +130,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(dGWProduct);
-            splitContainer1.Size = new Size(935, 530);
-            splitContainer1.SplitterDistance = 69;
+            splitContainer1.Size = new Size(1145, 530);
+            splitContainer1.SplitterDistance = 79;
             splitContainer1.TabIndex = 5;
             // 
             // splitContainer2
@@ -135,6 +143,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            splitContainer2.Panel1.Controls.Add(chkBProductGroup);
             splitContainer2.Panel1.Controls.Add(btnFiltre);
             splitContainer2.Panel1.Controls.Add(dTPEndDate);
             splitContainer2.Panel1.Controls.Add(dTPBeginDate);
@@ -144,9 +153,20 @@
             // 
             splitContainer2.Panel2.Controls.Add(txtProductSearch);
             splitContainer2.Panel2.Controls.Add(pictureBox1);
-            splitContainer2.Size = new Size(935, 69);
-            splitContainer2.SplitterDistance = 34;
+            splitContainer2.Size = new Size(1145, 79);
+            splitContainer2.SplitterDistance = 40;
             splitContainer2.TabIndex = 0;
+            // 
+            // chkBProductGroup
+            // 
+            chkBProductGroup.AutoSize = true;
+            chkBProductGroup.Enabled = false;
+            chkBProductGroup.Location = new Point(769, 12);
+            chkBProductGroup.Name = "chkBProductGroup";
+            chkBProductGroup.Size = new Size(106, 19);
+            chkBProductGroup.TabIndex = 8;
+            chkBProductGroup.Text = "Ürünleri Grupla";
+            chkBProductGroup.UseVisualStyleBackColor = true;
             // 
             // btnFiltre
             // 
@@ -187,7 +207,7 @@
             txtProductSearch.Location = new Point(36, 3);
             txtProductSearch.Name = "txtProductSearch";
             txtProductSearch.PlaceholderText = "Ürün Ara";
-            txtProductSearch.Size = new Size(755, 23);
+            txtProductSearch.Size = new Size(965, 23);
             txtProductSearch.TabIndex = 5;
             txtProductSearch.KeyDown += txtProductSearch_KeyDown;
             // 
@@ -199,7 +219,7 @@
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Location = new Point(6, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 24);
+            pictureBox1.Size = new Size(24, 28);
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
@@ -223,7 +243,7 @@
             dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Id, StockInId, ProductCode, ProductName, ProductBarcode, onePrice, StockInDetailUnit, StockInDetailUnitType, ProductPrice, StockInDate, Edit, Delete });
+            dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Id, StockInId, ProductId, ProductCode, ProductName, ProductBarcode, onePrice, StockInDetailUnit, LastPriceWithVat, StockInDetailUnitType, ProductPrice, StockInDate, Edit, Delete });
             dGWProduct.ContextMenuStrip = cProductMenuStrip;
             dGWProduct.Dock = DockStyle.Fill;
             dGWProduct.EditMode = DataGridViewEditMode.EditOnF2;
@@ -234,7 +254,7 @@
             dGWProduct.RowHeadersVisible = false;
             dGWProduct.RowTemplate.Height = 25;
             dGWProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dGWProduct.Size = new Size(935, 457);
+            dGWProduct.Size = new Size(1145, 447);
             dGWProduct.TabIndex = 6;
             // 
             // Id
@@ -250,6 +270,13 @@
             StockInId.HeaderText = "STOCKINID";
             StockInId.Name = "StockInId";
             StockInId.Visible = false;
+            // 
+            // ProductId
+            // 
+            ProductId.DataPropertyName = "ProductId";
+            ProductId.HeaderText = "ProductId";
+            ProductId.Name = "ProductId";
+            ProductId.Visible = false;
             // 
             // ProductCode
             // 
@@ -283,6 +310,14 @@
             StockInDetailUnit.DataPropertyName = "StockInDetailUnit";
             StockInDetailUnit.HeaderText = "ADET/GRAM";
             StockInDetailUnit.Name = "StockInDetailUnit";
+            // 
+            // LastPriceWithVat
+            // 
+            LastPriceWithVat.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            LastPriceWithVat.DataPropertyName = "LastPriceWithVat";
+            LastPriceWithVat.HeaderText = "KDV Dahil Toplam Tutar";
+            LastPriceWithVat.Name = "LastPriceWithVat";
+            LastPriceWithVat.Width = 170;
             // 
             // StockInDetailUnitType
             // 
@@ -322,22 +357,58 @@
             // 
             // cProductMenuStrip
             // 
-            cProductMenuStrip.Items.AddRange(new ToolStripItem[] { tSMIProductStockInDetail });
+            cProductMenuStrip.Items.AddRange(new ToolStripItem[] { tSMIProductStockInDetail, tSMIProductDetail });
             cProductMenuStrip.Name = "cProductMenuStrip";
-            cProductMenuStrip.Size = new Size(162, 26);
+            cProductMenuStrip.Size = new Size(169, 48);
             // 
             // tSMIProductStockInDetail
             // 
             tSMIProductStockInDetail.Name = "tSMIProductStockInDetail";
-            tSMIProductStockInDetail.Size = new Size(161, 22);
+            tSMIProductStockInDetail.Size = new Size(168, 22);
             tSMIProductStockInDetail.Text = "Ürün Girişini Gör";
             tSMIProductStockInDetail.Click += tSMIProductStockInDetail_Click;
+            // 
+            // tSMIProductDetail
+            // 
+            tSMIProductDetail.Name = "tSMIProductDetail";
+            tSMIProductDetail.Size = new Size(168, 22);
+            tSMIProductDetail.Text = "Ürün Detayını Gör";
+            tSMIProductDetail.Click += tSMIProductDetail_Click;
+            // 
+            // pnlAlt
+            // 
+            pnlAlt.Controls.Add(lblTotalAmount);
+            pnlAlt.Controls.Add(lblTotal);
+            pnlAlt.Dock = DockStyle.Bottom;
+            pnlAlt.Location = new Point(0, 501);
+            pnlAlt.Name = "pnlAlt";
+            pnlAlt.Size = new Size(1145, 69);
+            pnlAlt.TabIndex = 6;
+            // 
+            // lblTotalAmount
+            // 
+            lblTotalAmount.AutoSize = true;
+            lblTotalAmount.Location = new Point(769, 21);
+            lblTotalAmount.Name = "lblTotalAmount";
+            lblTotalAmount.Size = new Size(13, 15);
+            lblTotalAmount.TabIndex = 1;
+            lblTotalAmount.Text = "0";
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Location = new Point(708, 21);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(55, 15);
+            lblTotal.TabIndex = 0;
+            lblTotal.Text = "Toplam : ";
             // 
             // frmStockInProductReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(935, 570);
+            ClientSize = new Size(1145, 570);
+            Controls.Add(pnlAlt);
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -360,6 +431,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).EndInit();
             cProductMenuStrip.ResumeLayout(false);
+            pnlAlt.ResumeLayout(false);
+            pnlAlt.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -377,19 +450,26 @@
         private DateTimePicker dTPBeginDate;
         private Label label2;
         public DataGridView dGWProduct;
+        private ContextMenuStrip cProductMenuStrip;
+        private ToolStripMenuItem tSMIProductStockInDetail;
+        private Panel pnlAlt;
+        private Label lblTotalAmount;
+        private Label lblTotal;
+        private ToolStripMenuItem tSMIProductDetail;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn StockInId;
+        private DataGridViewTextBoxColumn ProductId;
         private DataGridViewTextBoxColumn ProductCode;
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductBarcode;
         private DataGridViewTextBoxColumn onePrice;
         private DataGridViewTextBoxColumn StockInDetailUnit;
+        private DataGridViewTextBoxColumn LastPriceWithVat;
         private DataGridViewTextBoxColumn StockInDetailUnitType;
         private DataGridViewTextBoxColumn ProductPrice;
         private DataGridViewTextBoxColumn StockInDate;
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
-        private ContextMenuStrip cProductMenuStrip;
-        private ToolStripMenuItem tSMIProductStockInDetail;
+        private CheckBox chkBProductGroup;
     }
 }

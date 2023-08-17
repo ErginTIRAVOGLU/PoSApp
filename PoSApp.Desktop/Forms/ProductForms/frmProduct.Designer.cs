@@ -64,7 +64,7 @@
             btnCancel.Location = new Point(270, 314);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
-            btnCancel.TabIndex = 12;
+            btnCancel.TabIndex = 11;
             btnCancel.Text = "Vazgeç";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -74,7 +74,7 @@
             btnUpdate.Location = new Point(189, 314);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
-            btnUpdate.TabIndex = 11;
+            btnUpdate.TabIndex = 10;
             btnUpdate.Text = "Güncelle";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
@@ -84,7 +84,7 @@
             btnSave.Location = new Point(108, 314);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
-            btnSave.TabIndex = 10;
+            btnSave.TabIndex = 9;
             btnSave.Text = "Kaydet";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -94,7 +94,7 @@
             txtProduct.Location = new Point(108, 58);
             txtProduct.Name = "txtProduct";
             txtProduct.Size = new Size(410, 23);
-            txtProduct.TabIndex = 9;
+            txtProduct.TabIndex = 0;
             // 
             // label2
             // 
@@ -146,7 +146,7 @@
             cmBoxBrand.Location = new Point(360, 145);
             cmBoxBrand.Name = "cmBoxBrand";
             cmBoxBrand.Size = new Size(158, 23);
-            cmBoxBrand.TabIndex = 13;
+            cmBoxBrand.TabIndex = 6;
             // 
             // cmBoxCategory
             // 
@@ -154,7 +154,7 @@
             cmBoxCategory.Location = new Point(360, 116);
             cmBoxCategory.Name = "cmBoxCategory";
             cmBoxCategory.Size = new Size(158, 23);
-            cmBoxCategory.TabIndex = 14;
+            cmBoxCategory.TabIndex = 5;
             // 
             // label3
             // 
@@ -189,7 +189,7 @@
             cmBoxProductUnitType.Location = new Point(360, 174);
             cmBoxProductUnitType.Name = "cmBoxProductUnitType";
             cmBoxProductUnitType.Size = new Size(158, 23);
-            cmBoxProductUnitType.TabIndex = 17;
+            cmBoxProductUnitType.TabIndex = 7;
             // 
             // label6
             // 
@@ -223,7 +223,7 @@
             txtProductPrice.Location = new Point(108, 116);
             txtProductPrice.Name = "txtProductPrice";
             txtProductPrice.Size = new Size(158, 23);
-            txtProductPrice.TabIndex = 21;
+            txtProductPrice.TabIndex = 2;
             txtProductPrice.Validating += txtProductPrice_Validating;
             // 
             // txtBarcode
@@ -231,7 +231,7 @@
             txtBarcode.Location = new Point(360, 87);
             txtBarcode.Name = "txtBarcode";
             txtBarcode.Size = new Size(158, 23);
-            txtBarcode.TabIndex = 23;
+            txtBarcode.TabIndex = 4;
             // 
             // label8
             // 
@@ -247,7 +247,7 @@
             txtCode.Location = new Point(108, 87);
             txtCode.Name = "txtCode";
             txtCode.Size = new Size(158, 23);
-            txtCode.TabIndex = 25;
+            txtCode.TabIndex = 1;
             // 
             // label9
             // 
@@ -264,7 +264,7 @@
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(408, 99);
-            txtDescription.TabIndex = 27;
+            txtDescription.TabIndex = 8;
             // 
             // label10
             // 
@@ -280,7 +280,7 @@
             txtVat.Location = new Point(108, 145);
             txtVat.Name = "txtVat";
             txtVat.Size = new Size(158, 23);
-            txtVat.TabIndex = 29;
+            txtVat.TabIndex = 3;
             // 
             // label11
             // 

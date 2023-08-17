@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
- 
+
 using PoSApp.BLL.Repositories.Abstract;
 using PoSApp.DAL;
 using PoSApp.Entities;
@@ -23,15 +23,16 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<Cart>().Where(m => m.IsDeleted == false).OrderByDescending(m => m.CartDate).Select(x => new CartList { 
-                    Id = x.Id, 
-                    CartRefNo = x.TransNo, 
+                var list = _postDbContext.Set<Cart>().Where(m => m.IsDeleted == false).OrderByDescending(m => m.CartDate).Select(x => new CartList
+                {
+                    Id = x.Id,
+                    CartRefNo = x.TransNo,
                     CartPrice = x.Price,
-                    CartDiscount =x.DiscountTotal,
-                    CartVat =x.Vat,
-                    CartPriceTotal =x.PriceTotal,                    
+                    CartDiscount = x.DiscountTotal,
+                    CartVat = x.Vat,
+                    CartPriceTotal = x.PriceTotal,
                     CartStatusType = x.Status == CartStatus.Pending ? "Ödeme Bekliyor" : x.Status == CartStatus.Payed ? "Ödendi" : "İptal Edildi",
-                    CartDate =x.CartDate
+                    CartDate = x.CartDate
                 }).ToList();
 
                 return list;
@@ -49,7 +50,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                     CartDiscount = x.DiscountTotal,
                     CartVat = x.Vat,
                     CartPriceTotal = x.PriceTotal,
-                    CartStatusType = x.Status== CartStatus.Pending?"Ödeme Bekliyor": x.Status == CartStatus.Payed?"Ödendi":"İptal Edildi",
+                    CartStatusType = x.Status == CartStatus.Pending ? "Ödeme Bekliyor" : x.Status == CartStatus.Payed ? "Ödendi" : "İptal Edildi",
                     CartDate = x.CartDate
                 }).ToList();
 
@@ -59,11 +60,11 @@ namespace PoSApp.BLL.Repositories.Concrete
         }
         public Cart GetbyTransNo(string transNo)
         {
-            Cart cart= new Cart();
+            Cart cart = new Cart();
             using (_postDbContext = new PosDbContext())
             {
-                cart= _postDbContext.Set<Cart>().Where(m=>m.TransNo==transNo).Include(m=>m.CartDetails).Include(m=>m.PayedAmounts).FirstOrDefault();
-                
+                cart = _postDbContext.Set<Cart>().Where(m => m.TransNo == transNo).Include(m => m.CartDetails).Include(m => m.PayedAmounts).FirstOrDefault();
+
             }
             return cart;
         }
@@ -81,10 +82,11 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             var transNo = "";
             using (_postDbContext = new PosDbContext())
-            {              
-                var firstDateOfToday = Tarih.ToString("ddMMyyyy");             
+            {
+                var firstDateOfToday = Tarih.ToString("ddMMyyyy");
                 int count = 0;
-                var transNoValue = _postDbContext.Set<Cart>().Where(m => m.TransNo.StartsWith(firstDateOfToday) && m.IsDeleted == false).OrderByDescending(m => m.TransNo).Select(m => m.TransNo).FirstOrDefault();
+                //var transNoValue = _postDbContext.Set<Cart>().Where(m => m.TransNo.StartsWith(firstDateOfToday) && m.IsDeleted == false).OrderByDescending(m => m.TransNo).Select(m => m.TransNo).FirstOrDefault();
+                var transNoValue = _postDbContext.Set<Cart>().Where(m => m.TransNo.StartsWith(firstDateOfToday)).OrderByDescending(m => m.TransNo).Select(m => m.TransNo).FirstOrDefault();
                 if (!string.IsNullOrEmpty(transNoValue))
                 {
                     transNo = transNoValue;
@@ -99,16 +101,17 @@ namespace PoSApp.BLL.Repositories.Concrete
             return transNo;
         }
     }
-    public class CartList{
+    public class CartList
+    {
         public int Id { get; set; }
         public string CartRefNo { get; set; }
         public decimal CartPrice { get; set; }
         public decimal CartDiscount { get; set; }
         public decimal CartVat { get; set; }
-        public decimal CartPriceTotal { get; set; }       
+        public decimal CartPriceTotal { get; set; }
         public string CartStatusType { get; set; }
         public DateTime CartDate { get; set; }
-       
+
 
 
     }

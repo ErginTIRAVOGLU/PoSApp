@@ -88,7 +88,6 @@
             dGWCart.Size = new Size(800, 421);
             dGWCart.TabIndex = 7;
             dGWCart.CellContentClick += dGWCart_CellContentClick;
-            dGWCart.CellFormatting += dGWCart_CellFormatting;
             // 
             // Id
             // 

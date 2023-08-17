@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
- 
+
 using PoSApp.BLL.Repositories.Abstract;
 using PoSApp.DAL;
 using PoSApp.Entities;
@@ -23,16 +23,16 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list =  _postDbContext.Set<StockInDetail>().Where(m => m.IsDeleted == false).Include(m=>m.Warehouse).Select(x => new StockInDetailListDTO
+                var list = _postDbContext.Set<StockInDetail>().Where(m => m.IsDeleted == false).Include(m => m.Warehouse).Select(x => new StockInDetailListDTO
                 {
-                    Id = x.Id,        
-                    StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,                  
+                    Id = x.Id,
+                    StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,
                     StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     ProductCode = x.Product.ProductCode,
                     ProductName = x.Product.ProductName,
                     ProductId = x.Product.Id,
-                    ProductWarehouseId=x.WarehouseId,
-                    DepoAdi=x.Warehouse.WarehouseName,
+                    ProductWarehouseId = x.WarehouseId,
+                    DepoAdi = x.Warehouse.WarehouseName,
 
 
                     ProductArrivalPrice = x.ProductArrivalPrice,
@@ -59,11 +59,13 @@ namespace PoSApp.BLL.Repositories.Concrete
             }
 
         }
-        public IEnumerable<StockInDetailListDTO> GetStockInDetailsbyStockId(int id)
+
+        public StockInDetailWithTotalAmount GetStockInDetailsbyStockId(int id)
         {
-            using (_postDbContext=new PosDbContext())
+            StockInDetailWithTotalAmount stockInDetailWithTotalAmount = new StockInDetailWithTotalAmount();
+            using (_postDbContext = new PosDbContext())
             {
-                var list = _postDbContext.Set<StockInDetail>().Where(m => m.StockInId == id && m.IsDeleted==false).Include(m => m.Warehouse).Select(x => new StockInDetailListDTO
+                var list = _postDbContext.Set<StockInDetail>().Where(m => m.StockInId == id && m.IsDeleted == false).Include(m => m.Warehouse).AsNoTracking().Select(x => new StockInDetailListDTO
                 {
                     Id = x.Id,
                     StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : x.StockInDetailUnit,
@@ -73,28 +75,38 @@ namespace PoSApp.BLL.Repositories.Concrete
                     ProductId = x.Product.Id,
                     ProductWarehouseId = x.WarehouseId,
                     DepoAdi = x.Warehouse.WarehouseName,
-                    
-                    ProductArrivalPrice = x.ProductArrivalPrice,
+
+                    ProductArrivalPrice = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductArrivalPrice.ToString("0.00")) : decimal.Parse(x.ProductArrivalPrice.ToString("0.0000")),
                     ProductDiscountPercentage = x.ProductDiscountPercentage,
-                    ProductUnitDiscountAmount = x.ProductUnitDiscountAmount,
-                    ProductTotalDiscountAmount = x.ProductTotalDiscountAmount,
-                    ProductTotalVatAmount = x.ProductTotalVatAmount,
-                    ProductLastPriceWithoutVat = x.ProductLastPriceWithoutVat,
-                    ProductLastPriceWithVat = x.ProductLastPriceWithVat
+                    ProductUnitDiscountAmount = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductUnitDiscountAmount.ToString("0.00")) : decimal.Parse(x.ProductUnitDiscountAmount.ToString("0.0000")),
+                    ProductTotalDiscountAmount = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductTotalDiscountAmount.ToString("0.00")) : decimal.Parse(x.ProductTotalDiscountAmount.ToString("0.0000")),
+                    ProductTotalVatAmount = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductTotalVatAmount.ToString("0.00")) : decimal.Parse(x.ProductTotalVatAmount.ToString("0.0000")),
+                    ProductLastPriceWithoutVat = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductLastPriceWithoutVat.ToString("0.00")) : decimal.Parse(x.ProductLastPriceWithoutVat.ToString("0.0000")),
+                    ProductLastPriceWithVat = decimal.Parse(x.ProductLastPriceWithVat.ToString("0.00"))
 
 
 
                 }).ToList();
+                
 
-                return list;
+                stockInDetailWithTotalAmount.stockInDetailListDto = list;
+                stockInDetailWithTotalAmount.totalPriceAmount= list.Sum(x => x.ProductLastPriceWithVat);
+
             }
+            return stockInDetailWithTotalAmount;
         }
-       
 
     }
+
+    public class StockInDetailWithTotalAmount
+    {
+        public IEnumerable<StockInDetailListDTO> stockInDetailListDto { get; set; }
+        public decimal totalPriceAmount { get; set; }
+    }
+
     public class StockInDetailListDTO
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
@@ -110,14 +122,9 @@ namespace PoSApp.BLL.Repositories.Concrete
         public decimal ProductLastPriceWithoutVat { get; set; }
         public decimal ProductLastPriceWithVat { get; set; }
 
-        
+
         public int ProductWarehouseId { get; set; }
         public string DepoAdi { get; set; }
-
-
-
-
-
-
     }
+
 }

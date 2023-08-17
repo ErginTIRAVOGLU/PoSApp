@@ -16,7 +16,8 @@ namespace PoSApp.Entities.Enums
         [Description("Banka Havale/EFT")]
         BankTransfer = 2,
         [Description("Yemek Kartı")]
-        MealCard = 2,
-
+        MealCard = 3,
+        [Description("Trendyol Hızlı Market")]
+        TrendyolHizliMarket = 4
     }
 }

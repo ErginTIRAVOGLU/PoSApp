@@ -22,11 +22,13 @@ namespace PoSApp.Desktop.Forms.StockInForms
         private ProductRepository _productRepository = new ProductRepository();
         private SupplierRepository _supplierRepository = new SupplierRepository();
         private frmMain _frmForm;
+        
 
         public frmStockInList(frmMain frmForm)
         {
 
             InitializeComponent();
+            dGWStockIn.AutoGenerateColumns = false;
             var beginDate = dTPBeginDate.Value;
             var newBeginDate = new DateTime(beginDate.Year, beginDate.Month, beginDate.Day, 0, 0, 0);
             var endDate = dTPEndDate.Value;
@@ -51,20 +53,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
             _frmStockInDetailList.btnSave.Enabled = true;
             _frmStockInDetailList.btnUpdate.Enabled = false;
-            /*
-            _frmStockInDetailList.dGWProduct.AlternatingRowsDefaultCellStyle = new DataGridViewCellStyle()
-            {
-                BackColor = Color.Gray,
-                SelectionBackColor = Color.Gray
-            };
-            _frmStockInDetailList.dGWProduct.DefaultCellStyle = new DataGridViewCellStyle()
-            {
-                BackColor = Color.Gray,
-                SelectionBackColor = Color.Gray
-            };
-            _frmStockInDetailList.dGWProduct.Enabled= false;
-            _frmStockInDetailList.txtProductSearch.Enabled= false;
-            */
+           
             _frmStockInDetailList.IsUpdate = false;
             _frmStockInDetailList.TopLevel = false;
             _frmStockInDetailList.Dock = DockStyle.Fill;
@@ -127,7 +116,8 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
 
                     _frmStockInDetailList.dGWProduct.DataSource = products;
-                    _frmStockInDetailList.oldStokDetay = stockInDetails;
+                    _frmStockInDetailList.oldStokDetay = stockInDetails.stockInDetailListDto;
+                    _frmStockInDetailList.totalAmount = stockInDetails.totalPriceAmount;
                     _frmStockInDetailList.dGWStockInDetail.DataSource = _frmStockInDetailList.oldStokDetay;
 
                     _frmStockInDetailList.btnSave.Enabled = false;
@@ -161,10 +151,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnFiltre_Click(object sender, EventArgs e)
         {
@@ -174,11 +161,6 @@ namespace PoSApp.Desktop.Forms.StockInForms
             var newEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day, 23, 59, 59);
 
             yukle(newBeginDate, newEndDate);
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

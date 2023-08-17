@@ -32,12 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStockInList));
             dGWStockIn = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            StockInRefNo = new DataGridViewTextBoxColumn();
-            SupplierName = new DataGridViewTextBoxColumn();
-            StockInDate = new DataGridViewTextBoxColumn();
-            Edit = new DataGridViewImageColumn();
-            Delete = new DataGridViewImageColumn();
             panel1 = new Panel();
             label1 = new Label();
             pbAdd = new PictureBox();
@@ -47,6 +41,13 @@
             dTPEndDate = new DateTimePicker();
             dTPBeginDate = new DateTimePicker();
             label2 = new Label();
+            Id = new DataGridViewTextBoxColumn();
+            StockInRefNo = new DataGridViewTextBoxColumn();
+            SupplierName = new DataGridViewTextBoxColumn();
+            TotalAmount = new DataGridViewTextBoxColumn();
+            StockInDate = new DataGridViewTextBoxColumn();
+            Edit = new DataGridViewImageColumn();
+            Delete = new DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)dGWStockIn).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbAdd).BeginInit();
@@ -75,7 +76,7 @@
             dGWStockIn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWStockIn.ColumnHeadersHeight = 30;
             dGWStockIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dGWStockIn.Columns.AddRange(new DataGridViewColumn[] { Id, StockInRefNo, SupplierName, StockInDate, Edit, Delete });
+            dGWStockIn.Columns.AddRange(new DataGridViewColumn[] { Id, StockInRefNo, SupplierName, TotalAmount, StockInDate, Edit, Delete });
             dGWStockIn.Dock = DockStyle.Fill;
             dGWStockIn.EnableHeadersVisualStyles = false;
             dGWStockIn.Location = new Point(0, 0);
@@ -86,51 +87,6 @@
             dGWStockIn.Size = new Size(800, 421);
             dGWStockIn.TabIndex = 7;
             dGWStockIn.CellContentClick += dGWStockIn_CellContentClick;
-            // 
-            // Id
-            // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "#";
-            Id.Name = "Id";
-            Id.Visible = false;
-            // 
-            // StockInRefNo
-            // 
-            StockInRefNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StockInRefNo.DataPropertyName = "StockInRefNo";
-            StockInRefNo.HeaderText = "REF CODE";
-            StockInRefNo.Name = "StockInRefNo";
-            // 
-            // SupplierName
-            // 
-            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SupplierName.DataPropertyName = "SupplierName";
-            SupplierName.HeaderText = "TEDARİKÇİ";
-            SupplierName.Name = "SupplierName";
-            // 
-            // StockInDate
-            // 
-            StockInDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            StockInDate.DataPropertyName = "StockInDate";
-            StockInDate.HeaderText = "TARİH";
-            StockInDate.Name = "StockInDate";
-            // 
-            // Edit
-            // 
-            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Edit.HeaderText = "";
-            Edit.Image = (Image)resources.GetObject("Edit.Image");
-            Edit.Name = "Edit";
-            Edit.Width = 5;
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Delete.HeaderText = "";
-            Delete.Image = (Image)resources.GetObject("Delete.Image");
-            Delete.Name = "Delete";
-            Delete.Width = 5;
             // 
             // panel1
             // 
@@ -195,7 +151,6 @@
             splitContainer1.Panel1.Controls.Add(dTPEndDate);
             splitContainer1.Panel1.Controls.Add(dTPBeginDate);
             splitContainer1.Panel1.Controls.Add(label2);
-            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
@@ -237,6 +192,60 @@
             label2.TabIndex = 0;
             label2.Text = "Tarih Aralığı : ";
             // 
+            // Id
+            // 
+            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "#";
+            Id.Name = "Id";
+            Id.Visible = false;
+            Id.Width = 39;
+            // 
+            // StockInRefNo
+            // 
+            StockInRefNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StockInRefNo.DataPropertyName = "StockInRefNo";
+            StockInRefNo.HeaderText = "REF CODE";
+            StockInRefNo.Name = "StockInRefNo";
+            // 
+            // SupplierName
+            // 
+            SupplierName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SupplierName.DataPropertyName = "SupplierName";
+            SupplierName.HeaderText = "TEDARİKÇİ";
+            SupplierName.Name = "SupplierName";
+            // 
+            // TotalAmount
+            // 
+            TotalAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            TotalAmount.DataPropertyName = "TotalAmount";
+            TotalAmount.HeaderText = "TOPLAM TUTAR";
+            TotalAmount.Name = "TotalAmount";
+            TotalAmount.Width = 122;
+            // 
+            // StockInDate
+            // 
+            StockInDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            StockInDate.DataPropertyName = "StockInDate";
+            StockInDate.HeaderText = "TARİH";
+            StockInDate.Name = "StockInDate";
+            // 
+            // Edit
+            // 
+            Edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Edit.HeaderText = "";
+            Edit.Image = (Image)resources.GetObject("Edit.Image");
+            Edit.Name = "Edit";
+            Edit.Width = 5;
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Delete.HeaderText = "";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.Name = "Delete";
+            Delete.Width = 5;
+            // 
             // frmStockInList
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -270,15 +279,16 @@
         private PictureBox pbAdd;
         private PictureBox pBClose;
         private SplitContainer splitContainer1;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn StockInRefNo;
-        private DataGridViewTextBoxColumn SupplierName;
-        private DataGridViewTextBoxColumn StockInDate;
-        private DataGridViewImageColumn Edit;
-        private DataGridViewImageColumn Delete;
         private Button btnFiltre;
         private DateTimePicker dTPEndDate;
         private DateTimePicker dTPBeginDate;
         private Label label2;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn StockInRefNo;
+        private DataGridViewTextBoxColumn SupplierName;
+        private DataGridViewTextBoxColumn TotalAmount;
+        private DataGridViewTextBoxColumn StockInDate;
+        private DataGridViewImageColumn Edit;
+        private DataGridViewImageColumn Delete;
     }
 }

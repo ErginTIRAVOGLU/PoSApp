@@ -30,6 +30,8 @@ namespace PoSApp.Desktop.Forms.StockInForms
         public int stockInListId;
         public bool IsUpdate;
 
+        public decimal totalAmount = 0;
+
         public frmStockInDetailList()
         {
             InitializeComponent();
@@ -44,12 +46,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
             dGWProduct.DataSource = productList;
             dGWProduct.Refresh();
 
-            //_stockIn = new StockIn();
-            //_stockInDetail = new StockInDetail();
 
-            //_stockInDetail.StockInId = _stockIn.Id;
-
-            //var stokDetay = _stockInDetailRepository.GetAllSelected();
             if (!IsUpdate)
             {
                 stokDetay = new List<StockInDetailListDTO>();
@@ -60,6 +57,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
             }
             dGWStockInDetail.DataSource = stokDetay;
             dGWStockInDetail.Refresh();
+            lblToplamTutar.Text = totalAmount.ToString("0.00") + " TL";
 
         }
 
@@ -80,7 +78,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
                     Product _product = _productRepository.GetById(productId);
                     _stockInDetail = new StockInDetail();
-                    //_stockInDetail.Product = _product;
+
 
                     frmAddStock _frmAddStock = new frmAddStock();
                     DialogResult dialogResult = _frmAddStock.ShowDialog();
@@ -106,6 +104,7 @@ namespace PoSApp.Desktop.Forms.StockInForms
                         stokDetay.Add(stockInDetailListDTO);
                         source.DataSource = stokDetay;
                         dGWStockInDetail.DataSource = source;
+                        lblToplamTutar.Text = totalAmount.ToString("0.00")+" TL";
                     }
                     break;
                 default:
@@ -113,20 +112,6 @@ namespace PoSApp.Desktop.Forms.StockInForms
             }
         }
 
-
-        private void txtProductSearch_TextChanged(object sender, EventArgs e)
-        {
-            /*
-            // var productList = _productRepository.GetWhereUrunGirisAsync(m => m.ProductName.ToLower(new CultureInfo("tr-TR")).Contains(txtProductSearch.Text.ToLower(new CultureInfo("tr-TR"))));
-            // var productList = _productRepository.GetWhereUrunGirisAsync(x => EF.Functions.Like(x.ProductName, $"%{txtProductSearch.Text}%"));
-            var criterion = txtProductSearch.Text.ToLower();
-            var productList = _productRepository.GetWhereUrunGiris(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
-
-
-            dGWProduct.DataSource = productList;
-            dGWProduct.Refresh();
-            */
-        }
 
 
 
@@ -140,37 +125,12 @@ namespace PoSApp.Desktop.Forms.StockInForms
             else
             {
                 var stockIn = _stockInRepository.GetById(stockInListId);
-                //var stockInDetails=_stockInDetailRepository.GetByStockInId(stockInListId);
-                //var stockInDetailsList = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
                 stockIn.StockInDate = dtTimeInputDate.Value;
                 stockIn.SupplierId = int.Parse(cmBoxSupplier.SelectedValue.ToString());
                 stockIn.StockInRefNo = txtStockInRefNo.Text;
                 _stockInRepository.Update(stockIn);
 
-                /*
-                foreach (DataGridViewRow row in dGWStockInDetail.Rows)
-                {
-                    var rowIDValue = int.Parse(row.Cells["detailId"].Value.ToString());
-                    if (rowIDValue == 0)
-                    {
-                        _stockInDetail = new StockInDetail();
-                        _stockInDetail.StockInId = stockInListId;
-                        _stockInDetail.ProductId = int.Parse(row.Cells["detailProductId"].Value.ToString());
-                        _stockInDetail.StockInDetailUnit = decimal.Parse(row.Cells["detailStockInDetailUnit"].Value.ToString());
-                        _stockInDetail.WarehouseId = int.Parse(row.Cells["ProductWarehouseId"].Value.ToString());
-                        _stockInDetailRepository.Insert(_stockInDetail);
-                    }
-                    else
-                    {
-                        _stockInDetail = _stockInDetailRepository.GetById(rowIDValue);
-                        //_stockInDetail.StockInId = _stockIn.Id;
-                        //_stockInDetail.ProductId = int.Parse(row.Cells["detailProductId"].Value.ToString());
-                        _stockInDetail.StockInDetailUnit = decimal.Parse(row.Cells["detailStockInDetailUnit"].Value.ToString());
-                        _stockInDetailRepository.Update(_stockInDetail);
-                    }
 
-                }
-                */
                 foreach (var item in stokDetay)
                 {
                     if (item.Id == 0)
@@ -210,8 +170,9 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
                     }
                 }
-                oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
-
+                var list = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
+                oldStokDetay = list.stockInDetailListDto;
+                totalAmount = list.totalPriceAmount;
 
 
                 yukle();
@@ -227,11 +188,11 @@ namespace PoSApp.Desktop.Forms.StockInForms
         }
         private void formClose(object sender, EventArgs e)
         {
-            
-            if(this.Parent!=null)
-            { 
-                if(this.Parent.Parent != null)
-                { 
+
+            if (this.Parent != null)
+            {
+                if (this.Parent.Parent != null)
+                {
                     frmMain frm = (frmMain)this.Parent.Parent;
                     frm.btnStockIn_Click(sender, e);
                 }
@@ -252,25 +213,14 @@ namespace PoSApp.Desktop.Forms.StockInForms
                 _stockIn.SupplierId = int.Parse(cmBoxSupplier.SelectedValue.ToString());
                 _stockInRepository.Insert(_stockIn);
                 stockInListId = _stockIn.Id;
-                /*
-                foreach (DataGridViewRow row in dGWStockInDetail.Rows)
-                {
 
-                    _stockInDetail = new StockInDetail();
-                    _stockInDetail.StockInId = _stockIn.Id;
-                    _stockInDetail.ProductId = int.Parse(row.Cells["detailProductId"].Value.ToString());
-                    _stockInDetail.StockInDetailUnit = decimal.Parse(row.Cells["detailStockInDetailUnit"].Value.ToString());
-                    _stockInDetail.WarehouseId = int.Parse(row.Cells["ProductWarehouseId"].Value.ToString());
-                    _stockInDetailRepository.Insert(_stockInDetail);
-                }
-                */
                 foreach (var item in stokDetay)
                 {
                     _stockInDetail = new StockInDetail();
                     _stockInDetail.StockInId = _stockIn.Id;
-                    _stockInDetail.ProductId = item.ProductId;//int.Parse(row.Cells["detailProductId"].Value.ToString());
-                    _stockInDetail.StockInDetailUnit = item.StockInDetailUnit;// decimal.Parse(row.Cells["detailStockInDetailUnit"].Value.ToString());
-                    _stockInDetail.WarehouseId = item.ProductWarehouseId;//int.Parse(row.Cells["ProductWarehouseId"].Value.ToString());
+                    _stockInDetail.ProductId = item.ProductId;
+                    _stockInDetail.StockInDetailUnit = item.StockInDetailUnit;
+                    _stockInDetail.WarehouseId = item.ProductWarehouseId;
                     _stockInDetail.ProductArrivalPrice = item.ProductArrivalPrice;
                     _stockInDetail.ProductDiscountPercentage = item.ProductDiscountPercentage;
                     _stockInDetail.ProductUnitDiscountAmount = item.ProductUnitDiscountAmount;
@@ -283,8 +233,9 @@ namespace PoSApp.Desktop.Forms.StockInForms
                 IsUpdate = true;
                 btnSave.Enabled = false;
                 btnUpdate.Enabled = true;
-                oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
-
+                var list = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
+                oldStokDetay = list.stockInDetailListDto;
+                totalAmount = list.totalPriceAmount;
                 yukle();
 
             }
@@ -312,9 +263,6 @@ namespace PoSApp.Desktop.Forms.StockInForms
 
                             oldStokDetay = oldStokDetay.Where(m => m.Id != stockInDetail.Id).ToList();
 
-
-                            //var tempOldStockInDetail = oldStokDetay;
-                            //oldStokDetay = _stockInDetailRepository.GetStockInDetailsbyStockId(stockInListId);
                             yukle();
                         }
                         else
@@ -329,21 +277,8 @@ namespace PoSApp.Desktop.Forms.StockInForms
             }
         }
 
-        private void dGWStockInDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            if (dGWStockInDetail.Columns[e.ColumnIndex].Name == "StockInDetailUnitType")
-            {
-                ProductUnitType enumValue = (ProductUnitType)e.Value;
-                e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
-            }
-            */
-        }
 
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void frmStockInDetailList_Load(object sender, EventArgs e)
         {
@@ -351,21 +286,18 @@ namespace PoSApp.Desktop.Forms.StockInForms
             yukle();
         }
 
-        private void pbAdd_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void txtProductSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-            { 
-            var criterion = txtProductSearch.Text.ToLower();
-            var productList = _productRepository.GetWhereUrunGiris(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
+            if (e.KeyCode == Keys.Enter)
+            {
+                var criterion = txtProductSearch.Text.ToLower();
+                var productList = _productRepository.GetWhereUrunGiris(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
 
 
-            dGWProduct.DataSource = productList;
-            dGWProduct.Refresh();
+                dGWProduct.DataSource = productList;
+                dGWProduct.Refresh();
             }
         }
     }

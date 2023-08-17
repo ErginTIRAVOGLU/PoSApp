@@ -60,12 +60,13 @@
             lblChange = new Label();
             label2 = new Label();
             dGWPayedDetail = new DataGridView();
+            label3 = new Label();
+            txtTotalPayed = new TextBox();
+            btnTrendyolHizliMarket = new RadioButton();
             Id = new DataGridViewTextBoxColumn();
             PriceTotal = new DataGridViewTextBoxColumn();
             PayedAmountPaymentType = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
-            label3 = new Label();
-            txtTotalPayed = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWPayedDetail).BeginInit();
@@ -78,7 +79,7 @@
             btnEnter.FlatStyle = FlatStyle.Popup;
             btnEnter.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnEnter.ForeColor = Color.White;
-            btnEnter.Location = new Point(13, 679);
+            btnEnter.Location = new Point(13, 583);
             btnEnter.Name = "btnEnter";
             btnEnter.Size = new Size(267, 52);
             btnEnter.TabIndex = 18;
@@ -93,7 +94,7 @@
             btn00.FlatStyle = FlatStyle.Popup;
             btn00.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn00.ForeColor = Color.White;
-            btn00.Location = new Point(218, 611);
+            btn00.Location = new Point(218, 515);
             btn00.Name = "btn00";
             btn00.Size = new Size(62, 62);
             btn00.TabIndex = 16;
@@ -108,7 +109,7 @@
             btn3.FlatStyle = FlatStyle.Popup;
             btn3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn3.ForeColor = Color.White;
-            btn3.Location = new Point(150, 611);
+            btn3.Location = new Point(150, 515);
             btn3.Name = "btn3";
             btn3.Size = new Size(62, 62);
             btn3.TabIndex = 8;
@@ -123,7 +124,7 @@
             btn2.FlatStyle = FlatStyle.Popup;
             btn2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn2.ForeColor = Color.White;
-            btn2.Location = new Point(82, 611);
+            btn2.Location = new Point(82, 515);
             btn2.Name = "btn2";
             btn2.Size = new Size(62, 62);
             btn2.TabIndex = 7;
@@ -138,7 +139,7 @@
             btn1.FlatStyle = FlatStyle.Popup;
             btn1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn1.ForeColor = Color.White;
-            btn1.Location = new Point(13, 611);
+            btn1.Location = new Point(13, 515);
             btn1.Name = "btn1";
             btn1.Size = new Size(62, 62);
             btn1.TabIndex = 6;
@@ -153,7 +154,7 @@
             btn0.FlatStyle = FlatStyle.Popup;
             btn0.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn0.ForeColor = Color.White;
-            btn0.Location = new Point(218, 544);
+            btn0.Location = new Point(218, 448);
             btn0.Name = "btn0";
             btn0.Size = new Size(62, 62);
             btn0.TabIndex = 15;
@@ -168,7 +169,7 @@
             btn6.FlatStyle = FlatStyle.Popup;
             btn6.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn6.ForeColor = Color.White;
-            btn6.Location = new Point(150, 544);
+            btn6.Location = new Point(150, 448);
             btn6.Name = "btn6";
             btn6.Size = new Size(62, 62);
             btn6.TabIndex = 11;
@@ -183,7 +184,7 @@
             btn5.FlatStyle = FlatStyle.Popup;
             btn5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn5.ForeColor = Color.White;
-            btn5.Location = new Point(82, 544);
+            btn5.Location = new Point(82, 448);
             btn5.Name = "btn5";
             btn5.Size = new Size(62, 62);
             btn5.TabIndex = 10;
@@ -198,7 +199,7 @@
             btn4.FlatStyle = FlatStyle.Popup;
             btn4.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn4.ForeColor = Color.White;
-            btn4.Location = new Point(13, 544);
+            btn4.Location = new Point(13, 448);
             btn4.Name = "btn4";
             btn4.Size = new Size(62, 62);
             btn4.TabIndex = 9;
@@ -213,7 +214,7 @@
             btnC.FlatStyle = FlatStyle.Popup;
             btnC.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnC.ForeColor = Color.White;
-            btnC.Location = new Point(218, 477);
+            btnC.Location = new Point(218, 381);
             btnC.Name = "btnC";
             btnC.Size = new Size(62, 62);
             btnC.TabIndex = 17;
@@ -228,7 +229,7 @@
             btn9.FlatStyle = FlatStyle.Popup;
             btn9.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn9.ForeColor = Color.White;
-            btn9.Location = new Point(150, 477);
+            btn9.Location = new Point(150, 381);
             btn9.Name = "btn9";
             btn9.Size = new Size(62, 62);
             btn9.TabIndex = 14;
@@ -243,7 +244,7 @@
             btn8.FlatStyle = FlatStyle.Popup;
             btn8.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn8.ForeColor = Color.White;
-            btn8.Location = new Point(82, 477);
+            btn8.Location = new Point(82, 381);
             btn8.Name = "btn8";
             btn8.Size = new Size(62, 62);
             btn8.TabIndex = 13;
@@ -258,7 +259,7 @@
             btn7.FlatStyle = FlatStyle.Popup;
             btn7.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn7.ForeColor = Color.White;
-            btn7.Location = new Point(13, 477);
+            btn7.Location = new Point(13, 381);
             btn7.Name = "btn7";
             btn7.Size = new Size(62, 62);
             btn7.TabIndex = 12;
@@ -284,7 +285,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(292, 40);
+            panel1.Size = new Size(363, 40);
             panel1.TabIndex = 34;
             // 
             // pBClose
@@ -293,7 +294,7 @@
             pBClose.BackgroundImage = (Image)resources.GetObject("pBClose.BackgroundImage");
             pBClose.BackgroundImageLayout = ImageLayout.Center;
             pBClose.Cursor = Cursors.Hand;
-            pBClose.Location = new Point(265, 6);
+            pBClose.Location = new Point(336, 6);
             pBClose.Name = "pBClose";
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 1;
@@ -343,9 +344,9 @@
             btnCash.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCash.ForeColor = Color.FromArgb(25, 118, 210);
             btnCash.Image = (Image)resources.GetObject("btnCash.Image");
-            btnCash.Location = new Point(13, 388);
+            btnCash.Location = new Point(286, 58);
             btnCash.Name = "btnCash";
-            btnCash.Size = new Size(62, 83);
+            btnCash.Size = new Size(66, 98);
             btnCash.TabIndex = 2;
             btnCash.Text = "Nakit Ödeme";
             btnCash.TextAlign = ContentAlignment.MiddleCenter;
@@ -362,9 +363,9 @@
             btnCreditCard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreditCard.ForeColor = Color.FromArgb(25, 118, 210);
             btnCreditCard.Image = (Image)resources.GetObject("btnCreditCard.Image");
-            btnCreditCard.Location = new Point(82, 388);
+            btnCreditCard.Location = new Point(286, 163);
             btnCreditCard.Name = "btnCreditCard";
-            btnCreditCard.Size = new Size(62, 82);
+            btnCreditCard.Size = new Size(66, 98);
             btnCreditCard.TabIndex = 3;
             btnCreditCard.Text = "Kredi Kart";
             btnCreditCard.TextAlign = ContentAlignment.MiddleCenter;
@@ -381,9 +382,9 @@
             btnBankPayment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnBankPayment.ForeColor = Color.FromArgb(25, 118, 210);
             btnBankPayment.Image = (Image)resources.GetObject("btnBankPayment.Image");
-            btnBankPayment.Location = new Point(150, 388);
+            btnBankPayment.Location = new Point(286, 268);
             btnBankPayment.Name = "btnBankPayment";
-            btnBankPayment.Size = new Size(62, 83);
+            btnBankPayment.Size = new Size(66, 98);
             btnBankPayment.TabIndex = 4;
             btnBankPayment.Text = "Havale / EFT";
             btnBankPayment.TextAlign = ContentAlignment.MiddleCenter;
@@ -400,9 +401,9 @@
             btnMealCard.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMealCard.ForeColor = Color.FromArgb(25, 118, 210);
             btnMealCard.Image = (Image)resources.GetObject("btnMealCard.Image");
-            btnMealCard.Location = new Point(218, 388);
+            btnMealCard.Location = new Point(286, 373);
             btnMealCard.Name = "btnMealCard";
-            btnMealCard.Size = new Size(62, 82);
+            btnMealCard.Size = new Size(66, 98);
             btnMealCard.TabIndex = 5;
             btnMealCard.Text = "Yemek Kartı";
             btnMealCard.TextAlign = ContentAlignment.MiddleCenter;
@@ -483,36 +484,6 @@
             dGWPayedDetail.Size = new Size(267, 125);
             dGWPayedDetail.TabIndex = 19;
             dGWPayedDetail.CellContentClick += dGWPayedDetail_CellContentClick;
-            dGWPayedDetail.CellFormatting += dGWPayedDetail_CellFormatting;
-            // 
-            // Id
-            // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Id.DataPropertyName = "Id";
-            Id.HeaderText = "#";
-            Id.Name = "Id";
-            Id.Width = 39;
-            // 
-            // PriceTotal
-            // 
-            PriceTotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            PriceTotal.DataPropertyName = "PriceTotal";
-            PriceTotal.HeaderText = "Ödeme";
-            PriceTotal.Name = "PriceTotal";
-            // 
-            // PayedAmountPaymentType
-            // 
-            PayedAmountPaymentType.DataPropertyName = "PaymentType";
-            PayedAmountPaymentType.HeaderText = "Ödeme Tipi";
-            PayedAmountPaymentType.Name = "PayedAmountPaymentType";
-            // 
-            // Delete
-            // 
-            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Delete.HeaderText = "";
-            Delete.Image = (Image)resources.GetObject("Delete.Image");
-            Delete.Name = "Delete";
-            Delete.Width = 5;
             // 
             // label3
             // 
@@ -533,11 +504,62 @@
             txtTotalPayed.TabIndex = 52;
             txtTotalPayed.TextAlign = HorizontalAlignment.Right;
             // 
+            // btnTrendyolHizliMarket
+            // 
+            btnTrendyolHizliMarket.Appearance = Appearance.Button;
+            btnTrendyolHizliMarket.BackColor = Color.White;
+            btnTrendyolHizliMarket.CheckAlign = ContentAlignment.MiddleCenter;
+            btnTrendyolHizliMarket.FlatAppearance.CheckedBackColor = Color.FromArgb(152, 198, 243);
+            btnTrendyolHizliMarket.FlatStyle = FlatStyle.Flat;
+            btnTrendyolHizliMarket.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTrendyolHizliMarket.ForeColor = Color.FromArgb(25, 118, 210);
+            btnTrendyolHizliMarket.Image = (Image)resources.GetObject("btnTrendyolHizliMarket.Image");
+            btnTrendyolHizliMarket.Location = new Point(285, 478);
+            btnTrendyolHizliMarket.Name = "btnTrendyolHizliMarket";
+            btnTrendyolHizliMarket.Size = new Size(66, 98);
+            btnTrendyolHizliMarket.TabIndex = 54;
+            btnTrendyolHizliMarket.Text = "Trendyol Hızlı Market";
+            btnTrendyolHizliMarket.TextAlign = ContentAlignment.MiddleCenter;
+            btnTrendyolHizliMarket.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnTrendyolHizliMarket.UseVisualStyleBackColor = false;
+            // 
+            // Id
+            // 
+            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "#";
+            Id.Name = "Id";
+            Id.Width = 39;
+            // 
+            // PriceTotal
+            // 
+            PriceTotal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PriceTotal.DataPropertyName = "PriceTotal";
+            PriceTotal.HeaderText = "Ödeme";
+            PriceTotal.Name = "PriceTotal";
+            // 
+            // PayedAmountPaymentType
+            // 
+            PayedAmountPaymentType.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            PayedAmountPaymentType.DataPropertyName = "PaymentType";
+            PayedAmountPaymentType.HeaderText = "Ödeme Tipi";
+            PayedAmountPaymentType.Name = "PayedAmountPaymentType";
+            PayedAmountPaymentType.Width = 99;
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Delete.HeaderText = "";
+            Delete.Image = (Image)resources.GetObject("Delete.Image");
+            Delete.Name = "Delete";
+            Delete.Width = 5;
+            // 
             // frmSettle
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(292, 741);
+            ClientSize = new Size(363, 642);
+            Controls.Add(btnTrendyolHizliMarket);
             Controls.Add(label3);
             Controls.Add(txtTotalPayed);
             Controls.Add(dGWPayedDetail);
@@ -615,6 +637,7 @@
         public DataGridView dGWPayedDetail;
         private Label label3;
         public TextBox txtTotalPayed;
+        private RadioButton btnTrendyolHizliMarket;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn PriceTotal;
         private DataGridViewTextBoxColumn PayedAmountPaymentType;

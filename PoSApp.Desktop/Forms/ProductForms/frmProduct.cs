@@ -12,8 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using PoSApp.Entities.Enums;
+using PoSApp.Desktop.Forms.RaportForms;
 
 namespace PoSApp.Desktop.Forms.ProductForms
 {
@@ -23,6 +23,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
         private BrandRepository _brandRepository = new BrandRepository();
         private CategoryRepository _categoryRepository = new CategoryRepository();
         private frmProductList _frmProductList;
+        frmStockInProductReports _frmStockInProductReports;
         public int productId;
         public bool IsUpdate;
 
@@ -32,6 +33,17 @@ namespace PoSApp.Desktop.Forms.ProductForms
             _frmProductList = frmProductList;
         }
 
+        public frmProduct(frmStockInProductReports frmStockInProductReports)
+        {
+            InitializeComponent();
+            _frmStockInProductReports = frmStockInProductReports;
+        }
+
+        public frmProduct()
+        {
+            InitializeComponent();
+
+        }
         private void frmProduct_Load(object sender, EventArgs e)
         {
             if (IsUpdate)
@@ -71,7 +83,14 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
             });
             temizle();
-            _frmProductList.yukle();
+            if (_frmProductList != null)
+            {
+                _frmProductList.yukle();
+            }
+            if (_frmStockInProductReports != null)
+            {
+                _frmStockInProductReports.filtrele();
+            }
             this.Close();
         }
 
@@ -96,7 +115,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
             product.ProductName = txtProduct.Text;
             product.BrandId = int.Parse(cmBoxBrand.SelectedValue.ToString());
             product.CategoryID = int.Parse(cmBoxCategory.SelectedValue.ToString());
-            product.ProductUnitType = (Entities.Enums.ProductUnitType)cmBoxProductUnitType.SelectedValue;
+            product.ProductUnitType = (ProductUnitType)cmBoxProductUnitType.SelectedValue;
             product.ProductBarcode = txtBarcode.Text;
             product.ProductCode = txtCode.Text;
             product.ProductPrice = pprice;
@@ -104,7 +123,14 @@ namespace PoSApp.Desktop.Forms.ProductForms
             product.ProductVat = Vat;
             var durum = _productRepository.Update(product);
             temizle();
-            _frmProductList.yukle();
+            if (_frmProductList != null)
+            {
+                _frmProductList.yukle();
+            }
+            if (_frmStockInProductReports != null)
+            {
+                _frmStockInProductReports.filtrele();
+            }
             this.Close();
         }
 

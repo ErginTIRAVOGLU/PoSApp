@@ -139,17 +139,17 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void btnEnter_Click(object sender, EventArgs e)
         {
             bool closeForm = false;
-        //sale
-        //cash
-        //change
+            //sale
+            //cash
+            //change
 
-        decimal change = 0;
+            decimal change = 0;
             decimal cash = 0;
             //decimal.TryParse(txtChange.Text, out change);
             change = _changeAmount;
             decimal.TryParse(txtCash.Text, out cash);
-            
-            _cashAmount=cash;
+
+            _cashAmount = cash;
 
 
             if (cash == 0)
@@ -160,8 +160,7 @@ namespace PoSApp.Desktop.Forms.PosForms
                 return;
             }
 
-            
- 
+
 
             if (btnCash.Checked)
             {
@@ -202,11 +201,14 @@ namespace PoSApp.Desktop.Forms.PosForms
                 }
                 btnBankPayment.Checked = false;
             }
-            else if (_pendingPayment > cash)
+            else if (btnMealCard.Checked)
             {
-                if (change > 0)
+                if (_pendingPayment > cash)
                 {
+                    //if (change > 0)
+                    //{
                     _frmPos.saveCart(CartStatus.Pending, cash, PaymentType.MealCard);
+                    //}
                 }
                 else
                 {
@@ -214,6 +216,20 @@ namespace PoSApp.Desktop.Forms.PosForms
                     closeForm = true;
                 }
                 btnMealCard.Checked = false;
+
+            }
+            else if (btnTrendyolHizliMarket.Checked)
+            {
+                if (_pendingPayment > cash)
+                {
+                    _frmPos.saveCart(CartStatus.Pending, cash, PaymentType.TrendyolHizliMarket);
+                }
+                else
+                {
+                    _frmPos.saveCart(CartStatus.Payed, cash, PaymentType.TrendyolHizliMarket);
+                    closeForm = true;
+                }
+                btnBankPayment.Checked = false;
             }
             else
             {
@@ -227,7 +243,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             payedTotal();
             txtCash.Focus();
             this.ActiveControl = txtCash;
-            if(closeForm)
+            if (closeForm)
             {
                 this.Close();
             }
@@ -256,17 +272,6 @@ namespace PoSApp.Desktop.Forms.PosForms
             dGWPayedDetail.Refresh();
         }
 
-        private void dGWPayedDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            if (dGWPayedDetail.Columns[e.ColumnIndex].Name == "PayedAmountPaymentType")
-            {
-                PaymentType enumValue = (PaymentType)e.Value;
-                e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
-            }
-            */
-        }
-
         private void dGWPayedDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dGWPayedDetail.Columns[e.ColumnIndex].Name;
@@ -274,12 +279,12 @@ namespace PoSApp.Desktop.Forms.PosForms
             switch (colName)
             {
                 case "Delete":
-                    if (MessageBox.Show("Ödemeyi silmek istediğinizden emin misiniz?", "Ürün Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Ödemeyi silmek istediğinizden emin misiniz?", "Ödeme Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         var selectedRowIndex = e.RowIndex;
                         deleteRow(rowId);
                         txtCash.Clear();
-                        
+
                         payedTotal();
                         fillPayedDetailGV();
                         Calculate();

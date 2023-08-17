@@ -30,6 +30,8 @@ namespace PoSApp.Desktop.Forms.ProductForms
         public int returnProductVat { get; set; }
         public ProductUnitType returnProductUnitType { get; set; }
 
+        public bool productMode=false;
+
         public bool quickMode = true;
 
         public frmProductList(IEnumerable<ProductListDTOWithStock> _productListDTOs = null, frmPos _frmPos = null)
@@ -110,7 +112,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
                     _frmProduct.txtBarcode.Text = p.product.ProductBarcode;
                     decimal totalStock = 0.0M;
                     decimal.TryParse(p.NetProductAmountInStock.ToString(), out totalStock);
-                    _frmProduct.lblStok.Text = totalStock.ToString();
+                    _frmProduct.lblStok.Text = p.product.ProductUnitType == ProductUnitType.Quantity ? totalStock.ToString("0") : totalStock.ToString("0.0000");
                     _frmProduct.txtProductPrice.Text = p.product.ProductPrice.ToString("N4", CultureInfo.CreateSpecificCulture("tr-TR"));
 
                     _frmProduct.cmBoxBrand.DisplayMember = "BrandName";
@@ -178,22 +180,60 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         }
 
-        private void dGWProduct_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            if (dGWProduct.Columns[e.ColumnIndex].Name == "ProductUnitTypeColon")
-            {
-                ProductUnitType enumValue = (ProductUnitType)e.Value;
-                e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
-            }
-            */
-        }
-
         private void dGWProduct_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (!productMode)
             {
-                //this.DialogResult = DialogResult.OK;
+                if (e.KeyCode == Keys.Enter)
+                {
+                    //this.DialogResult = DialogResult.OK;
+                    dGWProduct.CurrentRow.Selected = true;
+                    var productId = dGWProduct.SelectedRows[0].Cells["Id"].Value.ToString();
+                    returnProductId = int.Parse(productId);
+                    var product = _productRepository.GetById(returnProductId);
+                    returnProductName = product.ProductName;
+                    returnProductPrice = product.ProductPrice;
+                    returnProductUnitType = product.ProductUnitType;
+                    returnProductVat = product.ProductVat;
+                    //productTotalPrice = item.Total;
+                    //vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
+                    //productTotalPrice - (productTotalPrice / (1 + vatRatio))
+                    e.Handled = true;
+                    if (quickMode)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+
+                        frmQuantity _frmQuantity = new frmQuantity();
+                        var quantityReturnDialog = _frmQuantity.ShowDialog();
+                        var returnedProductQuantity = 0;
+                        if (quantityReturnDialog == DialogResult.OK)
+                        {
+                            returnedProductQuantity = _frmQuantity.returnQuantity;
+                            frmPos.AddToPos(returnProductId, returnProductName, returnProductPrice, returnedProductQuantity, returnProductUnitType, returnProductVat);
+                        }
+
+
+
+                    }
+                }
+                else if (e.KeyCode == Keys.Escape)
+                {
+                    this.DialogResult = DialogResult.Abort;
+                    e.Handled = true;
+                    this.Close();
+                }
+            }
+
+        }
+
+        private void dGWProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(!productMode)
+            { 
                 dGWProduct.CurrentRow.Selected = true;
                 var productId = dGWProduct.SelectedRows[0].Cells["Id"].Value.ToString();
                 returnProductId = int.Parse(productId);
@@ -202,10 +242,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
                 returnProductPrice = product.ProductPrice;
                 returnProductUnitType = product.ProductUnitType;
                 returnProductVat = product.ProductVat;
-                //productTotalPrice = item.Total;
-                //vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
-                //productTotalPrice - (productTotalPrice / (1 + vatRatio))
-                e.Handled = true;
+
                 if (quickMode)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -227,62 +264,6 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
                 }
             }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                this.DialogResult = DialogResult.Abort;
-                e.Handled = true;
-                this.Close();
-            }
-
-
-        }
-
-        private void txtProductSearch_TextChanged(object sender, EventArgs e)
-        {
-            /*
-
-
-            var criterion = txtProductSearch.Text.ToLower();
-            var productList = _productRepository.GetWhereUrunDialogSearch(x => x.ProductName.ToLower().Contains(criterion) || x.ProductBarcode.Contains(criterion) || x.ProductCode.Contains(criterion));
-
-
-            dGWProduct.DataSource = productList;
-            dGWProduct.Refresh();
-            */
-
-        }
-
-        private void dGWProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dGWProduct.CurrentRow.Selected = true;
-            var productId = dGWProduct.SelectedRows[0].Cells["Id"].Value.ToString();
-            returnProductId = int.Parse(productId);
-            var product = _productRepository.GetById(returnProductId);
-            returnProductName = product.ProductName;
-            returnProductPrice = product.ProductPrice;
-            returnProductUnitType = product.ProductUnitType;
-            returnProductVat = product.ProductVat;
-
-            if (quickMode)
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-
-                frmQuantity _frmQuantity = new frmQuantity();
-                var quantityReturnDialog = _frmQuantity.ShowDialog();
-                var returnedProductQuantity = 0;
-                if (quantityReturnDialog == DialogResult.OK)
-                {
-                    returnedProductQuantity = _frmQuantity.returnQuantity;
-                    frmPos.AddToPos(returnProductId, returnProductName, returnProductPrice, returnedProductQuantity, returnProductUnitType, returnProductVat);
-                }
-
-
-
-            }
         }
 
         private void dGWProduct_KeyUp(object sender, KeyEventArgs e)
@@ -300,6 +281,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
 
         private void txtProductSearch_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Enter)
             {
                 var criterion = txtProductSearch.Text.ToLower();

@@ -44,7 +44,11 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Include(m => m.StockInDetails).Include(m => m.CartDetails).AsNoTracking()
+                var list = _postDbContext.Set<Product>()
+                    .Where(m => m.IsDeleted == false)
+                    .Include(m => m.StockInDetails)
+                    .Include(m => m.CartDetails) 
+                    .AsNoTracking()
                     .Select(x => new ProductListDTOWithStock
                     {
                         Id = x.Id,
@@ -54,9 +58,9 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
-                        NetProductAmountInStock =(x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
+                        NetProductAmountInStock = (x.StockInDetails.Where(m => m.IsDeleted == false).Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Where(m => m.IsDeleted == false).Sum(cd => cd.ProductUnit)).ToString("0")
 
-                    }).AsNoTracking().ToList();
+                    }).ToList();
 
                 return list;
             }
@@ -117,7 +121,11 @@ namespace PoSApp.BLL.Repositories.Concrete
         {
             using (_postDbContext = new PosDbContext())
             {
-                var list = _postDbContext.Set<Product>().Where(m => m.IsDeleted == false).Where(method)
+                var list = _postDbContext.Set<Product>()
+                    .Where(m => m.IsDeleted == false)
+                    .Include(m => m.StockInDetails) 
+                    .Include(m => m.CartDetails) 
+                    .Where(method).AsNoTracking()
                     .Select(x => new ProductListDTOWithStock
                     {
                         Id = x.Id,
@@ -127,8 +135,8 @@ namespace PoSApp.BLL.Repositories.Concrete
                         ProductPrice = x.ProductUnitType == ProductUnitType.Quantity ? x.ProductPrice.ToString("0.00") : x.ProductPrice.ToString("0.0000"),
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                         Vat = x.ProductVat,
-                        NetProductAmountInStock = (x.StockInDetails.Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Sum(cd => cd.ProductUnit)).ToString("0")
-                    }).AsNoTracking().ToList();
+                        NetProductAmountInStock = (x.StockInDetails.Where(m=>m.IsDeleted==false).Sum(sd => sd.StockInDetailUnit) - x.CartDetails.Where(m => m.IsDeleted == false).Sum(cd => cd.ProductUnit)).ToString("0")
+                    }).ToList();
 
                 return list;
             }

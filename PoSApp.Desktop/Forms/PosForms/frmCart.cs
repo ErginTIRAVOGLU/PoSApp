@@ -19,6 +19,7 @@ namespace PoSApp.Desktop.Forms.PosForms
     public partial class frmCart : Form
     {
         CartRepository _cartRepository = new CartRepository();
+        CartDetailRepository _cartDetailRepository = new CartDetailRepository();
         public string _transNo { get; set; }
 
 
@@ -32,8 +33,8 @@ namespace PoSApp.Desktop.Forms.PosForms
 
         }
 
-         
-       
+
+
         private void pBClose_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Abort;
@@ -75,12 +76,20 @@ namespace PoSApp.Desktop.Forms.PosForms
                     _transNo = cart.TransNo;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                   
+
                     break;
                 case "Delete":
 
                     if (MessageBox.Show("Satışı silmek istediğinizden emin misiniz?", "Satış Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        //TODO: Cart içindeki ürünleri sil
+                        var cartDetails = _cartDetailRepository.GetByCartId(cartId);
+                        foreach (var cartDetail in cartDetails)
+                        {
+                            _cartDetailRepository.Delete(cartDetail);
+                        }
+                     
+
                         _cartRepository.Delete(cart);
                         load();
                     }
@@ -98,17 +107,6 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void btnFiltre_Click(object sender, EventArgs e)
         {
             load();
-        }
-
-        private void dGWCart_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            if (dGWCart.Columns[e.ColumnIndex].Name == "CartStatusType")
-            {
-                CartStatus enumValue = (CartStatus)e.Value;
-                e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
-            }
-            */
         }
     }
 }

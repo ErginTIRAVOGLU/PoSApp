@@ -37,7 +37,7 @@
             btnStockInProductReports.Name = "btnStockInProductReports";
             btnStockInProductReports.Size = new Size(107, 57);
             btnStockInProductReports.TabIndex = 0;
-            btnStockInProductReports.Text = "Ürün Stok Girişi Formu";
+            btnStockInProductReports.Text = "Ürün Stok Girişi Raporu";
             btnStockInProductReports.UseVisualStyleBackColor = true;
             btnStockInProductReports.Click += btnStockInProductReports_Click;
             // 

@@ -25,11 +25,11 @@ namespace PoSApp.BLL.Repositories.Concrete
             List<PayedAmountList> list = new List<PayedAmountList>();
             using (_postDbContext = new PosDbContext())
             {
-                list = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).Select(x => new PayedAmountList
+                list = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Include(m => m.Cart).Where(m => m.Cart.TransNo == transNo).AsNoTracking().Select(x => new PayedAmountList
                 {
                     Id = x.Id,
-                    PriceTotal = x.PriceTotal,
-                    PaymentType = x.PayedType == PaymentType.Cash ? "Nakit" : x.PayedType == PaymentType.CreditCard ? "Kredi Kartı" : x.PayedType == PaymentType.BankTransfer ? "Banka Transferi" : "Yemek Kartı"
+                    PriceTotal = decimal.Parse(x.PriceTotal.ToString("0.00")),
+                    PaymentType = x.PayedType == PaymentType.Cash ? "Nakit" : x.PayedType == PaymentType.CreditCard ? "Kredi Kartı" : x.PayedType == PaymentType.BankTransfer ? "Banka Transferi" : x.PayedType == PaymentType.MealCard ? "Yemek Kartı" : x.PayedType == PaymentType.TrendyolHizliMarket ? "Trendyol H.Market":"Bilinmiyor"
                 }).ToList();
 
 
@@ -42,7 +42,7 @@ namespace PoSApp.BLL.Repositories.Concrete
             decimal totalPayed = 0;
             using (_postDbContext = new PosDbContext())
             {
-                totalPayed = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).Select(m => m.PriceTotal).Sum();
+                totalPayed = _postDbContext.Set<PayedAmount>().Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Include(m => m.Cart).AsNoTracking().Select(m => m.PriceTotal).Sum();
             }
             return totalPayed;
         }

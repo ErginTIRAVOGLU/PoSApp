@@ -62,7 +62,7 @@
             txtCount.Location = new Point(95, 81);
             txtCount.Name = "txtCount";
             txtCount.Size = new Size(146, 23);
-            txtCount.TabIndex = 16;
+            txtCount.TabIndex = 1;
             // 
             // label2
             // 
@@ -88,14 +88,14 @@
             cmBoxWarehouse.Location = new Point(95, 52);
             cmBoxWarehouse.Name = "cmBoxWarehouse";
             cmBoxWarehouse.Size = new Size(146, 23);
-            cmBoxWarehouse.TabIndex = 17;
+            cmBoxWarehouse.TabIndex = 0;
             // 
             // btnCancel
             // 
             btnCancel.Location = new Point(302, 375);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 36);
-            btnCancel.TabIndex = 21;
+            btnCancel.TabIndex = 11;
             btnCancel.Text = "Vazgeç";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -105,7 +105,7 @@
             btnSave.Location = new Point(140, 375);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(75, 36);
-            btnSave.TabIndex = 19;
+            btnSave.TabIndex = 9;
             btnSave.Text = "Ekle";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
@@ -115,7 +115,7 @@
             btnUpdate.Location = new Point(221, 375);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 36);
-            btnUpdate.TabIndex = 20;
+            btnUpdate.TabIndex = 10;
             btnUpdate.Text = "Güncelle";
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
@@ -160,7 +160,7 @@
             txtArrivalPrice.Location = new Point(405, 52);
             txtArrivalPrice.Name = "txtArrivalPrice";
             txtArrivalPrice.Size = new Size(93, 23);
-            txtArrivalPrice.TabIndex = 24;
+            txtArrivalPrice.TabIndex = 2;
             // 
             // label4
             // 
@@ -176,7 +176,7 @@
             txtDiscountPercentage.Location = new Point(405, 81);
             txtDiscountPercentage.Name = "txtDiscountPercentage";
             txtDiscountPercentage.Size = new Size(93, 23);
-            txtDiscountPercentage.TabIndex = 26;
+            txtDiscountPercentage.TabIndex = 3;
             // 
             // label5
             // 
@@ -192,7 +192,8 @@
             txtLastPriceWithoutVat.Location = new Point(405, 197);
             txtLastPriceWithoutVat.Name = "txtLastPriceWithoutVat";
             txtLastPriceWithoutVat.Size = new Size(93, 23);
-            txtLastPriceWithoutVat.TabIndex = 28;
+            txtLastPriceWithoutVat.TabIndex = 7;
+            txtLastPriceWithoutVat.KeyUp += txtLastPriceWithoutVat_KeyUp;
             // 
             // label6
             // 
@@ -208,7 +209,7 @@
             txtTotalDiscountAmount.Location = new Point(405, 139);
             txtTotalDiscountAmount.Name = "txtTotalDiscountAmount";
             txtTotalDiscountAmount.Size = new Size(93, 23);
-            txtTotalDiscountAmount.TabIndex = 30;
+            txtTotalDiscountAmount.TabIndex = 5;
             // 
             // label7
             // 
@@ -224,7 +225,7 @@
             txtUnitDiscountAmount.Location = new Point(405, 110);
             txtUnitDiscountAmount.Name = "txtUnitDiscountAmount";
             txtUnitDiscountAmount.Size = new Size(93, 23);
-            txtUnitDiscountAmount.TabIndex = 32;
+            txtUnitDiscountAmount.TabIndex = 4;
             // 
             // label8
             // 
@@ -240,7 +241,8 @@
             txtLastPriceWithVat.Location = new Point(405, 226);
             txtLastPriceWithVat.Name = "txtLastPriceWithVat";
             txtLastPriceWithVat.Size = new Size(93, 23);
-            txtLastPriceWithVat.TabIndex = 34;
+            txtLastPriceWithVat.TabIndex = 8;
+            txtLastPriceWithVat.KeyUp += txtLastPriceWithVat_KeyUp;
             // 
             // label9
             // 
@@ -256,7 +258,8 @@
             txtTotalVatAmount.Location = new Point(405, 168);
             txtTotalVatAmount.Name = "txtTotalVatAmount";
             txtTotalVatAmount.Size = new Size(93, 23);
-            txtTotalVatAmount.TabIndex = 36;
+            txtTotalVatAmount.TabIndex = 6;
+            txtTotalVatAmount.KeyUp += txtTotalVatAmount_KeyUp;
             // 
             // label10
             // 

@@ -169,9 +169,9 @@ namespace PoSApp.Desktop.Forms.PosForms
                                 Quantity = returnedProductQuantity,
                                 CartDetailUnitType = returnedProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                                 Discount = 0,
-                                Price = returnedProductPrice,
+                                Price = returnedProductUnitType == ProductUnitType.Quantity ? decimal.Parse(returnedProductPrice.ToString("0.00")): returnedProductPrice,
                                 Vat = returnedProductVat,
-                                Total = total,
+                                Total = decimal.Parse(total.ToString("0.00")),
                                 ProductId = returnedProductId
                             });
 
@@ -208,17 +208,6 @@ namespace PoSApp.Desktop.Forms.PosForms
 
         }
 
-        private void dGWCartDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            if (dGWCartDetail.Columns[e.ColumnIndex].Name == "CartDetailUnitType")
-            {
-                ProductUnitType enumValue = (ProductUnitType)e.Value;
-                e.Value = (Attribute.GetCustomAttribute(enumValue.GetType().GetField(enumValue.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description;
-            }
-            */
-        }
-
         private void btnProductList_Click(object sender, EventArgs e)
         {
             frmProductList _frmProductList = new frmProductList(null, this);
@@ -239,9 +228,9 @@ namespace PoSApp.Desktop.Forms.PosForms
                 Quantity = returnedProductQuantity,
                 CartDetailUnitType = returnedProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                 Discount = 0,
-                Price = returnedProductPrice,
+                Price = returnedProductUnitType == ProductUnitType.Quantity ? decimal.Parse(returnedProductPrice.ToString("0.00")): returnedProductPrice,
                 Vat = returnedVat,
-                Total = total,
+                Total = decimal.Parse(total.ToString("0.00")),
                 ProductId = returnedProductId
 
 
@@ -352,7 +341,6 @@ namespace PoSApp.Desktop.Forms.PosForms
                 var pPercentage = 0;
                 int.TryParse(Math.Floor(percentage).ToString(), out pPercentage);
 
-                //dGWCartDetail.SelectedRows[0].Cells["Id"].Value.ToString();
                 frmDiscount _frmDiscount = new frmDiscount();
                 _frmDiscount.txtPrice.Text = selectedPrice.ToString();
 
@@ -490,7 +478,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             decimal totalDiscount = 0;
             foreach (var item in oldCartDetail)
             {
-                productTotalPrice = item.Price;// *item.Quantity; //TO-DO kontrol
+                productTotalPrice = item.Price;// *item.Quantity; //TODO kontrol
                 vatRatio = decimal.Parse(item.Vat.ToString()) / 100;
                 totalPrice = totalPrice + productTotalPrice;
                 totalVat = totalVat + (productTotalPrice - (productTotalPrice / (1 + vatRatio)));
@@ -539,46 +527,25 @@ namespace PoSApp.Desktop.Forms.PosForms
                 cartDetail.Description = item.Description;
 
                 _cartDetailRepository.Update(cartDetail);
-                //cart.CartDetails.Where(z => z.Id == item.Id).FirstOrDefault();
+               
 
             }
 
-            //_cartRepository.SaveNow();
-            /*
-            cart.CartDetails.Clear();
-            foreach (var item in oldCartDetail)
-            {
-                cart.CartDetails.Add(new CartDetail() { 
-                    Id = item.Id,
-                    CartId=cart.Id,
-                    Description = item.Description,
-                    DiscountTotal=item.Discount,
-                    ProductDiscount=item.Discount,
-                    ProductId=item.ProductId,
-                    Price=item.Price,
-                    PriceTotal = item.Price,
-                    Vat =item.Vat,
-                    ProductUnit=item.Quantity,
-                    ProductUnitType=item.CartDetailUnitType
-                });
-            }
-            */
+          
 
             _cartRepository.Update(cart);
-            oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo).ToList();
+            oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo);
             if (cartStatus == CartStatus.Canceled)
             {
                 lockTheButtons();
-                // btnPrint.PerformClick();
-                // clearAll();
+               
 
             }
             else if (cartStatus == CartStatus.Payed)
             {
                 lockTheButtons();
                 txtProductSearch.Enabled = false;
-                // btnPrint.PerformClick();
-                // clearAll();
+                
 
             }
             else if (cartStatus == CartStatus.Pending)
@@ -604,13 +571,7 @@ namespace PoSApp.Desktop.Forms.PosForms
         private void btnSales_Click(object sender, EventArgs e)
         {
             frmCart frm = new frmCart();
-            //frm.TopLevel = false;
-            //frm.Dock = DockStyle.Fill;
-            //pnlMain.Controls.Clear();
-            //pnlMain.Controls.Add(frm);
-
-            //frm.BringToFront();
-
+           
             DialogResult result = frm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -744,7 +705,7 @@ namespace PoSApp.Desktop.Forms.PosForms
             }
 
             _cartRepository.Update(cart);
-            oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo).ToList();
+            oldCartDetail = _cartDetailRepository.GetAllSelectedbyTransNo(_transNo);
 
             unlockTheButtons();
             FillGridView();
