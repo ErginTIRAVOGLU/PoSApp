@@ -62,9 +62,9 @@
             cProductMenuStrip = new ContextMenuStrip(components);
             tSMIProductStockInDetail = new ToolStripMenuItem();
             tSMIProductDetail = new ToolStripMenuItem();
-            pnlAlt = new Panel();
             lblTotalAmount = new Label();
             lblTotal = new Label();
+            splitContainer3 = new SplitContainer();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -78,7 +78,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).BeginInit();
             cProductMenuStrip.SuspendLayout();
-            pnlAlt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -129,7 +132,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(dGWProduct);
+            splitContainer1.Panel2.Controls.Add(splitContainer3);
             splitContainer1.Size = new Size(1145, 530);
             splitContainer1.SplitterDistance = 79;
             splitContainer1.TabIndex = 5;
@@ -204,7 +207,7 @@
             // txtProductSearch
             // 
             txtProductSearch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtProductSearch.Location = new Point(36, 3);
+            txtProductSearch.Location = new Point(36, 4);
             txtProductSearch.Name = "txtProductSearch";
             txtProductSearch.PlaceholderText = "Ürün Ara";
             txtProductSearch.Size = new Size(965, 23);
@@ -254,7 +257,7 @@
             dGWProduct.RowHeadersVisible = false;
             dGWProduct.RowTemplate.Height = 25;
             dGWProduct.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dGWProduct.Size = new Size(1145, 447);
+            dGWProduct.Size = new Size(1145, 399);
             dGWProduct.TabIndex = 6;
             // 
             // Id
@@ -375,20 +378,10 @@
             tSMIProductDetail.Text = "Ürün Detayını Gör";
             tSMIProductDetail.Click += tSMIProductDetail_Click;
             // 
-            // pnlAlt
-            // 
-            pnlAlt.Controls.Add(lblTotalAmount);
-            pnlAlt.Controls.Add(lblTotal);
-            pnlAlt.Dock = DockStyle.Bottom;
-            pnlAlt.Location = new Point(0, 501);
-            pnlAlt.Name = "pnlAlt";
-            pnlAlt.Size = new Size(1145, 69);
-            pnlAlt.TabIndex = 6;
-            // 
             // lblTotalAmount
             // 
             lblTotalAmount.AutoSize = true;
-            lblTotalAmount.Location = new Point(769, 21);
+            lblTotalAmount.Location = new Point(870, 14);
             lblTotalAmount.Name = "lblTotalAmount";
             lblTotalAmount.Size = new Size(13, 15);
             lblTotalAmount.TabIndex = 1;
@@ -397,18 +390,36 @@
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(708, 21);
+            lblTotal.Location = new Point(809, 14);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(55, 15);
             lblTotal.TabIndex = 0;
             lblTotal.Text = "Toplam : ";
+            // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            splitContainer3.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(dGWProduct);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(lblTotal);
+            splitContainer3.Panel2.Controls.Add(lblTotalAmount);
+            splitContainer3.Size = new Size(1145, 447);
+            splitContainer3.SplitterDistance = 399;
+            splitContainer3.TabIndex = 7;
             // 
             // frmStockInProductReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1145, 570);
-            Controls.Add(pnlAlt);
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -431,8 +442,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGWProduct).EndInit();
             cProductMenuStrip.ResumeLayout(false);
-            pnlAlt.ResumeLayout(false);
-            pnlAlt.PerformLayout();
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -452,7 +466,6 @@
         public DataGridView dGWProduct;
         private ContextMenuStrip cProductMenuStrip;
         private ToolStripMenuItem tSMIProductStockInDetail;
-        private Panel pnlAlt;
         private Label lblTotalAmount;
         private Label lblTotal;
         private ToolStripMenuItem tSMIProductDetail;
@@ -471,5 +484,6 @@
         private DataGridViewImageColumn Edit;
         private DataGridViewImageColumn Delete;
         private CheckBox chkBProductGroup;
+        private SplitContainer splitContainer3;
     }
 }

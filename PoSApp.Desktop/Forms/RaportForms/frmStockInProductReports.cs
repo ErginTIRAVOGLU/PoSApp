@@ -106,7 +106,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
             _frmStockInDetailList.dtTimeInputDate.Value = stockIn.StockInDate;
 
 
-            _frmStockInDetailList.dGWProduct.DataSource = products;           
+            _frmStockInDetailList.dGWProduct.DataSource = products;
             _frmStockInDetailList.oldStokDetay = stockInDetails.stockInDetailListDto;
             _frmStockInDetailList.totalAmount = stockInDetails.totalPriceAmount;
             _frmStockInDetailList.dGWStockInDetail.DataSource = _frmStockInDetailList.oldStokDetay;

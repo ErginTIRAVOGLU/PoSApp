@@ -60,13 +60,13 @@
             lblChange = new Label();
             label2 = new Label();
             dGWPayedDetail = new DataGridView();
-            label3 = new Label();
-            txtTotalPayed = new TextBox();
-            btnTrendyolHizliMarket = new RadioButton();
             Id = new DataGridViewTextBoxColumn();
             PriceTotal = new DataGridViewTextBoxColumn();
             PayedAmountPaymentType = new DataGridViewTextBoxColumn();
             Delete = new DataGridViewImageColumn();
+            label3 = new Label();
+            txtTotalPayed = new TextBox();
+            btnTrendyolHizliMarket = new RadioButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWPayedDetail).BeginInit();
@@ -285,7 +285,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(363, 40);
+            panel1.Size = new Size(372, 40);
             panel1.TabIndex = 34;
             // 
             // pBClose
@@ -294,7 +294,7 @@
             pBClose.BackgroundImage = (Image)resources.GetObject("pBClose.BackgroundImage");
             pBClose.BackgroundImageLayout = ImageLayout.Center;
             pBClose.Cursor = Cursors.Hand;
-            pBClose.Location = new Point(336, 6);
+            pBClose.Location = new Point(345, 6);
             pBClose.Name = "pBClose";
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 1;
@@ -346,7 +346,7 @@
             btnCash.Image = (Image)resources.GetObject("btnCash.Image");
             btnCash.Location = new Point(286, 58);
             btnCash.Name = "btnCash";
-            btnCash.Size = new Size(66, 98);
+            btnCash.Size = new Size(79, 98);
             btnCash.TabIndex = 2;
             btnCash.Text = "Nakit Ödeme";
             btnCash.TextAlign = ContentAlignment.MiddleCenter;
@@ -365,7 +365,7 @@
             btnCreditCard.Image = (Image)resources.GetObject("btnCreditCard.Image");
             btnCreditCard.Location = new Point(286, 163);
             btnCreditCard.Name = "btnCreditCard";
-            btnCreditCard.Size = new Size(66, 98);
+            btnCreditCard.Size = new Size(79, 98);
             btnCreditCard.TabIndex = 3;
             btnCreditCard.Text = "Kredi Kart";
             btnCreditCard.TextAlign = ContentAlignment.MiddleCenter;
@@ -384,7 +384,7 @@
             btnBankPayment.Image = (Image)resources.GetObject("btnBankPayment.Image");
             btnBankPayment.Location = new Point(286, 268);
             btnBankPayment.Name = "btnBankPayment";
-            btnBankPayment.Size = new Size(66, 98);
+            btnBankPayment.Size = new Size(79, 98);
             btnBankPayment.TabIndex = 4;
             btnBankPayment.Text = "Havale / EFT";
             btnBankPayment.TextAlign = ContentAlignment.MiddleCenter;
@@ -403,7 +403,7 @@
             btnMealCard.Image = (Image)resources.GetObject("btnMealCard.Image");
             btnMealCard.Location = new Point(286, 373);
             btnMealCard.Name = "btnMealCard";
-            btnMealCard.Size = new Size(66, 98);
+            btnMealCard.Size = new Size(79, 98);
             btnMealCard.TabIndex = 5;
             btnMealCard.Text = "Yemek Kartı";
             btnMealCard.TextAlign = ContentAlignment.MiddleCenter;
@@ -485,44 +485,6 @@
             dGWPayedDetail.TabIndex = 19;
             dGWPayedDetail.CellContentClick += dGWPayedDetail_CellContentClick;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 250);
-            label3.Name = "label3";
-            label3.Size = new Size(79, 15);
-            label3.TabIndex = 53;
-            label3.Text = "Ödenen Tutar";
-            // 
-            // txtTotalPayed
-            // 
-            txtTotalPayed.Enabled = false;
-            txtTotalPayed.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTotalPayed.Location = new Point(13, 268);
-            txtTotalPayed.Name = "txtTotalPayed";
-            txtTotalPayed.Size = new Size(131, 43);
-            txtTotalPayed.TabIndex = 52;
-            txtTotalPayed.TextAlign = HorizontalAlignment.Right;
-            // 
-            // btnTrendyolHizliMarket
-            // 
-            btnTrendyolHizliMarket.Appearance = Appearance.Button;
-            btnTrendyolHizliMarket.BackColor = Color.White;
-            btnTrendyolHizliMarket.CheckAlign = ContentAlignment.MiddleCenter;
-            btnTrendyolHizliMarket.FlatAppearance.CheckedBackColor = Color.FromArgb(152, 198, 243);
-            btnTrendyolHizliMarket.FlatStyle = FlatStyle.Flat;
-            btnTrendyolHizliMarket.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTrendyolHizliMarket.ForeColor = Color.FromArgb(25, 118, 210);
-            btnTrendyolHizliMarket.Image = (Image)resources.GetObject("btnTrendyolHizliMarket.Image");
-            btnTrendyolHizliMarket.Location = new Point(285, 478);
-            btnTrendyolHizliMarket.Name = "btnTrendyolHizliMarket";
-            btnTrendyolHizliMarket.Size = new Size(66, 98);
-            btnTrendyolHizliMarket.TabIndex = 54;
-            btnTrendyolHizliMarket.Text = "Trendyol Hızlı Market";
-            btnTrendyolHizliMarket.TextAlign = ContentAlignment.MiddleCenter;
-            btnTrendyolHizliMarket.TextImageRelation = TextImageRelation.TextAboveImage;
-            btnTrendyolHizliMarket.UseVisualStyleBackColor = false;
-            // 
             // Id
             // 
             Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -554,11 +516,49 @@
             Delete.Name = "Delete";
             Delete.Width = 5;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 250);
+            label3.Name = "label3";
+            label3.Size = new Size(79, 15);
+            label3.TabIndex = 53;
+            label3.Text = "Ödenen Tutar";
+            // 
+            // txtTotalPayed
+            // 
+            txtTotalPayed.Enabled = false;
+            txtTotalPayed.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTotalPayed.Location = new Point(13, 268);
+            txtTotalPayed.Name = "txtTotalPayed";
+            txtTotalPayed.Size = new Size(131, 43);
+            txtTotalPayed.TabIndex = 52;
+            txtTotalPayed.TextAlign = HorizontalAlignment.Right;
+            // 
+            // btnTrendyolHizliMarket
+            // 
+            btnTrendyolHizliMarket.Appearance = Appearance.Button;
+            btnTrendyolHizliMarket.BackColor = Color.White;
+            btnTrendyolHizliMarket.CheckAlign = ContentAlignment.MiddleCenter;
+            btnTrendyolHizliMarket.FlatAppearance.CheckedBackColor = Color.FromArgb(152, 198, 243);
+            btnTrendyolHizliMarket.FlatStyle = FlatStyle.Flat;
+            btnTrendyolHizliMarket.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTrendyolHizliMarket.ForeColor = Color.FromArgb(25, 118, 210);
+            btnTrendyolHizliMarket.Image = (Image)resources.GetObject("btnTrendyolHizliMarket.Image");
+            btnTrendyolHizliMarket.Location = new Point(285, 478);
+            btnTrendyolHizliMarket.Name = "btnTrendyolHizliMarket";
+            btnTrendyolHizliMarket.Size = new Size(79, 98);
+            btnTrendyolHizliMarket.TabIndex = 54;
+            btnTrendyolHizliMarket.Text = "Trendyol Hızlı Market";
+            btnTrendyolHizliMarket.TextAlign = ContentAlignment.MiddleCenter;
+            btnTrendyolHizliMarket.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnTrendyolHizliMarket.UseVisualStyleBackColor = false;
+            // 
             // frmSettle
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(363, 642);
+            ClientSize = new Size(372, 642);
             Controls.Add(btnTrendyolHizliMarket);
             Controls.Add(label3);
             Controls.Add(txtTotalPayed);
