@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnStockInProductReports = new Button();
+            btnCartProductReports = new Button();
             SuspendLayout();
             // 
             // btnStockInProductReports
@@ -41,12 +42,23 @@
             btnStockInProductReports.UseVisualStyleBackColor = true;
             btnStockInProductReports.Click += btnStockInProductReports_Click;
             // 
+            // btnCartProductReports
+            // 
+            btnCartProductReports.Location = new Point(125, 12);
+            btnCartProductReports.Name = "btnCartProductReports";
+            btnCartProductReports.Size = new Size(107, 57);
+            btnCartProductReports.TabIndex = 1;
+            btnCartProductReports.Text = "Ürün Stok Çıkışı Raporu";
+            btnCartProductReports.UseVisualStyleBackColor = true;
+            btnCartProductReports.Click += btnCartProductReports_Click;
+            // 
             // frmMainReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             ControlBox = false;
+            Controls.Add(btnCartProductReports);
             Controls.Add(btnStockInProductReports);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmMainReportForm";
@@ -57,5 +69,6 @@
         #endregion
 
         private Button btnStockInProductReports;
+        private Button btnCartProductReports;
     }
 }

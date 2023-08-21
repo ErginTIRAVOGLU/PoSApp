@@ -62,80 +62,7 @@ namespace PoSApp.BLL.Repositories.Concrete
         }
 
         
-        public ProductsInStockListDtoReturn GetAllProductsInStock(DateTime beginDate, DateTime endDate, string criterion)
-        {
-            ProductsInStockListDtoReturn productsInStockListDtoReturn = new();
-            using (_postDbContext = new PosDbContext())
-            {
-                var list = _postDbContext.Set<StockInDetail>()
-                    .Include(m => m.StockIn)
-                    .Include(m => m.Product)
-                    .OrderByDescending(m => m.StockIn.StockInDate)
-                    .AsNoTracking()
-                    .Where(m => m.IsDeleted == false)
-                    .Where(m => m.Product.IsDeleted == false)
-                    .Where(m => m.StockIn.IsDeleted == false)
-                    .Where(m => m.StockIn.StockInDate >= beginDate && m.StockIn.StockInDate <= endDate)
-                    .Where(m => m.Product.ProductName.ToLower().Contains(criterion) || m.Product.ProductBarcode.Contains(criterion) || m.Product.ProductCode.Contains(criterion)).AsNoTracking()
-                    .Select(x => new ProductsInStockListDto
-                    {
-                        Id = x.Id,
-                        StockInId = x.StockIn.Id,
-                        ProductCode = x.Product.ProductCode,
-                        ProductBarcode = x.Product.ProductBarcode,
-                        ProductName = x.Product.ProductName,
-                        onePrice = (x.ProductLastPriceWithVat / x.StockInDetailUnit).ToString("0.00"),
-                        StockInDetailUnit = x.Product.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.StockInDetailUnit) : Decimal.ToInt32(x.StockInDetailUnit),
-                        StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
-                        ProductPrice = x.Product.ProductPrice.ToString("0.00"),
-                        StockInDate = x.StockIn.StockInDate,
-                        ProductId=x.Product.Id,
-                        LastPriceWithVat = x.ProductLastPriceWithVat.ToString("0.00")
-                    }
-                    ).ToList();
-                var TotalAmount = list.Sum(x => decimal.Parse(x.LastPriceWithVat));
-                productsInStockListDtoReturn.ProductsInStockListDto=list;
-                productsInStockListDtoReturn.TotalAmount = TotalAmount;
-                return productsInStockListDtoReturn;
-            }
-                
-        }
-
-        public ProductsInStockListDtoReturn GetAllProductsInStockWithGroup(DateTime beginDate, DateTime endDate, string criterion)
-        {
-            ProductsInStockListDtoReturn productsInStockListDtoReturn = new();
-            using (_postDbContext = new PosDbContext())
-            {
-                var list = _postDbContext.Set<StockInDetail>()
-                    .Include(m => m.StockIn)
-                    .Include(m => m.Product)
-                    .OrderByDescending(m => m.StockIn.StockInDate)
-                    .AsNoTracking()
-                    .Where(m => m.IsDeleted == false)
-                    .Where(m => m.Product.IsDeleted == false)
-                    .Where(m => m.StockIn.IsDeleted == false)
-                    .Where(m => m.StockIn.StockInDate >= beginDate && m.StockIn.StockInDate <= endDate)
-                    .Where(m => m.Product.ProductName.ToLower().Contains(criterion) || m.Product.ProductBarcode.Contains(criterion) || m.Product.ProductCode.Contains(criterion)).AsNoTracking()
-                    .Select(x => new ProductsInStockListDto
-                    {
-                        Id = x.Id,
-                        
-                        
-                        ProductCode = x.Product.ProductCode,
-                        ProductBarcode = x.Product.ProductBarcode,
-                        ProductName = x.Product.ProductName,
-                        StockInDetailUnitType = x.Product.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
-
-                        
-                    }
-                    ).ToList();
-                var TotalAmount = list.Sum(x => decimal.Parse(x.LastPriceWithVat));
-                productsInStockListDtoReturn.ProductsInStockListDto = list;
-                productsInStockListDtoReturn.TotalAmount = TotalAmount;
-                return productsInStockListDtoReturn;
-            }
-
-        }
+        
 
     }
 
@@ -149,27 +76,5 @@ namespace PoSApp.BLL.Repositories.Concrete
 
     }
 
-    public class ProductsInStockListDto
-    {
-        public int Id { get; set; }
-        public int StockInId { get; set; }
-        public int ProductId { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductBarcode { get; set; }
-        public string ProductName { get; set; }
-        public decimal StockInDetailUnit { get; set; }
-        public string StockInDetailUnitType { get; set; }
-        public string onePrice { get; set; }
-        public string LastPriceWithVat { get; set; }
-        public string ProductPrice { get; set; }
-        public DateTime StockInDate { get; set; }
-
-    }
-    public class ProductsInStockListDtoReturn
-    {
-        public ICollection<ProductsInStockListDto> ProductsInStockListDto { get; set; }
-        
-        [Column(TypeName = "decimal(18,4)")]
-        public decimal TotalAmount { get; set; }
-    }
+    
 }

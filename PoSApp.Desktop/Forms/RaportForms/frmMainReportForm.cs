@@ -35,5 +35,20 @@ namespace PoSApp.Desktop.Forms.RaportForms
             frm.BringToFront();
             frm.Show();
         }
+
+        private void btnCartProductReports_Click(object sender, EventArgs e)
+        {
+            frmCartProductReports frm = new frmCartProductReports(_frmForm);
+            frm.Show();
+
+
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            _frmForm.pnlMain.Controls.Clear();
+            _frmForm.pnlMain.Controls.Add(frm);
+
+            frm.BringToFront();
+            frm.Show();
+        }
     }
 }

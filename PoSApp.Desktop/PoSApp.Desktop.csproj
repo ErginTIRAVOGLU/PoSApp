@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
@@ -16,12 +16,10 @@
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <DelaySign>False</DelaySign>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="printsettings.json" />
     <None Remove="Reports\PosResultReport.rdlc" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="..\PoSApp.BLL\appsettings.json" Link="appsettings.json" />
     <Content Include="..\PoSApp.DAL\App.config.json" Link="App.config.json" />
@@ -33,17 +31,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\PoSApp.BLL\PoSApp.BLL.csproj" />
     <ProjectReference Include="..\PoSApp.Entities\PoSApp.Entities.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Dataset\PosResultDataSet.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -70,14 +65,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="update.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -91,5 +84,4 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
 </Project>

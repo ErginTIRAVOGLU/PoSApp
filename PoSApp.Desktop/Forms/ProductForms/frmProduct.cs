@@ -24,6 +24,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
         private CategoryRepository _categoryRepository = new CategoryRepository();
         private frmProductList _frmProductList;
         frmStockInProductReports _frmStockInProductReports;
+        frmCartProductReports _frmCartProductReports;
         public int productId;
         public bool IsUpdate;
 
@@ -38,7 +39,11 @@ namespace PoSApp.Desktop.Forms.ProductForms
             InitializeComponent();
             _frmStockInProductReports = frmStockInProductReports;
         }
-
+        public frmProduct(frmCartProductReports frmCartProductReports)
+        {
+            InitializeComponent();
+            _frmCartProductReports = frmCartProductReports;
+        }
         public frmProduct()
         {
             InitializeComponent();
@@ -89,7 +94,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
             }
             if (_frmStockInProductReports != null)
             {
-                _frmStockInProductReports.filtrele();
+                _frmStockInProductReports.filter();
             }
             this.Close();
         }
@@ -129,7 +134,7 @@ namespace PoSApp.Desktop.Forms.ProductForms
             }
             if (_frmStockInProductReports != null)
             {
-                _frmStockInProductReports.filtrele();
+                _frmStockInProductReports.filter();
             }
             this.Close();
         }
