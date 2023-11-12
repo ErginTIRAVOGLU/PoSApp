@@ -1,4 +1,5 @@
-﻿using PoSApp.Entities;
+﻿using PoSApp.BLL.Repositories.Concrete;
+using PoSApp.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,7 @@ namespace PoSApp.BLL.Repositories.Abstract
 {
     public interface IWarehouseRepository : IBaseRepository<Warehouse>
     {
+        IEnumerable<WarehouseList> GetAllSelected();
+        List<Warehouse> GetAllWarehouses();
     }
 }

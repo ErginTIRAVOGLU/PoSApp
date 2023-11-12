@@ -1,5 +1,6 @@
 using PoSApp.BLL.Log;
 using PoSApp.DAL;
+using PoSApp.Desktop.Forms.BarcodeForms;
 using PoSApp.Desktop.Forms.BrandForms;
 using PoSApp.Desktop.Forms.CategoryForms;
 using PoSApp.Desktop.Forms.PosForms;
@@ -113,6 +114,12 @@ namespace PoSApp.Desktop
             {
                 context.Database.EnsureCreated();
             }
+            string docDirectory = $"{System.IO.Path.GetDirectoryName(Application.ExecutablePath)}\\wordfiles";
+            if(Directory.Exists(docDirectory))
+            {
+                Directory.Delete(docDirectory, true);
+            }
+            
         }
 
         private void pnlSide_Paint(object sender, PaintEventArgs e)
@@ -231,6 +238,16 @@ namespace PoSApp.Desktop
             frmUpdate frmUpdate = new frmUpdate();
             frmUpdate.ShowDialog();
 
+        }
+
+        private void btnBarcode_Click(object sender, EventArgs e)
+        {
+            frmBarcode frm = new frmBarcode();          
+            frm.TopLevel = false;
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
     }
 }

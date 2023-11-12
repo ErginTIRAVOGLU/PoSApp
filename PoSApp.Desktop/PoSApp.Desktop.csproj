@@ -32,8 +32,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DocX" Version="2.5.0" />
+    <PackageReference Include="FreeSpire.Doc" Version="11.6.0" />
+    <PackageReference Include="Pdfium.Net.SDK" Version="4.87.2704" />
     <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
     <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
+    <PackageReference Include="ZXing.Net" Version="0.16.9" />
+    <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.12" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PoSApp.BLL\PoSApp.BLL.csproj" />

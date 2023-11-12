@@ -1,4 +1,5 @@
-﻿using PoSApp.DAL;
+﻿using PoSApp.BLL.Repositories.Concrete;
+using PoSApp.DAL;
 using PoSApp.Entities;
 using System;
 using System.Collections;
@@ -11,6 +12,7 @@ namespace PoSApp.BLL.Repositories.Abstract
 {
     public interface IPayedAmountRepository : IBaseRepository<PayedAmount>
     {
-        public decimal GetTotalPayedAmount(string transNo);
+        decimal GetTotalPayedAmount(string transNo);
+        IEnumerable<PayedAmountList> GetAllSelected(string transNo);
     }
 }

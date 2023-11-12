@@ -61,12 +61,11 @@ namespace PoSApp.BLL.Repositories.Concrete
                 var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).AsNoTracking().Select(x => new CartDetailList
                 {
                     Id = x.Id,
-                    Description = x.Description, //x.Product.ProductName,
+                    Description = x.Description,
                     CartDetailUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
                     Vat = x.Product.ProductVat,
                     Discount = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductDiscount.ToString("0.00")) : decimal.Parse(x.ProductDiscount.ToString("0.0000")),
                     Price = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.Price.ToString("0.00")) : decimal.Parse(x.Price.ToString("0.0000")),
-                    //Quantity = x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit) : x.ProductUnit,
                     Quantity = Decimal.ToInt32(x.ProductUnit),
                     Total = decimal.Parse(x.PriceTotal.ToString("0.00")),
                     ProductId = x.ProductId
@@ -83,7 +82,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                 var list = _postDbContext.Set<CartDetail>().Include(m => m.Product).Include(m => m.Cart).Where(m => m.IsDeleted == false).Where(m => m.Cart.TransNo == transNo).Select(x => new PrintDetailList
                 {
                     ProductCode = x.Product.ProductCode,
-                    Description = x.Description,//x.Product.ProductName,                     
+                    Description = x.Description,
                     Vat = x.Product.ProductVat,
                     Discount = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.ProductDiscount.ToString("0.00")) : decimal.Parse(x.ProductDiscount.ToString("0.0000")),
                     Price = x.Product.ProductUnitType == ProductUnitType.Quantity ? decimal.Parse(x.Price.ToString("0.00")) : decimal.Parse(x.Price.ToString("0.0000")),
@@ -114,21 +113,21 @@ namespace PoSApp.BLL.Repositories.Concrete
                     .Select(x => new ProductsInCartListDto
                     {
                         Id = x.Id,
-                        CartId=x.Cart.Id,
+                        CartId = x.Cart.Id,
                         ProductId = x.Product.Id,
-                        TransNo=x.Cart.TransNo,                        
+                        TransNo = x.Cart.TransNo,
                         ProductCode = x.Product.ProductCode,
                         Description = x.Description,
                         ProductBarcode = x.Product.ProductBarcode,
                         ProductUnit = x.ProductUnitType == ProductUnitType.Quantity ? Decimal.ToInt32(x.ProductUnit).ToString("0.00") : Decimal.ToInt32(x.ProductUnit).ToString("0.00"),
                         ProductUnitType = x.ProductUnitType == ProductUnitType.Quantity ? "Adet" : "Gram",
-                        ProductDiscount =x.ProductDiscount.ToString("0.00"),
-                        Price=x.Price.ToString("0.00"),
-                        DiscountTotal=x.DiscountTotal.ToString("0.00"),
-                        PriceTotal=x.PriceTotal.ToString("0.00"),
-                        CartDate=x.Cart.CartDate,
-                        
-                      
+                        ProductDiscount = x.ProductDiscount.ToString("0.00"),
+                        Price = x.Price.ToString("0.00"),
+                        DiscountTotal = x.DiscountTotal.ToString("0.00"),
+                        PriceTotal = x.PriceTotal.ToString("0.00"),
+                        CartDate = x.Cart.CartDate,
+
+
                     }
                     ).ToList();
                 var TotalAmount = list.Sum(x => decimal.Parse(x.PriceTotal));
@@ -193,11 +192,11 @@ namespace PoSApp.BLL.Repositories.Concrete
 
                 var result = _postDbContext.Set<Cart>()
                     .Where(si => !si.IsDeleted)
-                    .Join(_postDbContext.Set<CartDetail>().Where(sd=>!sd.IsDeleted),
+                    .Join(_postDbContext.Set<CartDetail>().Where(sd => !sd.IsDeleted),
                         si => si.Id,
                         sd => sd.CartId,
                         (si, sd) => new { Cart = si, CartDetail = sd })
-                    .Join(_postDbContext.Set<Product>().Where(p=> !p.IsDeleted),
+                    .Join(_postDbContext.Set<Product>().Where(p => !p.IsDeleted),
                         s => s.CartDetail.ProductId,
                         p => p.Id,
                         (s, p) => new { Cart = s.Cart, CartDetail = s.CartDetail, Product = p })
@@ -228,6 +227,103 @@ namespace PoSApp.BLL.Repositories.Concrete
             }
 
         }
+
+        public ProductsInCartListDtoWithGroupbyMonthsPaymentReturn GetAllProductsInCartWithGroupbyPaymentMonths(int year, string criterion)
+        {
+            ProductsInCartListDtoWithGroupbyMonthsPaymentReturn productsInCartListDtoWithGroupbyMonthsPaymentReturn = new();
+            using (_postDbContext = new PosDbContext())
+            {
+                var result = _postDbContext.Set<PayedAmount>()
+                .Join(
+                    _postDbContext.Set<Cart>().Where(c => c.IsDeleted == false),
+                    pa => pa.CartId,
+                    c => c.Id,
+                    (pa, c) => new { PayedAmount = pa, Cart = c }
+                )
+                .Join(
+                    _postDbContext.Set<CartDetail>().Where(cd => cd.IsDeleted == false),
+                    joined => joined.Cart.Id,
+                    cd => cd.CartId,
+                    (joined, cd) => new { joined.PayedAmount, joined.Cart, CartDetail = cd }
+                )
+                .Join(
+                    _postDbContext.Set<Product>().Where(p => p.IsDeleted == false),
+                    joined => joined.CartDetail.ProductId,
+                    p => p.Id,
+                    (joined, p) => new { joined.PayedAmount, joined.Cart, joined.CartDetail, Product = p }
+                )
+                .Join(
+                    _postDbContext.Set<PayedAmount>().Where(pa => pa.IsDeleted == false),
+                    joined => joined.Cart.Id,
+                    pa => pa.CartId,
+                    (joined, pa) => new { joined.PayedAmount, joined.Cart, joined.CartDetail, joined.Product, PayedAmount2 = pa }
+                )
+                .GroupBy(
+                    joined => new { joined.PayedAmount.PayedType, PaymentYear = joined.Cart.CartDate.Year, PaymentMonth = joined.Cart.CartDate.Month },
+                    (key, group) => new
+                    {
+                        key.PayedType,
+                        key.PaymentYear,
+                        key.PaymentMonth,
+                        TotalSales = group.Sum(g => g.CartDetail.PriceTotal),
+                        TotalCarts = group.Select(g => g.Cart.Id).Distinct().Count(),
+                        TotalProducts = group.Select(g => g.CartDetail.ProductId).Distinct().Count(),
+                        TotalAmount = group.Sum(g => g.PayedAmount2.PriceTotal),
+
+                    }
+                )
+                .Where(result => result.PaymentYear == year)
+                .OrderBy(result => result.PaymentYear)
+                .ThenBy(result => result.PaymentMonth)
+                .ThenBy(result => result.PayedType)
+                .Select(z => new ProductsInCartListDtoWithGroupbyMonthsPayment
+                {
+
+                    PaymentTypeDescription = z.PayedType == PaymentType.Cash ? "Nakit" : z.PayedType == PaymentType.BankTransfer ? "Banka Transfer" : z.PayedType == PaymentType.CreditCard ? "Kredi Kartı" : z.PayedType == PaymentType.MealCard ? "Yemek Kartı" : z.PayedType == PaymentType.TrendyolHizliMarket ? "Trandyol Hızlı Market" : "Diğer Ödeme Türü",
+                    PaymentYear = z.PaymentYear,
+                    PaymentMonth = z.PaymentMonth,
+                    TotalSales = z.TotalSales.ToString("0.00"),
+                    TotalCarts = z.TotalCarts,
+                    TotalProducts = z.TotalProducts,
+                    TotalAmount = z.TotalAmount.ToString("0.00"),
+                    PaymentMonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(z.PaymentMonth)
+                })
+                .ToList();
+
+
+
+
+                var results = result;
+                productsInCartListDtoWithGroupbyMonthsPaymentReturn.ProductsInCartListDtoWithGroupbyMonthsPayment = results;
+                productsInCartListDtoWithGroupbyMonthsPaymentReturn.TotalAmount = results.Sum(x => decimal.Parse(x.TotalAmount));
+                return productsInCartListDtoWithGroupbyMonthsPaymentReturn;
+
+            }
+
+        }
+
+
+    }
+
+    public class ProductsInCartListDtoWithGroupbyMonthsPaymentReturn
+    {
+        public List<ProductsInCartListDtoWithGroupbyMonthsPayment> ProductsInCartListDtoWithGroupbyMonthsPayment { get; set; }
+
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal TotalAmount { get; set; }
+    }
+
+    public class ProductsInCartListDtoWithGroupbyMonthsPayment
+    {
+        public string PaymentTypeDescription { get; set; }
+        public int PaymentYear { get; set; }
+        public int PaymentMonth { get; set; }
+        public string PaymentMonthName { get; set; }
+        public string TotalSales { get; set; }
+        public int TotalCarts { get; set; }
+        public int TotalProducts { get; set; }
+        public string TotalAmount { get; set; }
+
     }
 
     public class ProductsInCartListDtoWithGroupbyMonthsReturn

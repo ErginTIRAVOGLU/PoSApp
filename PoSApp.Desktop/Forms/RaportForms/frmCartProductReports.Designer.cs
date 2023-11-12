@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCartProductReports));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCartProductReports));
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             lblTotal = new Label();
             WGProductBarcode = new DataGridViewTextBoxColumn();
             WGalimsayisi = new DataGridViewTextBoxColumn();
@@ -65,17 +67,26 @@
             pBClose = new PictureBox();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
+            btnFilter2 = new Button();
             lblYearSelect = new Label();
             label3 = new Label();
             cmBoxYears = new ComboBox();
             cmBoxReportType = new ComboBox();
-            btnFilter = new Button();
             dTPEndDate = new DateTimePicker();
             dTPBeginDate = new DateTimePicker();
             lblPickDate = new Label();
             txtProductSearch = new TextBox();
             pictureBox1 = new PictureBox();
             splitContainer3 = new SplitContainer();
+            dGWProductWithGroupbyMonthPayment = new DataGridView();
+            PayedType = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            TotalCarts = new DataGridViewTextBoxColumn();
+            TotalSales = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dGWProductWithGroupbyMonth = new DataGridView();
             Month = new DataGridViewTextBoxColumn();
             MonthName = new DataGridViewTextBoxColumn();
@@ -101,6 +112,7 @@
             splitContainer3.Panel1.SuspendLayout();
             splitContainer3.Panel2.SuspendLayout();
             splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dGWProductWithGroupbyMonthPayment).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWProductWithGroupbyMonth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dGWProductWithGroup).BeginInit();
             panel1.SuspendLayout();
@@ -161,18 +173,18 @@
             dGWProduct.AllowUserToDeleteRows = false;
             dGWProduct.AllowUserToOrderColumns = true;
             dGWProduct.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.LightSkyBlue;
-            dGWProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = Color.LightSkyBlue;
+            dGWProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dGWProduct.BackgroundColor = Color.White;
             dGWProduct.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(37, 37, 38);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dGWProduct.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dGWProduct.ColumnHeadersHeight = 30;
             dGWProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dGWProduct.Columns.AddRange(new DataGridViewColumn[] { Id, CartId, ProductId, TransNo, ProductCode, Description, ProductBarcode, ProductUnit, CartProductUnitType, Price, PriceTotal, CartDate });
@@ -342,7 +354,7 @@
             pBClose.BackgroundImage = (Image)resources.GetObject("pBClose.BackgroundImage");
             pBClose.BackgroundImageLayout = ImageLayout.Center;
             pBClose.Cursor = Cursors.Hand;
-            pBClose.Location = new Point(973, 8);
+            pBClose.Location = new Point(1024, 8);
             pBClose.Name = "pBClose";
             pBClose.Size = new Size(24, 24);
             pBClose.TabIndex = 0;
@@ -363,8 +375,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer3);
-            splitContainer1.Size = new Size(1011, 540);
-            splitContainer1.SplitterDistance = 80;
+            splitContainer1.Size = new Size(1062, 686);
+            splitContainer1.SplitterDistance = 101;
             splitContainer1.TabIndex = 7;
             // 
             // splitContainer2
@@ -376,11 +388,11 @@
             // 
             // splitContainer2.Panel1
             // 
+            splitContainer2.Panel1.Controls.Add(btnFilter2);
             splitContainer2.Panel1.Controls.Add(lblYearSelect);
             splitContainer2.Panel1.Controls.Add(label3);
             splitContainer2.Panel1.Controls.Add(cmBoxYears);
             splitContainer2.Panel1.Controls.Add(cmBoxReportType);
-            splitContainer2.Panel1.Controls.Add(btnFilter);
             splitContainer2.Panel1.Controls.Add(dTPEndDate);
             splitContainer2.Panel1.Controls.Add(dTPBeginDate);
             splitContainer2.Panel1.Controls.Add(lblPickDate);
@@ -389,14 +401,23 @@
             // 
             splitContainer2.Panel2.Controls.Add(txtProductSearch);
             splitContainer2.Panel2.Controls.Add(pictureBox1);
-            splitContainer2.Size = new Size(1011, 80);
-            splitContainer2.SplitterDistance = 40;
+            splitContainer2.Size = new Size(1062, 101);
             splitContainer2.TabIndex = 0;
+            // 
+            // btnFilter2
+            // 
+            btnFilter2.Location = new Point(973, 6);
+            btnFilter2.Name = "btnFilter2";
+            btnFilter2.Size = new Size(75, 28);
+            btnFilter2.TabIndex = 13;
+            btnFilter2.Text = "Yükle";
+            btnFilter2.UseVisualStyleBackColor = true;
+            btnFilter2.Click += btnFilter2_Click;
             // 
             // lblYearSelect
             // 
             lblYearSelect.AutoSize = true;
-            lblYearSelect.Location = new Point(711, 10);
+            lblYearSelect.Location = new Point(761, 9);
             lblYearSelect.Name = "lblYearSelect";
             lblYearSelect.Size = new Size(78, 15);
             lblYearSelect.TabIndex = 12;
@@ -416,7 +437,7 @@
             // 
             cmBoxYears.FormattingEnabled = true;
             cmBoxYears.Items.AddRange(new object[] { "Ürünleri Listele", "Ürünleri Grupla", "Aylara Göre Göster" });
-            cmBoxYears.Location = new Point(818, 6);
+            cmBoxYears.Location = new Point(857, 6);
             cmBoxYears.Name = "cmBoxYears";
             cmBoxYears.Size = new Size(87, 23);
             cmBoxYears.TabIndex = 10;
@@ -428,20 +449,9 @@
             cmBoxReportType.Items.AddRange(new object[] { "Ürünleri Listele", "Ürünleri Grupla", "Aylara Göre Göster" });
             cmBoxReportType.Location = new Point(568, 6);
             cmBoxReportType.Name = "cmBoxReportType";
-            cmBoxReportType.Size = new Size(137, 23);
+            cmBoxReportType.Size = new Size(187, 23);
             cmBoxReportType.TabIndex = 9;
             cmBoxReportType.SelectedValueChanged += cmBoxReportType_SelectedValueChanged;
-            // 
-            // btnFilter
-            // 
-            btnFilter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnFilter.Location = new Point(922, 3);
-            btnFilter.Name = "btnFilter";
-            btnFilter.Size = new Size(75, 28);
-            btnFilter.TabIndex = 7;
-            btnFilter.Text = "Yükle";
-            btnFilter.UseVisualStyleBackColor = true;
-            btnFilter.Click += btnFilter_Click;
             // 
             // dTPEndDate
             // 
@@ -471,7 +481,7 @@
             txtProductSearch.Location = new Point(36, 4);
             txtProductSearch.Name = "txtProductSearch";
             txtProductSearch.PlaceholderText = "Ürün Ara";
-            txtProductSearch.Size = new Size(963, 23);
+            txtProductSearch.Size = new Size(1012, 23);
             txtProductSearch.TabIndex = 5;
             txtProductSearch.KeyDown += txtProductSearch_KeyDown;
             // 
@@ -483,7 +493,7 @@
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Location = new Point(6, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 18);
+            pictureBox1.Size = new Size(24, 40);
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
@@ -498,6 +508,7 @@
             // 
             // splitContainer3.Panel1
             // 
+            splitContainer3.Panel1.Controls.Add(dGWProductWithGroupbyMonthPayment);
             splitContainer3.Panel1.Controls.Add(dGWProductWithGroupbyMonth);
             splitContainer3.Panel1.Controls.Add(dGWProductWithGroup);
             splitContainer3.Panel1.Controls.Add(dGWProduct);
@@ -506,9 +517,105 @@
             // 
             splitContainer3.Panel2.Controls.Add(lblTotal);
             splitContainer3.Panel2.Controls.Add(lblTotalAmount);
-            splitContainer3.Size = new Size(1011, 456);
-            splitContainer3.SplitterDistance = 408;
+            splitContainer3.Size = new Size(1062, 581);
+            splitContainer3.SplitterDistance = 533;
             splitContainer3.TabIndex = 7;
+            // 
+            // dGWProductWithGroupbyMonthPayment
+            // 
+            dGWProductWithGroupbyMonthPayment.AllowUserToAddRows = false;
+            dGWProductWithGroupbyMonthPayment.AllowUserToDeleteRows = false;
+            dGWProductWithGroupbyMonthPayment.AllowUserToOrderColumns = true;
+            dGWProductWithGroupbyMonthPayment.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = Color.LightSkyBlue;
+            dGWProductWithGroupbyMonthPayment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dGWProductWithGroupbyMonthPayment.BackgroundColor = Color.White;
+            dGWProductWithGroupbyMonthPayment.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dGWProductWithGroupbyMonthPayment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dGWProductWithGroupbyMonthPayment.ColumnHeadersHeight = 30;
+            dGWProductWithGroupbyMonthPayment.Columns.AddRange(new DataGridViewColumn[] { PayedType, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, TotalCarts, TotalSales, dataGridViewTextBoxColumn5 });
+            dGWProductWithGroupbyMonthPayment.EditMode = DataGridViewEditMode.EditOnF2;
+            dGWProductWithGroupbyMonthPayment.EnableHeadersVisualStyles = false;
+            dGWProductWithGroupbyMonthPayment.Location = new Point(3, 380);
+            dGWProductWithGroupbyMonthPayment.MultiSelect = false;
+            dGWProductWithGroupbyMonthPayment.Name = "dGWProductWithGroupbyMonthPayment";
+            dGWProductWithGroupbyMonthPayment.RowHeadersVisible = false;
+            dGWProductWithGroupbyMonthPayment.RowTemplate.Height = 25;
+            dGWProductWithGroupbyMonthPayment.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dGWProductWithGroupbyMonthPayment.Size = new Size(997, 124);
+            dGWProductWithGroupbyMonthPayment.TabIndex = 9;
+            dGWProductWithGroupbyMonthPayment.Visible = false;
+            // 
+            // PayedType
+            // 
+            PayedType.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            PayedType.DataPropertyName = "PaymentTypeDescription";
+            PayedType.HeaderText = "ÖDEME TİPİ";
+            PayedType.Name = "PayedType";
+            PayedType.Width = 92;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewTextBoxColumn1.DataPropertyName = "PaymentMonth";
+            dataGridViewTextBoxColumn1.HeaderText = "AY";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Width = 44;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewTextBoxColumn2.DataPropertyName = "PaymentMonthName";
+            dataGridViewTextBoxColumn2.HeaderText = "ADI";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 49;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewTextBoxColumn3.DataPropertyName = "PaymentYear";
+            dataGridViewTextBoxColumn3.HeaderText = "YIL";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 46;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewTextBoxColumn4.DataPropertyName = "TotalProducts";
+            dataGridViewTextBoxColumn4.HeaderText = "TOPLAM ÜRÜN";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 111;
+            // 
+            // TotalCarts
+            // 
+            TotalCarts.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            TotalCarts.DataPropertyName = "TotalCarts";
+            TotalCarts.HeaderText = "TOPLAM SEPET";
+            TotalCarts.Name = "TotalCarts";
+            TotalCarts.Width = 110;
+            // 
+            // TotalSales
+            // 
+            TotalSales.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            TotalSales.DataPropertyName = "TotalSales";
+            TotalSales.HeaderText = "TOPLAM SATIŞ TUTARI";
+            TotalSales.Name = "TotalSales";
+            TotalSales.Width = 147;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewTextBoxColumn5.DataPropertyName = "TotalAmount";
+            dataGridViewTextBoxColumn5.HeaderText = "TOPLAM TUTAR";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Width = 113;
             // 
             // dGWProductWithGroupbyMonth
             // 
@@ -516,18 +623,18 @@
             dGWProductWithGroupbyMonth.AllowUserToDeleteRows = false;
             dGWProductWithGroupbyMonth.AllowUserToOrderColumns = true;
             dGWProductWithGroupbyMonth.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.LightSkyBlue;
-            dGWProductWithGroupbyMonth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = Color.LightSkyBlue;
+            dGWProductWithGroupbyMonth.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dGWProductWithGroupbyMonth.BackgroundColor = Color.White;
             dGWProductWithGroupbyMonth.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(37, 37, 38);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dGWProductWithGroupbyMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dGWProductWithGroupbyMonth.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dGWProductWithGroupbyMonth.ColumnHeadersHeight = 30;
             dGWProductWithGroupbyMonth.Columns.AddRange(new DataGridViewColumn[] { Month, MonthName, Year, TotalSellProducts, TotalPriceWithVat });
             dGWProductWithGroupbyMonth.EditMode = DataGridViewEditMode.EditOnF2;
@@ -588,18 +695,18 @@
             dGWProductWithGroup.AllowUserToDeleteRows = false;
             dGWProductWithGroup.AllowUserToOrderColumns = true;
             dGWProductWithGroup.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = Color.LightSkyBlue;
-            dGWProductWithGroup.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle7.BackColor = Color.LightSkyBlue;
+            dGWProductWithGroup.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dGWProductWithGroup.BackgroundColor = Color.White;
             dGWProductWithGroup.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(37, 37, 38);
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dGWProductWithGroup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(37, 37, 38);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dGWProductWithGroup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dGWProductWithGroup.ColumnHeadersHeight = 30;
             dGWProductWithGroup.Columns.AddRange(new DataGridViewColumn[] { WGId, WGProductCode, WGProductName, WGProductBarcode, WGalimsayisi, WGStockInDetailUnit, WGStockInDetailUnitType, WGLastPriceWithVat });
             dGWProductWithGroup.EditMode = DataGridViewEditMode.EditOnF2;
@@ -629,14 +736,14 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1011, 40);
+            panel1.Size = new Size(1062, 40);
             panel1.TabIndex = 6;
             // 
             // frmCartProductReports
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1011, 580);
+            ClientSize = new Size(1062, 726);
             ControlBox = false;
             Controls.Add(splitContainer1);
             Controls.Add(panel1);
@@ -663,6 +770,7 @@
             splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
             splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dGWProductWithGroupbyMonthPayment).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGWProductWithGroupbyMonth).EndInit();
             ((System.ComponentModel.ISupportInitialize)dGWProductWithGroup).EndInit();
             panel1.ResumeLayout(false);
@@ -693,7 +801,6 @@
         private Label label3;
         private ComboBox cmBoxYears;
         private ComboBox cmBoxReportType;
-        private Button btnFilter;
         private DateTimePicker dTPEndDate;
         private DateTimePicker dTPBeginDate;
         private Label lblPickDate;
@@ -722,5 +829,15 @@
         private DataGridViewTextBoxColumn PriceTotal;
         private DataGridViewTextBoxColumn CartDate;
         private DataGridViewTextBoxColumn TotalSellProducts;
+        public DataGridView dGWProductWithGroupbyMonthPayment;
+        private DataGridViewTextBoxColumn PayedType;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn TotalCarts;
+        private DataGridViewTextBoxColumn TotalSales;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private Button btnFilter2;
     }
 }

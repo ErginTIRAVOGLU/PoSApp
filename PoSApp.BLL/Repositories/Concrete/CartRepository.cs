@@ -38,6 +38,7 @@ namespace PoSApp.BLL.Repositories.Concrete
                 return list;
             }
         }
+
         public ICollection<CartList> GetBetweenDates(Expression<Func<Cart, bool>> method)
         {
             using (_postDbContext = new PosDbContext())

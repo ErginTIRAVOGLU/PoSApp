@@ -48,6 +48,7 @@
             lblName = new Label();
             pictureBox1 = new PictureBox();
             pnlMain = new Panel();
+            btnBarcode = new Button();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -64,6 +65,7 @@
             // pnlSide
             // 
             pnlSide.BackColor = Color.FromArgb(37, 37, 38);
+            pnlSide.Controls.Add(btnBarcode);
             pnlSide.Controls.Add(btnUpdate);
             pnlSide.Controls.Add(btnStockIn);
             pnlSide.Controls.Add(btnSupplier);
@@ -354,6 +356,24 @@
             pnlMain.TabIndex = 2;
             pnlMain.Paint += pnlMain_Paint;
             // 
+            // btnBarcode
+            // 
+            btnBarcode.Cursor = Cursors.Hand;
+            btnBarcode.FlatAppearance.BorderSize = 0;
+            btnBarcode.FlatAppearance.MouseOverBackColor = Color.FromArgb(25, 118, 210);
+            btnBarcode.FlatStyle = FlatStyle.Flat;
+            btnBarcode.ForeColor = Color.White;
+            btnBarcode.Image = (Image)resources.GetObject("btnBarcode.Image");
+            btnBarcode.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBarcode.Location = new Point(3, 541);
+            btnBarcode.Name = "btnBarcode";
+            btnBarcode.Size = new Size(194, 34);
+            btnBarcode.TabIndex = 16;
+            btnBarcode.Text = " [F12] Barcode";
+            btnBarcode.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnBarcode.UseVisualStyleBackColor = true;
+            btnBarcode.Click += btnBarcode_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -395,5 +415,6 @@
         public Button btnStockIn;
         private Button btnSettings;
         private Button btnUpdate;
+        private Button btnBarcode;
     }
 }

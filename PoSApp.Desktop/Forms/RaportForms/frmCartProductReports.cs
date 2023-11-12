@@ -42,6 +42,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
             reportTypes.Add(new ReportType() { Id = 1, Name = "Ürünleri Listele" });
             reportTypes.Add(new ReportType() { Id = 2, Name = "Ürünleri Grupla" });
             reportTypes.Add(new ReportType() { Id = 3, Name = "Aylara Göre Grupla" });
+            reportTypes.Add(new ReportType() { Id = 4, Name = "Aylara Göre Ödeme Grupla" });
             cmBoxReportType.DisplayMember = "Name";
             cmBoxReportType.ValueMember = "Id";
             cmBoxReportType.DataSource = reportTypes;
@@ -64,10 +65,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
             _frmForm = frmForm;
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-            filter();
-        }
+
 
         private void txtProductSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -93,6 +91,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
                     dGWProduct.Visible = true;
                     dGWProductWithGroup.Visible = false;
                     dGWProductWithGroupbyMonth.Visible = false;
+                    dGWProductWithGroupbyMonthPayment.Visible = false;
                     dGWProduct.Dock = DockStyle.Fill;
                     dGWProduct.DataSource = cartList.productsInCartListDto;
                     dGWProduct.Refresh();
@@ -104,6 +103,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
                     dGWProduct.Visible = false;
                     dGWProductWithGroup.Visible = true;
                     dGWProductWithGroupbyMonth.Visible = false;
+                    dGWProductWithGroupbyMonthPayment.Visible = false;
                     dGWProductWithGroup.Dock = DockStyle.Fill;
                     dGWProductWithGroup.DataSource = cartListWithGroup.ProductsInCartListDtoWithGroup;
                     dGWProductWithGroup.Refresh();
@@ -116,10 +116,23 @@ namespace PoSApp.Desktop.Forms.RaportForms
                     dGWProduct.Visible = false;
                     dGWProductWithGroup.Visible = false;
                     dGWProductWithGroupbyMonth.Visible = true;
+                    dGWProductWithGroupbyMonthPayment.Visible = false;
                     dGWProductWithGroupbyMonth.Dock = DockStyle.Fill;
                     dGWProductWithGroupbyMonth.DataSource = cartListWithGroupbyMonth.ProductsInCartListDtoWithGroupbyMonths;
                     dGWProductWithGroupbyMonth.Refresh();
                     lblTotalAmount.Text = cartListWithGroupbyMonth.TotalAmount.ToString("0.00") + " TL";
+                    break;
+                case 4:
+                    var cartListWithGroupbyMonthPayment = _cartDetailRepository.GetAllProductsInCartWithGroupbyPaymentMonths(int.Parse(cmBoxYears.SelectedValue.ToString()), criterion);
+
+                    dGWProduct.Visible = false;
+                    dGWProductWithGroup.Visible = false;
+                    dGWProductWithGroupbyMonth.Visible = false;
+                    dGWProductWithGroupbyMonthPayment.Visible = true;
+                    dGWProductWithGroupbyMonthPayment.Dock = DockStyle.Fill;
+                    dGWProductWithGroupbyMonthPayment.DataSource = cartListWithGroupbyMonthPayment.ProductsInCartListDtoWithGroupbyMonthsPayment;
+                    dGWProductWithGroupbyMonthPayment.Refresh();
+                    lblTotalAmount.Text = cartListWithGroupbyMonthPayment.TotalAmount.ToString("0.00") + " TL";
                     break;
                 default:
                     break;
@@ -136,7 +149,7 @@ namespace PoSApp.Desktop.Forms.RaportForms
 
         private void cmBoxReportType_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cmBoxReportType.SelectedIndex == 2)
+            if (cmBoxReportType.SelectedIndex == 2 || cmBoxReportType.SelectedIndex == 3)
             {
                 lblYearSelect.Visible = true;
                 cmBoxYears.Visible = true;
@@ -213,6 +226,11 @@ namespace PoSApp.Desktop.Forms.RaportForms
             _frmProduct.productId = productId;
             _frmProduct.IsUpdate = true;
             _frmProduct.ShowDialog();
+        }
+
+        private void btnFilter2_Click(object sender, EventArgs e)
+        {
+            filter();
         }
     }
 }
