@@ -44,6 +44,8 @@
             label4 = new Label();
             chkPdf = new CheckBox();
             chkMasaustu = new CheckBox();
+            txtBarcodeHeight = new TextBox();
+            label5 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBoxBarcode).BeginInit();
@@ -51,7 +53,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(302, 297);
+            btnCancel.Location = new Point(302, 301);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(93, 36);
             btnCancel.TabIndex = 12;
@@ -62,7 +64,7 @@
             // btnSave
             // 
             btnSave.Enabled = false;
-            btnSave.Location = new Point(203, 297);
+            btnSave.Location = new Point(203, 301);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(93, 36);
             btnSave.TabIndex = 10;
@@ -131,7 +133,7 @@
             // 
             // btnCreate
             // 
-            btnCreate.Location = new Point(104, 297);
+            btnCreate.Location = new Point(104, 301);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(93, 36);
             btnCreate.TabIndex = 14;
@@ -143,7 +145,7 @@
             // 
             txtA4Sol.Location = new Point(110, 202);
             txtA4Sol.Name = "txtA4Sol";
-            txtA4Sol.Size = new Size(120, 23);
+            txtA4Sol.Size = new Size(40, 23);
             txtA4Sol.TabIndex = 16;
             txtA4Sol.Text = "30";
             // 
@@ -158,16 +160,16 @@
             // 
             // txtA4Ust
             // 
-            txtA4Ust.Location = new Point(327, 205);
+            txtA4Ust.Location = new Point(247, 202);
             txtA4Ust.Name = "txtA4Ust";
-            txtA4Ust.Size = new Size(120, 23);
+            txtA4Ust.Size = new Size(40, 23);
             txtA4Ust.TabIndex = 18;
             txtA4Ust.Text = "0";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(236, 208);
+            label4.Location = new Point(156, 205);
             label4.Name = "label4";
             label4.Size = new Size(85, 15);
             label4.TabIndex = 17;
@@ -178,7 +180,7 @@
             chkPdf.AutoSize = true;
             chkPdf.Checked = true;
             chkPdf.CheckState = CheckState.Checked;
-            chkPdf.Location = new Point(110, 231);
+            chkPdf.Location = new Point(110, 235);
             chkPdf.Name = "chkPdf";
             chkPdf.Size = new Size(86, 19);
             chkPdf.TabIndex = 19;
@@ -188,18 +190,37 @@
             // chkMasaustu
             // 
             chkMasaustu.AutoSize = true;
-            chkMasaustu.Location = new Point(110, 256);
+            chkMasaustu.Location = new Point(110, 260);
             chkMasaustu.Name = "chkMasaustu";
             chkMasaustu.Size = new Size(132, 19);
             chkMasaustu.TabIndex = 20;
             chkMasaustu.Text = "Masaüstü'ne Kaydet";
             chkMasaustu.UseVisualStyleBackColor = true;
             // 
+            // txtBarcodeHeight
+            // 
+            txtBarcodeHeight.Location = new Point(409, 202);
+            txtBarcodeHeight.Name = "txtBarcodeHeight";
+            txtBarcodeHeight.Size = new Size(40, 23);
+            txtBarcodeHeight.TabIndex = 22;
+            txtBarcodeHeight.Text = "0";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(295, 205);
+            label5.Name = "label5";
+            label5.Size = new Size(108, 15);
+            label5.TabIndex = 21;
+            label5.Text = "Barcode Yükseklik :";
+            // 
             // frmBarcode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 345);
+            ClientSize = new Size(484, 360);
+            Controls.Add(txtBarcodeHeight);
+            Controls.Add(label5);
             Controls.Add(chkMasaustu);
             Controls.Add(chkPdf);
             Controls.Add(txtA4Ust);
@@ -217,6 +238,7 @@
             Name = "frmBarcode";
             StartPosition = FormStartPosition.CenterScreen;
             WindowState = FormWindowState.Maximized;
+            Load += frmBarcode_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pBClose).EndInit();
@@ -242,5 +264,7 @@
         private Label label4;
         private CheckBox chkPdf;
         private CheckBox chkMasaustu;
+        public TextBox txtBarcodeHeight;
+        private Label label5;
     }
 }

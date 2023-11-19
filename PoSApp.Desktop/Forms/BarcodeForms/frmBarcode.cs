@@ -20,6 +20,7 @@ using ZXing.Windows.Compatibility;
 using Alignment = Xceed.Document.NET.Alignment;
 using Patagames.Pdf.Net;
 using Patagames.Pdf.Net.Controls.WinForms;
+using System.Security.Cryptography;
 
 namespace PoSApp.Desktop.Forms.BarcodeForms
 {
@@ -45,7 +46,7 @@ namespace PoSApp.Desktop.Forms.BarcodeForms
             }
             if (chkMasaustu.Checked)
             {
-                string masaustuKlasoru= Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string masaustuKlasoru = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                 docFile = $"{masaustuKlasoru}\\{docFile}";
                 pdfFile = $"{masaustuKlasoru}\\{pdfFile}";
             }
@@ -54,7 +55,7 @@ namespace PoSApp.Desktop.Forms.BarcodeForms
                 docFile = $"{docDirectory}\\{docFile}";
                 pdfFile = $"{docDirectory}\\{pdfFile}";
             }
-            
+
             using (DocX document = DocX.Create(docFile))
             {
 
@@ -100,7 +101,7 @@ namespace PoSApp.Desktop.Forms.BarcodeForms
                     document.InsertTable(table);
                 }
 
-              
+
 
                 document.Save();
 
@@ -164,30 +165,54 @@ namespace PoSApp.Desktop.Forms.BarcodeForms
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            if (txtBarcode.Text != "")
+            {
+                BarcodeWriter barcodeWriter = new BarcodeWriter();
 
-            BarcodeWriter barcodeWriter = new BarcodeWriter();
+                barcodeWriter.Format = BarcodeFormat.CODE_128;
+                barcodeWriter.Options.Height = Convert.ToInt32(txtBarcodeHeight.Text);
+                //barcodeWriter.Options.Width = 120;
+                barcodeWriter.Options.Margin = 0;
+                barcodeWriter.Options.NoPadding = true;
+                barcodeWriter.Options.PureBarcode = false;
 
-            barcodeWriter.Format = BarcodeFormat.CODE_128;
-            barcodeWriter.Options.Height = 60;
-            barcodeWriter.Options.Width = 120;
-            barcodeWriter.Options.Margin = 0;
-            barcodeWriter.Options.NoPadding = true;
-            barcodeWriter.Options.PureBarcode = false;
+                barcodeData = $"{txtBarcode.Text}";
+                barcodeBitmap = barcodeWriter.Write(barcodeData);
 
-            barcodeData = $"{txtBarcode.Text}";
-            barcodeBitmap = barcodeWriter.Write(barcodeData);
-
-            pBoxBarcode.Image = barcodeBitmap;
-            pBoxBarcode.Size = pBoxBarcode.Image.Size;
+                pBoxBarcode.Image = barcodeBitmap;
+                pBoxBarcode.Size = pBoxBarcode.Image.Size;
 
 
-            barcodeBitmap.Save(tempImagePath, ImageFormat.Png);
-            btnSave.Enabled = true;
+                barcodeBitmap.Save(tempImagePath, ImageFormat.Png);
+
+                Properties.Settings.Default.Barcode = txtBarcode.Text;
+                Properties.Settings.Default.A4Sol = txtA4Sol.Text;
+                Properties.Settings.Default.A4Ust = txtA4Ust.Text;
+                Properties.Settings.Default.Pdf = chkPdf.Checked;
+                Properties.Settings.Default.Masaustu = chkMasaustu.Checked;
+                Properties.Settings.Default.BarcodeHeight = txtBarcodeHeight.Text;
+                Properties.Settings.Default.Save();
+                btnSave.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Barcode numarası giriniz.");
+            }
         }
 
         private void pBClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmBarcode_Load(object sender, EventArgs e)
+        {
+            txtBarcode.Text = Properties.Settings.Default.Barcode;
+            txtA4Sol.Text = Properties.Settings.Default.A4Sol;
+            txtA4Ust.Text = Properties.Settings.Default.A4Ust;
+            chkPdf.Checked = Properties.Settings.Default.Pdf;
+            chkMasaustu.Checked = Properties.Settings.Default.Masaustu;
+            txtBarcodeHeight.Text = Properties.Settings.Default.BarcodeHeight;
         }
     }
 }
