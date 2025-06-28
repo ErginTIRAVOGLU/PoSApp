@@ -937,7 +937,10 @@
           "Serilog.Sinks.File": "5.0.0"
         },
         "runtime": {
-          "PoSApp.BLL.dll": {}
+          "PoSApp.BLL.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "PoSApp.DAL/1.0.0": {
@@ -952,12 +955,18 @@
           "PoSApp.Entities": "1.0.0"
         },
         "runtime": {
-          "PoSApp.DAL.dll": {}
+          "PoSApp.DAL.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "PoSApp.Entities/1.0.0": {
         "runtime": {
-          "PoSApp.Entities.dll": {}
+          "PoSApp.Entities.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
